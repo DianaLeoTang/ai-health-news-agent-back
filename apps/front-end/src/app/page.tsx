@@ -16,14 +16,6 @@ export default function Index() {
     <div>
       <div className="wrapper">
         <div className="container">
-          <div id="welcome">
-            <h1>
-              <span> Hello there, </span>
-              Welcome front-end 👋
-            </h1>
-          </div>
-
-          这是入口页面
           <HotNews />
         </div>
       </div>

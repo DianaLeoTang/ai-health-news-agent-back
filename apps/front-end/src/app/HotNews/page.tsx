@@ -40,7 +40,7 @@ const HotNews = () => {
   return (
     <div className="hot-news-container">
       {/* Tabs */}
-      <div className="tabs">
+      {/* <div className="tabs">
         {tabs?.map((tab) => (
           <div
             key={tab}
@@ -50,7 +50,7 @@ const HotNews = () => {
             {tab}
           </div>
         ))}
-      </div>
+      </div> */}
 
       {/* News List */}
       <div className="news-list">
@@ -81,7 +81,7 @@ const HotNews = () => {
       
       <style jsx>{`
         .hot-news-container {
-          width: 300px;
+          width: 600px;
           border: 1px solid #eee;
           border-radius: 8px;
           overflow: hidden;
