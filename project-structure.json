@@ -1,0 +1,190 @@
+{
+  "graph": {
+    "nodes": {
+      "back-end": {
+        "name": "back-end",
+        "type": "app",
+        "data": {
+          "root": "apps/back-end",
+          "sourceRoot": "back-end/src",
+          "name": "back-end",
+          "tags": [
+            "npm:public"
+          ],
+          "metadata": {
+            "targetGroups": {
+              "NPM Scripts": [
+                "start"
+              ]
+            },
+            "description": "An AI-powered agent that fetches public health news, generates reports, and sends daily email updates.",
+            "js": {
+              "packageName": "AI-Health-News-Agent",
+              "packageMain": "src/server.js",
+              "isInPackageManagerWorkspaces": false
+            }
+          },
+          "targets": {
+            "start": {
+              "executor": "nx:run-script",
+              "options": {
+                "script": "start"
+              },
+              "metadata": {
+                "scriptContent": "node src/server.js",
+                "runCommand": "npm run start"
+              },
+              "configurations": {},
+              "parallelism": true
+            },
+            "nx-release-publish": {
+              "executor": "@nx/js:release-publish",
+              "dependsOn": [
+                "^nx-release-publish"
+              ],
+              "options": {},
+              "configurations": {},
+              "parallelism": true
+            },
+            "build": {
+              "executor": "@nx/esbuild:esbuild",
+              "outputs": [
+                "{options.outputPath}"
+              ],
+              "defaultConfiguration": "production",
+              "options": {
+                "platform": "node",
+                "outputPath": "dist/back-end",
+                "format": [
+                  "cjs"
+                ],
+                "bundle": false,
+                "main": "back-end/src/main.ts",
+                "tsConfig": "back-end/tsconfig.app.json",
+                "assets": [
+                  "back-end/src/assets"
+                ],
+                "generatePackageJson": true,
+                "esbuildOptions": {
+                  "sourcemap": true,
+                  "outExtension": {
+                    ".js": ".js"
+                  }
+                }
+              },
+              "configurations": {
+                "development": {},
+                "production": {
+                  "esbuildOptions": {
+                    "sourcemap": false,
+                    "outExtension": {
+                      ".js": ".js"
+                    }
+                  }
+                }
+              },
+              "parallelism": true,
+              "cache": true,
+              "dependsOn": [
+                "^build"
+              ],
+              "inputs": [
+                "default",
+                "^default"
+              ]
+            },
+            "serve": {
+              "executor": "@nx/js:node",
+              "defaultConfiguration": "development",
+              "dependsOn": [
+                "build"
+              ],
+              "options": {
+                "buildTarget": "back-end:build",
+                "runBuildTargetDependencies": false
+              },
+              "configurations": {
+                "development": {
+                  "buildTarget": "back-end:build:development"
+                },
+                "production": {
+                  "buildTarget": "back-end:build:production"
+                }
+              },
+              "parallelism": true
+            }
+          },
+          "$schema": "../node_modules/nx/schemas/project-schema.json",
+          "projectType": "application",
+          "implicitDependencies": []
+        }
+      },
+      "ai-health-news-agent": {
+        "name": "ai-health-news-agent",
+        "type": "lib",
+        "data": {
+          "root": ".",
+          "sourceRoot": ".",
+          "name": "ai-health-news-agent",
+          "tags": [
+            "npm:public"
+          ],
+          "metadata": {
+            "targetGroups": {
+              "NPM Scripts": [
+                "build"
+              ]
+            },
+            "description": "AI-Health-News-Agent 是一个基于 Node.js 的 AI 代理程序，每日获取公共卫生领域的最新热点新闻，生成 Markdown/HTML 报告，并通过邮件发送。",
+            "js": {
+              "packageName": "ai-health-news-agent",
+              "packageMain": "index.js",
+              "isInPackageManagerWorkspaces": true
+            }
+          },
+          "targets": {
+            "build": {
+              "executor": "nx:run-script",
+              "metadata": {
+                "scriptContent": "nx exec -- tsc -p tsconfig.json",
+                "runCommand": "npm run build"
+              },
+              "cache": true,
+              "inputs": [
+                "{projectRoot}/**/*.ts",
+                "{projectRoot}/tsconfig.json",
+                {
+                  "externalDependencies": [
+                    "typescript"
+                  ]
+                }
+              ],
+              "outputs": [
+                "{projectRoot}/dist"
+              ],
+              "options": {
+                "script": "build"
+              },
+              "configurations": {},
+              "parallelism": true
+            },
+            "nx-release-publish": {
+              "executor": "@nx/js:release-publish",
+              "dependsOn": [
+                "^nx-release-publish"
+              ],
+              "options": {},
+              "configurations": {},
+              "parallelism": true
+            }
+          },
+          "implicitDependencies": []
+        }
+      }
+    },
+    "dependencies": {
+      "back-end": [],
+      "ai-health-news-agent": []
+    }
+  }
+}
