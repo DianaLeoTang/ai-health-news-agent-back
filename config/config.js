@@ -11,7 +11,8 @@ module.exports = {
         'https://www.cdc.gov/media/site.html',
         'https://www.nature.com/subjects/health-sciences/nature',
         'https://news.un.org/en/news/topic/health',
-        'https://www.thelancet.com/journals/lanpub/home'
+        // 'https://www.thelancet.com/journals/lanpub/home'
+        'https://www.thelancet.com/rssfeed/public-health'
     ],
     EMAIL: {
         USER: process.env.EMAIL_USER,
