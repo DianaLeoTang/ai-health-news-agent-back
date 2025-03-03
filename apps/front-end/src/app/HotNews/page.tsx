@@ -11,22 +11,29 @@ const HotNews = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch('http://localhost:3000/news');
+        console.log('开始请求新闻数据...');
+        
+        // 使用相对路径通过API路由获取数据
+        const response = await fetch('/api/news');
+        
         if (!response.ok) {
-          throw new Error('Failed to fetch news');
+          throw new Error(`HTTP错误! 状态: ${response.status}`);
         }
+        
         const data = await response.json();
+        console.log('获取到的数据:', data);
+        
         setNews(data);
-        setLoading(false);
-        console.log(data,'datadata')
       } catch (error) {
-        console.error('Error fetching news:', error);
+        console.error('获取新闻错误:', error);
+        // 出错时使用后备数据
+        setNews(getFallbackData());
+      } finally {
         setLoading(false);
       }
     };
-
     fetchNews();
-  }, [news,loading]);
+  }, []);
 
   const tabs = ['收藏', '热搜'];
 
