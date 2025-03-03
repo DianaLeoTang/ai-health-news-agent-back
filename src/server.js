@@ -18,6 +18,10 @@ app.get('/news', async (req, res) => {
     let newsData = await getAllNews();
     res.json(newsData);
 });
+app.get('/', (req, res) => {
+    res.send('<h1>Welcome to AI-Health-News-Agent</h1><p>Use <a href="/news">/news</a> to get the latest public health news.</p>');
+});
+
 
 cron.schedule('0 8 * * *', async () => {
     console.log('Running scheduled news update...');
