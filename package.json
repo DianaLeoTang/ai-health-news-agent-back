@@ -62,8 +62,9 @@
     "typescript": "~5.7.2"
   },
   "dependencies": {
+    "cheerio": "^1.0.0",
     "express": "^4.21.2",
-    "markdown-it": "^14.1.0",
+    "markdown-it": "^13.0.2",
     "next": "~15.1.4",
     "node-cron": "^3.0.3",
     "nodemailer": "^6.10.0",
