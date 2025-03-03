@@ -12,8 +12,15 @@ import { generateReport } from './generateReport';
 import { sendEmail } from './sendEmail';
 import cron from 'node-cron';
 import { SERVER } from './config';
+import cors from 'cors'
 
 const app = express();
+// 启用CORS
+app.use(cors({
+  origin: 'http://localhost:4200', // 允许的前端源
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // 允许的HTTP方法
+  allowedHeaders: ['Content-Type', 'Authorization'] // 允许的头信息
+}));
 
 app.get("/news", async (req, res) => {
   let newsData = await getAllNews();
