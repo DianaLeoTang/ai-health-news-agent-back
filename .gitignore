@@ -7,3 +7,6 @@ node_modules
 # Next.js
 .next
 out
+
+/dist
+/tmp
