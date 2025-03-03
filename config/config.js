@@ -7,9 +7,11 @@
  */
 module.exports = {
     NEWS_SOURCES: [
-        'https://www.who.int/news',
-        'https://www.cdc.gov/media/releases.html',
-        'https://www.nature.com/subjects/public-health/rss'
+        'https://www.who.int/news-room',
+        'https://www.cdc.gov/media/site.html',
+        'https://www.nature.com/subjects/health-sciences/nature',
+        'https://news.un.org/en/news/topic/health',
+        'https://www.thelancet.com/journals/lanpub/home'
     ],
     EMAIL: {
         USER: process.env.EMAIL_USER,
