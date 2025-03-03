@@ -1,0 +1,18 @@
+{
+    "scripts": {
+      "build": "nx exec -- tsc -p tsconfig.json"
+    },
+    "nx": {
+      "targets": {
+        "build": {
+          "cache": true,
+          "inputs": [
+            "{projectRoot}/**/*.ts",
+            "{projectRoot}/tsconfig.json",
+            { "externalDependencies": ["typescript"] }
+          ],
+          "outputs": ["{projectRoot}/dist"]
+        }
+      }
+    }
+  }
