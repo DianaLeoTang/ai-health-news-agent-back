@@ -35,12 +35,12 @@ const HotNews = () => {
     fetchNews();
   }, []);
 
-  const tabs = ['收藏', '热搜'];
+  const tabs = ['公共卫生热点'];
 
   return (
     <div className="hot-news-container">
       {/* Tabs */}
-      {/* <div className="tabs">
+      <div className="tabs">
         {tabs?.map((tab) => (
           <div
             key={tab}
@@ -50,7 +50,7 @@ const HotNews = () => {
             {tab}
           </div>
         ))}
-      </div> */}
+      </div>
 
       {/* News List */}
       <div className="news-list">
@@ -81,7 +81,7 @@ const HotNews = () => {
       
       <style jsx>{`
         .hot-news-container {
-          width: 600px;
+          width: 1200px;
           border: 1px solid #eee;
           border-radius: 8px;
           overflow: hidden;
