@@ -1,9 +1,27 @@
 {
-  "scripts": {
-    "build": "nx exec -- tsc -p tsconfig.json",
-    "start:backend": "nx serve back-end",
-    "build:backend": "nx build back-end"
-  },
+ "scripts": {
+  "build": "nx exec -- tsc -p tsconfig.json",
+  "start:backend": "nx serve back-end",
+  "build:backend": "nx build back-end",
+  "start:frontend": "nx serve front-end",
+  "build:frontend": "nx build front-end",
+  "test:backend": "nx test back-end",
+  "test:frontend": "nx test front-end",
+  "lint:backend": "nx lint back-end",
+  "lint:frontend": "nx lint front-end",
+  "e2e": "nx e2e front-end-e2e",
+  "start:all": "nx run-many --target=serve --projects=back-end,front-end --parallel",
+  "build:all": "nx run-many --target=build --projects=back-end,front-end --parallel",
+  "test:all": "nx run-many --target=test --projects=back-end,front-end --parallel",
+  "lint:all": "nx run-many --target=lint --projects=back-end,front-end --parallel",
+  "affected:apps": "nx affected:apps",
+  "affected:build": "nx affected:build",
+  "affected:test": "nx affected:test",
+  "affected:lint": "nx affected:lint",
+  "dep-graph": "nx dep-graph",
+  "workspace-generator": "nx workspace-generator",
+  "nx": "nx"
+},
   "nx": {
     "targets": {
       "build": {
