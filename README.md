@@ -16,3 +16,5 @@ AI-Health-News-Agent 是一个基于 Node.js 的 AI 代理程序，每日获取�
 ```sh
 git clone https://github.com/your-repo/AI-Health-News-Agent.git
 cd AI-Health-News-Agent
+
+npx nx g @nx/node:application back-end

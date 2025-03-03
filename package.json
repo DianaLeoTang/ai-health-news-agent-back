@@ -1,18 +1,30 @@
 {
-    "scripts": {
-      "build": "nx exec -- tsc -p tsconfig.json"
-    },
-    "nx": {
-      "targets": {
-        "build": {
-          "cache": true,
-          "inputs": [
-            "{projectRoot}/**/*.ts",
-            "{projectRoot}/tsconfig.json",
-            { "externalDependencies": ["typescript"] }
-          ],
-          "outputs": ["{projectRoot}/dist"]
-        }
+  "scripts": {
+    "build": "nx exec -- tsc -p tsconfig.json"
+  },
+  "nx": {
+    "targets": {
+      "build": {
+        "cache": true,
+        "inputs": [
+          "{projectRoot}/**/*.ts",
+          "{projectRoot}/tsconfig.json",
+          {
+            "externalDependencies": [
+              "typescript"
+            ]
+          }
+        ],
+        "outputs": [
+          "{projectRoot}/dist"
+        ]
       }
     }
-  }
+  },
+  "name": "ai-health-news-agent",
+  "description": "AI-Health-News-Agent 是一个基于 Node.js 的 AI 代理程序，每日获取公共卫生领域的最新热点新闻，生成 Markdown/HTML 报告，并通过邮件发送。",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
+}
