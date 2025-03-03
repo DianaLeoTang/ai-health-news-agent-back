@@ -43,3 +43,48 @@ cron.schedule("0 8 * * *", async () => {
 app.listen(SERVER.PORT, () => {
   console.log(`Server running on http://localhost:${SERVER.PORT}`);
 });
+
+// 启动定时任务
+newsArchiver.startScheduler();
+
+
+// 添加手动触发存档的API端点
+app.post('/archive-news', async (req, res) => {
+  try {
+    const filePath = await newsArchiver.manualArchive();
+    res.json({ success: true, filePath });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// 添加API端点来获取所有存档的新闻文件
+app.get('/news-archives', async (req, res) => {
+  try {
+    const archiveDir = newsArchiver.config.archiveDir;
+    const files = await fs.readdir(archiveDir);
+    const archiveFiles = files
+      .filter(file => file.endsWith('.md'))
+      .map(file => ({
+        filename: file,
+        date: file.replace('news-', '').replace('.md', ''),
+        path: `/news-archives/${file}`
+      }))
+      .sort((a, b) => b.date.localeCompare(a.date)); // 最新的排在前面
+    
+    res.json(archiveFiles);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// 添加静态服务来访问存档文件
+app.use('/news-archives', express.static(newsArchiver.config.archiveDir));
+
+
+// 处理应用程序关闭
+process.on('SIGINT', () => {
+  console.log('关闭服务器...');
+  newsArchiver.stopScheduler();
+  process.exit();
+});
