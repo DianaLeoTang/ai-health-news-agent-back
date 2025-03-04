@@ -22,48 +22,58 @@ interface ArticleData {
 }
 
 const ArticleList: React.FC = () => {
+  // 初始状态在客户端和服务器端保持一致
   const [articles, setArticles] = useState<ArticleData[]>([]);
+  const [isClient, setIsClient] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [articlesPerPage] = useState<number>(50);
 
+  // 第一个useEffect只用于标记客户端渲染已开始
   useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        setLoading(true);
-        // 替换为实际的API端点
-        const response = await fetch('/api/news',{
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        
-        // 使用API返回的数据，添加UI需要的其他字段
-        const formattedArticles = data.map((item: ArticleData, index: number) => ({
-          ...item,
-          id: `article-${index}`,
-         
-        }));
-        
-        setArticles(formattedArticles);
-      } catch (err: any) {
-        setError(err.message);
-        console.error('Error fetching articles:', err);
-        
-        // 使用示例数据作为后备
-        setArticles(sampleArticles);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchArticles();
+    setIsClient(true);
   }, []);
+
+  // 第二个useEffect处理数据获取
+  useEffect(() => {
+    // 只在客户端执行数据获取
+    if (isClient) {
+      const fetchArticles = async () => {
+        try {
+          setLoading(true);
+          // 替换为实际的API端点
+          const response = await fetch('/api/news', {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          const data = await response.json();
+          
+          // 使用API返回的数据，添加UI需要的其他字段
+          const formattedArticles = data.map((item: ArticleData, index: number) => ({
+            ...item,
+            id: `article-${index}`,
+          }));
+          
+          setArticles(formattedArticles);
+        } catch (err: any) {
+          setError(err.message);
+          console.error('Error fetching articles:', err);
+          
+          // 使用示例数据作为后备
+          setArticles(sampleArticles);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      fetchArticles();
+    }
+  }, [isClient]);
 
   // 获取当前页的文章
   const indexOfLastArticle = currentPage * articlesPerPage;
@@ -80,6 +90,12 @@ const ArticleList: React.FC = () => {
   const goToNextPage = () => setCurrentPage(prev => Math.min(prev + 1, totalPages));
 
 
+  // 服务器端和客户端初始渲染相同的加载状态
+  if (!isClient) {
+    return <div className="p-4 text-center">Loading articles...</div>;
+  }
+
+  // 客户端渲染后，根据状态显示不同内容
   if (loading) return <div className="p-4 text-center">Loading articles...</div>;
   
   if (error) return <div className="p-4 text-center text-red-500">Error loading articles: {error}</div>;
@@ -91,15 +107,11 @@ const ArticleList: React.FC = () => {
       <div>
         {currentArticles.map(article => (
           <div key={article.id} className="py-6 border-b border-gray-200">
-           
-            
             <h3 className="text-xl font-bold mb-2">
               <a href={article.link} className="hover:underline text-gray-800" target="_blank" rel="noopener noreferrer">
                 {article.title}
               </a>
             </h3>
-            
-            {/* <div className="text-gray-700 mb-3">{article.authors}</div> */}
             
             <p className="text-gray-600 leading-relaxed">{article.summary}</p>
             
