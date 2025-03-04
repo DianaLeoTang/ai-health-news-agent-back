@@ -45,7 +45,7 @@ const ArticleList: React.FC = () => {
           id: `article-${index}`,
           // type: getRandomArticleType(),
           // date: getRandomRecentDate(),
-          category: getRandomCategory(),
+          // category: getRandomCategory(),
           // authors: getRandomAuthors()
         }));
         
@@ -133,13 +133,13 @@ const ArticleList: React.FC = () => {
       <div>
         {currentArticles.map(article => (
           <div key={article.id} className="py-6 border-b border-gray-200">
-            <div className="flex items-center text-sm mb-1">
+            {/* <div className="flex items-center text-sm mb-1"> */}
               {/* <span className="text-red-600 font-medium">{article.type}</span> */}
-              <span className="mx-2 text-gray-400">|</span>
+              {/* <span className="mx-2 text-gray-400">|</span> */}
               {/* <span className="text-gray-600">{formatDate(article.date || '')}</span> */}
-            </div>
+            {/* </div> */}
             
-            <div className="text-sm text-gray-600 uppercase mb-2">{article.category}</div>
+            {/* <div className="text-sm text-gray-600 uppercase mb-2">{article.category}</div> */}
             
             <h3 className="text-xl font-bold mb-2">
               <a href={article.link} className="hover:underline text-gray-800" target="_blank" rel="noopener noreferrer">
@@ -216,26 +216,22 @@ const sampleArticles: ArticleData[] = [
     id: '1',
     title: "H5N1 from an infected dairy worker sheds light on viral transmission",
     link: "https://www.nature.com/articles/d41591-024-00078-2",
-    summary: "Two studies reveal high transmissibility and lethality of the viral isolate in animal models, and hint at potential drug susceptibility — but further analysis and ongoing surveillance of infections will be critical for public health.",
-    category: 'MEDICAL RESEARCH'
+    summary: "Two studies reveal high transmissibility and lethality of the viral isolate in animal models, and hint at potential drug susceptibility — but further analysis and ongoing surveillance of infections will be critical for public health."
   },
   {
     id: '2',
     title: "Exploring the limits of life extension",
     link: "https://www.nature.com/articles/d41591-024-00076-4",
-    summary: "The twentieth century saw unprecedented rises in life expectancy in high-income countries, but data suggest that this trend will not continue in the current century without radical interventions to slow biological aging.",
-    category: 'MEDICAL RESEARCH'
+    summary: "The twentieth century saw unprecedented rises in life expectancy in high-income countries, but data suggest that this trend will not continue in the current century without radical interventions to slow biological aging."
   },
   {
     id: '3',
-    category: 'WEARABLE DIGITAL HEALTH TECHNOLOGIES IN MEDICINE',
     title: 'Wearable Digital Health Technologies for Epilepsy',
     link: '#',
     summary: 'One third of people with epilepsy have seizures despite medical treatment. The authors examine wearable digital health devices that can detect seizures and how these devices can affect epilepsy care.'
   },
   {
     id: '4',
-    category: 'WEARABLE DIGITAL HEALTH TECHNOLOGIES IN MEDICINE',
     title: 'Wearable Technologies in Cardiovascular Medicine',
     link: '#',
     summary: 'This article reviews the use of digital wearable technologies for monitoring of three common cardiovascular conditions: hypertension, heart failure, and atrial fibrillation.'

@@ -29,7 +29,7 @@ const config: Config = {
     'https://www.nejm.org/equity',
     'https://www.nejm.org/browse/specialty/climate-change',
     'https://www.nejm.org/ai-in-medicine',
-    'https://www.who.int/news-room',
+    'https://www.who.int/news-room/headlines',
     'https://www.bmj.com/',
     'https://www.bmj.com/news/news',
     'https://www.annualreviews.org/content/journals/soc',
@@ -41,6 +41,9 @@ const config: Config = {
     'https://www.nature.com/subjects/health-sciences/nature',
     'https://news.un.org/en/news/topic/health',
     'https://www.thelancet.com/journals/lanpub/home',
+    'https://www.who.int/news-room',
+    'https://news.un.org/en/news/topic/women'
+    
     // 'https://www.thelancet.com/rssfeed/public-health'
   ],
   EMAIL: {
