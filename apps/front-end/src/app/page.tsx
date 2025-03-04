@@ -6,6 +6,7 @@
  * @FilePath: /AI-Health-News-Agent/apps/front-end/src/app/page.tsx
  */
 import HotNews from './HotNews/page.tsx'
+import ArticleList from './ArticleList/page.tsx'
 export default function Index() {
   /*
    * Replace the elements below with your own.
@@ -16,7 +17,8 @@ export default function Index() {
     <div>
       <div className="wrapper">
         <div className="container">
-          <HotNews />
+          {/* <HotNews /> */}
+          <ArticleList/>
         </div>
       </div>
     </div>
