@@ -22,26 +22,23 @@ interface ArticleData {
 }
 
 const ArticleList: React.FC = () => {
-  // 初始状态在客户端和服务器端保持一致
   const [articles, setArticles] = useState<ArticleData[]>([]);
-  const [isClient, setIsClient] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [articlesPerPage] = useState<number>(50);
+  const [mounted, setMounted] = useState<boolean>(false);
 
-  // 第一个useEffect只用于标记客户端渲染已开始
+  // 标记组件已挂载
   useEffect(() => {
-    setIsClient(true);
+    setMounted(true);
   }, []);
 
-  // 第二个useEffect处理数据获取
   useEffect(() => {
-    // 只在客户端执行数据获取
-    if (isClient) {
+    // 确保只在客户端执行此代码
+    if (typeof window !== 'undefined') {
       const fetchArticles = async () => {
         try {
-          setLoading(true);
           // 替换为实际的API端点
           const response = await fetch('/api/news', {
             headers: {
@@ -60,20 +57,20 @@ const ArticleList: React.FC = () => {
           }));
           
           setArticles(formattedArticles);
+          setLoading(false);
         } catch (err: any) {
           setError(err.message);
           console.error('Error fetching articles:', err);
           
           // 使用示例数据作为后备
           setArticles(sampleArticles);
-        } finally {
           setLoading(false);
         }
       };
 
       fetchArticles();
     }
-  }, [isClient]);
+  }, []);
 
   // 获取当前页的文章
   const indexOfLastArticle = currentPage * articlesPerPage;
@@ -89,86 +86,84 @@ const ArticleList: React.FC = () => {
   
   const goToNextPage = () => setCurrentPage(prev => Math.min(prev + 1, totalPages));
 
-
-  // 服务器端和客户端初始渲染相同的加载状态
-  if (!isClient) {
-    return <div className="p-4 text-center">Loading articles...</div>;
-  }
-
-  // 客户端渲染后，根据状态显示不同内容
-  if (loading) return <div className="p-4 text-center">Loading articles...</div>;
-  
-  if (error) return <div className="p-4 text-center text-red-500">Error loading articles: {error}</div>;
-
+  // 使用同一个统一渲染
   return (
-    <div className="max-w-4xl mx-auto px-4">
+    <div className="max-w-4xl mx-auto px-4" suppressHydrationWarning>
       <h2 className="text-xl font-bold py-3 border-t border-b border-gray-300 mb-6">公共卫生热点</h2>
       
-      <div>
-        {currentArticles.map(article => (
-          <div key={article.id} className="py-6 border-b border-gray-200">
-            <h3 className="text-xl font-bold mb-2">
-              <a href={article.link} className="hover:underline text-gray-800" target="_blank" rel="noopener noreferrer">
-                {article.title}
-              </a>
-            </h3>
-            
-            <p className="text-gray-600 leading-relaxed">{article.summary}</p>
-            
-            {article.correspondence && (
-              <div className="mt-4 text-sm">
-                <span className="font-semibold">Correspondence</span> 
-                <a href="#" className="text-blue-600 ml-1 hover:underline">{article.correspondence}</a>
+      {!mounted || loading ? (
+        <div className="p-4 text-center">Loading articles...</div>
+      ) : error ? (
+        <div className="p-4 text-center text-red-500">Error loading articles: {error}</div>
+      ) : (
+        <>
+          <div>
+            {currentArticles.map(article => (
+              <div key={article.id} className="py-6 border-b border-gray-200">
+                <h3 className="text-xl font-bold mb-2">
+                  <a href={article.link} className="hover:underline text-gray-800" target="_blank" rel="noopener noreferrer">
+                    {article.title}
+                  </a>
+                </h3>
+                
+                <p className="text-gray-600 leading-relaxed">{article.summary}</p>
+                
+                {article.correspondence && (
+                  <div className="mt-4 text-sm">
+                    <span className="font-semibold">Correspondence</span> 
+                    <a href="#" className="text-blue-600 ml-1 hover:underline">{article.correspondence}</a>
+                  </div>
+                )}
               </div>
-            )}
+            ))}
           </div>
-        ))}
-      </div>
-      
-      {/* Pagination */}
-      {totalPages > 1 && (
-        <div className="flex justify-center items-center my-8">
-          <button 
-            onClick={goToPrevPage} 
-            disabled={currentPage === 1}
-            className="px-4 py-2 mx-1 border rounded disabled:opacity-50 text-sm"
-          >
-            Previous
-          </button>
           
-          {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-            let pageNumber;
-            if (totalPages <= 5) {
-              pageNumber = i + 1;
-            } else if (currentPage <= 3) {
-              pageNumber = i + 1;
-            } else if (currentPage >= totalPages - 2) {
-              pageNumber = totalPages - 4 + i;
-            } else {
-              pageNumber = currentPage - 2 + i;
-            }
-            
-            return (
-              <button
-                key={pageNumber}
-                onClick={() => paginate(pageNumber)}
-                className={`px-4 py-2 mx-1 border rounded text-sm ${
-                  currentPage === pageNumber ? 'bg-gray-100 font-medium' : ''
-                }`}
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="flex justify-center items-center my-8">
+              <button 
+                onClick={goToPrevPage} 
+                disabled={currentPage === 1}
+                className="px-4 py-2 mx-1 border rounded disabled:opacity-50 text-sm"
               >
-                {pageNumber}
+                Previous
               </button>
-            );
-          })}
-          
-          <button 
-            onClick={goToNextPage} 
-            disabled={currentPage === totalPages}
-            className="px-4 py-2 mx-1 border rounded disabled:opacity-50 text-sm"
-          >
-            Next
-          </button>
-        </div>
+              
+              {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                let pageNumber;
+                if (totalPages <= 5) {
+                  pageNumber = i + 1;
+                } else if (currentPage <= 3) {
+                  pageNumber = i + 1;
+                } else if (currentPage >= totalPages - 2) {
+                  pageNumber = totalPages - 4 + i;
+                } else {
+                  pageNumber = currentPage - 2 + i;
+                }
+                
+                return (
+                  <button
+                    key={pageNumber}
+                    onClick={() => paginate(pageNumber)}
+                    className={`px-4 py-2 mx-1 border rounded text-sm ${
+                      currentPage === pageNumber ? 'bg-gray-100 font-medium' : ''
+                    }`}
+                  >
+                    {pageNumber}
+                  </button>
+                );
+              })}
+              
+              <button 
+                onClick={goToNextPage} 
+                disabled={currentPage === totalPages}
+                className="px-4 py-2 mx-1 border rounded disabled:opacity-50 text-sm"
+              >
+                Next
+              </button>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
