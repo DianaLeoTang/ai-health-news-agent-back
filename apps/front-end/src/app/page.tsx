@@ -5,8 +5,8 @@
  * @Description: some description
  * @FilePath: /AI-Health-News-Agent/apps/front-end/src/app/page.tsx
  */
-import HotNews from './HotNews/page.tsx'
-import ArticleList from './ArticleList/page.tsx'
+// import HotNews from './HotNews/page.tsx'
+import ArticleList from './ArticleList/page'
 export default function Index() {
   /*
    * Replace the elements below with your own.

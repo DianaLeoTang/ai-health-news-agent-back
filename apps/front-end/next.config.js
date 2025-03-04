@@ -27,8 +27,7 @@ const nextConfig = {
   
   // 实验性配置
   experimental: {
-    // 启用应用目录支持
-    appDir: true,
+    // // 启用应用目录支持
   },
   
   // 确保API路由正常工作

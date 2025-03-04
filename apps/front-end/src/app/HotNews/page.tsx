@@ -2,9 +2,15 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+// 定义新闻项的类型
+interface NewsItem {
+  title: string;
+  link: string;
+  summary: string;
+}
 
 const HotNews = () => {
-  const [news, setNews] = useState([]);
+  const [news, setNews] = useState<NewsItem[]>([]);
   const [activeTab, setActiveTab] = useState('热搜');
   const [loading, setLoading] = useState(true);
 
@@ -27,7 +33,23 @@ const HotNews = () => {
       } catch (error) {
         console.error('获取新闻错误:', error);
         // 出错时使用后备数据
-        setNews(getFallbackData());
+        setNews([
+          {
+            "title": "WHO looks back at 2024",
+            "link": "https://www.who.int/news-room/spotlight/who-looks-back-at-2024",
+            "summary": "No summary available"
+          },
+          {
+            "title": "How academia's 'lone wolf' culture is harming researcher mental health",
+            "link": "https://www.nature.com/articles/d41586-025-00603-4",
+            "summary": "Nature Careers Podcast | 28 February 2025"
+          },
+          {
+            "title": "Automated loss of pulse detection on a consumer smartwatch",
+            "link": "https://www.nature.com/articles/s41586-025-08810-9",
+            "summary": "Article | 26 February 2025"
+          }
+        ]);
       } finally {
         setLoading(false);
       }
