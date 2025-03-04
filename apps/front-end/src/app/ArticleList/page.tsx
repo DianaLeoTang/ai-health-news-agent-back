@@ -33,7 +33,11 @@ const ArticleList: React.FC = () => {
       try {
         setLoading(true);
         // 替换为实际的API端点
-        const response = await fetch('/api/news');
+        const response = await fetch('/api/news',{
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -43,10 +47,7 @@ const ArticleList: React.FC = () => {
         const formattedArticles = data.map((item: ArticleData, index: number) => ({
           ...item,
           id: `article-${index}`,
-          // type: getRandomArticleType(),
-          // date: getRandomRecentDate(),
-          // category: getRandomCategory(),
-          // authors: getRandomAuthors()
+         
         }));
         
         setArticles(formattedArticles);
@@ -78,49 +79,6 @@ const ArticleList: React.FC = () => {
   
   const goToNextPage = () => setCurrentPage(prev => Math.min(prev + 1, totalPages));
 
-  // 格式化日期显示
-  const formatDate = (dateString: string): string => {
-    const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-    const date = new Date(dateString);
-    const month = months[date.getMonth()];
-    const day = date.getDate();
-    const year = date.getFullYear();
-    return `${month} ${day}, ${year}`;
-  };
-
-  // 辅助函数，为从API获取的数据生成随机UI元素
-  function getRandomArticleType(): string {
-    const types = ['REVIEW ARTICLE', 'RESEARCH', 'CASE STUDY', 'HEALTH LAW, ETHICS, AND HUMAN RIGHTS'];
-    return types[Math.floor(Math.random() * types.length)];
-  }
-
-  function getRandomRecentDate(): string {
-    const now = new Date();
-    const randomDays = Math.floor(Math.random() * 180); // 最近6个月内
-    const date = new Date(now.getTime() - randomDays * 24 * 60 * 60 * 1000);
-    return date.toISOString().split('T')[0];
-  }
-
-  function getRandomCategory(): string {
-    const categories = [
-      'WEARABLE DIGITAL HEALTH TECHNOLOGIES IN MEDICINE',
-      'AI IN MEDICINE',
-      'MEDICAL RESEARCH',
-      'CLINICAL PRACTICE'
-    ];
-    return categories[Math.floor(Math.random() * categories.length)];
-  }
-
-  function getRandomAuthors(): string {
-    const authorSets = [
-      'E. Donner, O. Devinsky, and D. Friedman',
-      'S. Fedor and Others',
-      'M.M. Mello and N. Guha',
-      'E.S. Spatz and Others',
-      'K. Johnson, L. Wang, and P. Smith'
-    ];
-    return authorSets[Math.floor(Math.random() * authorSets.length)];
-  }
 
   if (loading) return <div className="p-4 text-center">Loading articles...</div>;
   
@@ -133,13 +91,7 @@ const ArticleList: React.FC = () => {
       <div>
         {currentArticles.map(article => (
           <div key={article.id} className="py-6 border-b border-gray-200">
-            {/* <div className="flex items-center text-sm mb-1"> */}
-              {/* <span className="text-red-600 font-medium">{article.type}</span> */}
-              {/* <span className="mx-2 text-gray-400">|</span> */}
-              {/* <span className="text-gray-600">{formatDate(article.date || '')}</span> */}
-            {/* </div> */}
-            
-            {/* <div className="text-sm text-gray-600 uppercase mb-2">{article.category}</div> */}
+           
             
             <h3 className="text-xl font-bold mb-2">
               <a href={article.link} className="hover:underline text-gray-800" target="_blank" rel="noopener noreferrer">
