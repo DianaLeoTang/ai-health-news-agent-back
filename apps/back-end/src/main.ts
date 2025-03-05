@@ -15,6 +15,8 @@ import { SERVER } from './config';
 import newsRoutes from './routes/news-routes';
 import homeRoutes from './routes/home-routes';
 import archiveRoutes from './routes/archive-routes';
+import authRoutes from './routes/auth-routes';
+import userRoutes from './routes/user-routes';
 
 // 导入服务
 import { scheduler } from './services/scheduler';
@@ -30,10 +32,17 @@ app.use(cors({
   credentials: true // 允许跨域请求携带凭证（如cookies）
 }));
 
+
+// 解析请求体中的JSON数据
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // 应用路由
 app.use(homeRoutes);
 app.use(newsRoutes);
 app.use(archiveRoutes);
+app.use(userRoutes); // 注意：需要在authRoutes之前加载，确保setAccess方法可用
+app.use(authRoutes);
 
 // 初始化定时任务
 scheduler.initialize();

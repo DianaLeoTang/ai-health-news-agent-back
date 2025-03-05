@@ -45,21 +45,29 @@ router.post("/login/account", async (req: Request, res: Response) => {
       currentAuthority: 'admin',
     });
   }
-  
   // 登录失败
-  access = 'guest';
+  setAccess('guest');
   return res.json({
     status: 'error',
     type,
     currentAuthority: 'guest',
   });
 });
+  
+//   // 登录失败
+//   access = 'guest';
+//   return res.json({
+//     status: 'error',
+//     type,
+//     currentAuthority: 'guest',
+//   });
+// });
 
-// 获取当前用户访问级别
-router.get("/currentUser", (req: Request, res: Response) => {
-  res.json({
-    access,
-  });
-});
+// // 获取当前用户访问级别
+// router.get("/currentUser", (req: Request, res: Response) => {
+//   res.json({
+//     access,
+//   });
+// });
 
 export default router;

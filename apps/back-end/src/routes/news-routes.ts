@@ -6,7 +6,7 @@
  * @FilePath: /AI-Health-News-Agent/apps/back-end/src/routes/news-routes.ts
  */
 import {Router} from 'express';
-import { getAllNews } from './fetchNewsWithPuppeteer';
+import { getAllNews } from '../fetchNewsWithPuppeteer';
 
 const router = Router();
 
