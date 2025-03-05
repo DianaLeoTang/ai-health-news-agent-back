@@ -24,7 +24,7 @@ const getAccess = () => {
 };
 
 // 获取当前用户信息
-router.get("/api/currentUser", (req: Request, res: Response) => {
+router.get("/currentUser", (req: Request, res: Response) => {
   // 验证用户是否已登录
   if (!getAccess() || getAccess() === 'guest') {
     res.status(401).send({
@@ -37,7 +37,7 @@ router.get("/api/currentUser", (req: Request, res: Response) => {
     });
     return;
   }
-  
+  console.log('走了？')
   // 根据不同的用户角色返回不同的用户信息（可根据实际需求修改）
   const userInfo = {
     name: 'Serati Ma',
