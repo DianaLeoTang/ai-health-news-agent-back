@@ -2,24 +2,27 @@
  * @Author: Diana Tang
  * @Date: 2025-03-03 15:55:52
  * @LastEditors: Diana Tang
- * @Description: some description
+ * @Description: 应用程序入口文件
  * @FilePath: /AI-Health-News-Agent/apps/back-end/src/main.ts
  */
 import express from 'express';
-import cors from 'cors'
-import * as path from 'path';
-import cron from 'node-cron';
+import cors from 'cors';
 
-// import { getAllNews } from './fetchNews';
-import { getAllNews } from './fetchNewsWithPuppeteer';
-import { generateReport } from './generateReport';
-import { sendEmail } from './sendEmail';
+// 导入配置
 import { SERVER } from './config';
-// import NewsArchiver from './NewsArchiver';
-// import ArchiveController from './ArchiveController';
 
+// 导入路由
+import newsRoutes from './routes/news-routes';
+import homeRoutes from './routes/home-routes';
+import archiveRoutes from './routes/archive-routes';
+
+// 导入服务
+import { scheduler } from './services/scheduler';
+
+// 创建Express应用
 const app = express();
-// 启用CORS
+
+// 配置CORS
 app.use(cors({
   origin: ['http://localhost:8000', 'http://localhost:4200'], // 允许的前端源
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // 允许的HTTP方法
@@ -27,50 +30,25 @@ app.use(cors({
   credentials: true // 允许跨域请求携带凭证（如cookies）
 }));
 
-app.get("/news", async (req, res) => {
-  let newsData = await getAllNews();
-  res.json(newsData);
-});
+// 应用路由
+app.use(homeRoutes);
+app.use(newsRoutes);
+app.use(archiveRoutes);
 
-app.get("/", (req, res) => {
-  res.send(
-    '<h1>Welcome to AI-Health-News-Agent</h1><p>Use <a href="/news">/news</a> to get the latest public health news.</p>'
-  );
-});
+// 初始化定时任务
+scheduler.initialize();
 
-cron.schedule("0 8 * * *", async () => {
-  console.log("Running scheduled news update...");
-  let newsData = await getAllNews();
-  await generateReport(newsData);
-  await sendEmail();
-});
-
+// 启动服务器
 app.listen(SERVER.PORT, () => {
   console.log(`Server running on http://localhost:${SERVER.PORT}`);
 });
 
-// // 初始化新闻存档服务
-// const newsArchiver = new NewsArchiver({
-//   apiUrl: 'http://localhost:3000/news', // 此处使用自己的API路径
-//   archiveDir: path.join(process.cwd(), 'news-archives'),
-//   scheduleCron: '0 0 * * *' // 每天午夜执行
-// });
-// 启动定时任务
-// newsArchiver.startScheduler();
-// 初始化控制器
-// const archiveController = new ArchiveController(newsArchiver);
-
-// // 存档相关API
-// app.post('/archives/trigger', archiveController.manualArchive);
-// app.get('/archives', archiveController.getArchives);
-// app.get('/archives/:filename', archiveController.getArchiveContent);
-
-// 提供静态文件访问
-// app.use('/static/archives', express.static(newsArchiver.getArchiveDir()));
-
-// // 处理应用程序关闭
-// process.on('SIGINT', () => {
-//   console.log('关闭服务器...');
-//   newsArchiver.stopScheduler();
-//   process.exit();
-// });
+// 处理应用程序关闭
+process.on('SIGINT', () => {
+  console.log('关闭服务器...');
+  scheduler.stopAll();
+  // 如果存档服务实现，则取消注释以下代码
+  // import { archiveService } from './routes/archive-routes';
+  // archiveService.stopScheduler();
+  process.exit();
+});
