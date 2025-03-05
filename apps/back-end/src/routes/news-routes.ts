@@ -13,6 +13,7 @@ const router = Router();
 // 获取所有新闻的接口
 router.get("/news", async (req, res) => {
   let newsData = await getAllNews();
+  console.log('新闻',req)
   res.json(newsData);
 });
 

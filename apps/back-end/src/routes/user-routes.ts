@@ -37,7 +37,6 @@ router.get("/currentUser", (req: Request, res: Response) => {
     });
     return;
   }
-  console.log('走了？')
   // 根据不同的用户角色返回不同的用户信息（可根据实际需求修改）
   const userInfo = {
     name: 'Serati Ma',
