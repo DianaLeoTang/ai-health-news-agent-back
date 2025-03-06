@@ -1,0 +1,17 @@
+[build]
+  command = "npm run build"
+  functions = "netlify/functions"
+  publish = "public"  # 如果有静态文件，放在这个目录
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[functions.scheduler]
+  schedule = "0 */12 * * *"  # 每6小时运行一次
