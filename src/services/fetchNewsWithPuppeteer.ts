@@ -32,7 +32,7 @@ export async function fetchNewsWithPuppeteer(url: string): Promise<NewsArticle[]
         }> = [];
         
         document.querySelectorAll('article').forEach((el) => {
-          const titleElement = el.querySelector('h2, h3') as HTMLElement | null;
+          const titleElement = el.querySelector('h2, h3, h4') as HTMLElement | null;
           const linkElement = el.querySelector('a') as HTMLAnchorElement | null;
           const summaryElement = el.querySelector('p') as HTMLElement | null;
           

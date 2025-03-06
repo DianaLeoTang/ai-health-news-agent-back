@@ -14,13 +14,20 @@ import homeRoutes from './routes/home-routes';
 import archiveRoutes from './routes/archive-routes';
 import authRoutes from './routes/auth-routes';
 import userRoutes from './routes/user-routes';
+import errorHandler from './middleware/error-handler'
 
 // 创建Express应用
 const app = express();
 
 // 配置CORS
 app.use(cors({
-  origin: ['http://localhost:8000', 'http://localhost:4200'], // 允许的前端源
+  origin: [
+    'http://localhost:8000', 
+    'http://localhost:4200',
+    'https://aihealthnews.netlify.app',
+    'https://aihealthnews.duckdns.org',
+    'https://www.aihealthnews.duckdns.org'
+  ], // 允许的前端源
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // 允许的HTTP方法
   allowedHeaders: ['Content-Type', 'Authorization'], // 允许的头信息
   credentials: true // 允许跨域请求携带凭证（如cookies）
@@ -37,5 +44,6 @@ app.use(newsRoutes);
 app.use(archiveRoutes);
 app.use(userRoutes); // 注意：需要在authRoutes之前加载，确保setAccess方法可用
 app.use(authRoutes);
+app.use(errorHandler);
 
 export default app;

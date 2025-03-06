@@ -13,6 +13,7 @@ interface EmailConfig {
   
   interface ServerConfig {
     PORT: string | number;
+    NODE_ENV:string;
   }
   
   interface Config {
@@ -52,6 +53,7 @@ interface EmailConfig {
     },
     SERVER: {
       PORT: process.env.PORT || 4000,
+      NODE_ENV: process.env.NODE_ENV || 'development',
     },
   };
   
