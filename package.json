@@ -1,98 +1,38 @@
 {
-  "scripts": {
-    "build": "nx exec -- tsc -p tsconfig.json",
-    "start:backend": "nx serve back-end",
-    "build:backend": "nx build back-end",
-    "start:frontend": "nx serve front-end",
-    "build:frontend": "nx build front-end",
-    "test:backend": "nx test back-end",
-    "test:frontend": "nx test front-end",
-    "lint:backend": "nx lint back-end",
-    "lint:frontend": "nx lint front-end",
-    "e2e": "nx e2e front-end-e2e",
-    "start:all": "nx run-many --target=serve --projects=back-end,front-end --parallel",
-    "build:all": "nx run-many --target=build --projects=back-end,front-end --parallel",
-    "test:all": "nx run-many --target=test --projects=back-end,front-end --parallel",
-    "lint:all": "nx run-many --target=lint --projects=back-end,front-end --parallel",
-    "affected:apps": "nx affected:apps",
-    "affected:build": "nx affected:build",
-    "affected:test": "nx affected:test",
-    "affected:lint": "nx affected:lint",
-    "dep-graph": "nx dep-graph",
-    "workspace-generator": "nx workspace-generator",
-    "nx": "nx"
-  },
-  "nx": {
-    "targets": {
-      "build": {
-        "cache": true,
-        "inputs": [
-          "{projectRoot}/**/*.ts",
-          "{projectRoot}/tsconfig.json",
-          {
-            "externalDependencies": [
-              "typescript"
-            ]
-          }
-        ],
-        "outputs": [
-          "{projectRoot}/dist"
-        ]
-      }
-    }
-  },
-  "name": "ai-health-news-agent",
-  "description": "AI-Health-News-Agent 是一个基于 Node.js 的 AI 代理程序，每日获取公共卫生领域的最新热点新闻，生成 Markdown/HTML 报告，并通过邮件发送。",
+  "name": "ai-health-news-agent-back",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
+  "scripts": {
+    "update-imports": "ts-node scripts/update-imports.ts",
+    "start": "node dist/server.js",
+    "dev": "nodemon",
+    "build": "tsc",
+    "lint": "eslint --ext .ts src/",
+    "lint:fix": "eslint --fix --ext .ts src/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@nx/devkit": "20.4.6",
-    "@nx/esbuild": "20.4.6",
-    "@nx/jest": "20.4.6",
-    "@nx/js": "20.4.6",
-    "@nx/next": "20.4.6",
-    "@nx/node": "20.4.6",
-    "@nx/playwright": "20.4.6",
-    "@playwright/test": "^1.36.0",
-    "@swc-node/register": "~1.9.1",
-    "@swc/cli": "~0.3.12",
-    "@swc/core": "~1.5.7",
-    "@swc/helpers": "~0.5.11",
-    "@testing-library/react": "16.1.0",
-    "@types/cors": "^2.8.17",
-    "@types/express": "^4.17.21",
-    "@types/jest": "^29.5.12",
-    "@types/node": "~18.16.9",
-    "@types/react": "19.0.0",
-    "@types/react-dom": "19.0.0",
-    "autoprefixer": "10.4.13",
-    "babel-jest": "^29.7.0",
-    "esbuild": "^0.19.2",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
-    "nx": "20.4.6",
-    "postcss": "8.4.38",
-    "prettier": "^2.6.2",
-    "tailwindcss": "3.4.3",
-    "ts-jest": "^29.1.0",
-    "ts-node": "10.9.1",
-    "tslib": "^2.3.0",
-    "typescript": "~5.7.2"
-  },
   "dependencies": {
-    "@xstate/react": "^5.0.2",
-    "cheerio": "^1.0.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "markdown-it": "^13.0.2",
-    "next": "~15.1.4",
-    "node-cron": "^3.0.3",
-    "nodemailer": "^6.10.0",
-    "puppeteer": "^24.3.0",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "xstate": "^5.19.2"
+    "helmet": "^8.0.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.13.9",
+    "@typescript-eslint/eslint-plugin": "^8.26.0",
+    "@typescript-eslint/parser": "^8.26.0",
+    "eslint": "^9.21.0",
+    "nodemon": "^3.1.9",
+    "ts-morph": "^25.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
   }
 }

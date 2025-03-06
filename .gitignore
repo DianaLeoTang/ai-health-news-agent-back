@@ -1,13 +1,7 @@
-
-.nx/installation
-.nx/cache
-.nx/workspace-data
-node_modules
-
-# Next.js
-.next
-out
-
-/dist
-/tmp
+node_modules/
+dist/
+.env
 .DS_Store
+npm-debug.log
+yarn-error.log
+coverage/

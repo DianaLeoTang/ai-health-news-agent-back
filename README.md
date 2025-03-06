@@ -1,141 +1,123 @@
-# AI-Health-News-Agent
-AI-Health-News-Agent 是一个基于 Node.js 的 AI 代理程序，每日获取公共卫生领域的最新热点新闻，生成 Markdown/HTML 报告，并通过邮件发送。
+# AI Health News Agent Backend
 
-## 项目目录结构
-ai-health-news-agent/
-├── apps/
-│   ├── back-end/         # Backend application
-│   ├── front-end/        # Frontend application
-│   └── front-end-e2e/    # End-to-end tests for frontend
-├── dist/                 # Build output directory
-├── node_modules/         # Dependencies
-└── ...                   # Configuration files
+## 项目介绍
 
-## 📌 功能
-- 爬取 WHO、CDC、Nature 等公共卫生新闻
-- 生成 Markdown 和 HTML 报告
-- 通过 API 提供新闻数据
-- 每天 8:00 自动执行并发送邮件
+AI Health News Agent Backend 是一个专为获取和管理各大医学期刊健康信息设计的后端服务。该服务使用 TypeScript 和 Express.js 构建，提供了新闻抓取、归档、用户认证等功能，帮助医疗专业人员和研究人员及时获取最新的健康资讯。
 
-## 🚀 安装与运行
+## 功能特点
 
-### 1️⃣ 克隆项目
-```sh
-git clone https://github.com/your-repo/AI-Health-News-Agent.git
-cd AI-Health-News-Agent
+- **自动抓取新闻**: 定时从各大医学期刊网站获取最新健康信息
+- **新闻归档**: 将重要的健康新闻进行分类归档
+- **用户管理**: 支持用户注册、登录和权限管理
+- **报告生成**: 自动生成健康新闻摘要报告
+- **邮件通知**: 支持重要更新的邮件通知功能
 
-# Using npm
+## 技术栈
+
+- Node.js
+- TypeScript
+- Express.js
+- Puppeteer (用于网页抓取)
+- JWT (用于认证)
+
+## 项目结构
+
+```
+my-express-ts-backend/
+├── src/
+│   ├── routes/                # 路由定义
+│   │   ├── archive-routes.ts  # 归档相关路由
+│   │   ├── auth-routes.ts     # 认证相关路由
+│   │   ├── home-routes.ts     # 首页相关路由
+│   │   ├── news-routes.ts     # 新闻相关路由
+│   │   └── user-routes.ts     # 用户相关路由
+│   ├── services/              # 服务层实现
+│   │   ├── scheduler.ts       # 定时任务调度器
+│   │   ├── ArchiveController.ts  # 归档控制器
+│   │   ├── config.ts          # 配置文件
+│   │   ├── fetchNewsWithPuppeteer.ts  # 新闻抓取服务
+│   │   ├── generateReport.ts  # 报告生成服务
+│   │   ├── main.ts            # 旧版入口文件
+│   │   ├── NewsArchiver.ts    # 新闻归档服务
+│   │   └── sendEmail.ts       # 邮件发送服务
+│   ├── app.ts                 # Express应用配置
+│   └── server.ts              # 服务器入口
+├── .env                       # 环境变量
+├── .gitignore
+├── package.json
+└── tsconfig.json
+```
+
+## 安装与运行
+
+### 前置条件
+
+- Node.js (>= 14.x)
+- npm 或 yarn
+- MongoDB (可选，取决于配置)
+
+### 安装步骤
+
+1. 克隆仓库
+```bash
+git clone https://github.com/yourusername/ai-health-news-agent-backend.git
+cd ai-health-news-agent-backend
+```
+
+2. 安装依赖
+```bash
 npm install
-
-# Using yarn
-yarn install
 ```
 
-### 2运行后端项目
-```sh
-# Using npm
-npm run start:back-end
-
-# Using yarn
-yarn start:back-end
-
-# Using Nx directly
-npx nx serve back-end
+3. 配置环境变量
+创建 `.env` 文件并填入必要的配置:
 ```
-### 3运行前端项目
-```sh
-# Using npm
-npm run start:front-end
-
-# Using yarn
-yarn start:front-end
-
-# Using Nx directly
-npx nx serve front-end
+PORT=3000
+NODE_ENV=development
+JWT_SECRET=your_jwt_secret
+# 其他配置...
 ```
-### 4运行全部项目
-```sh
-# Using npm
-npm run start:all
 
-# Using yarn
-yarn start:all
-
-# Using Nx directly
-npx nx run-many --target=serve --projects=back-end,front-end --parallel
+4. 运行开发环境
+```bash
+npm run dev
 ```
-### 测试项目
-```sh
-# Using npm
-npm run test:back-end
 
-# Using yarn
-yarn test:back-end
-
-# Using Nx directly
-npx nx test back-end
-
-# Using npm
-npm run test:front-end
-
-# Using yarn
-yarn test:front-end
-
-# Using Nx directly
-npx nx test front-end
-
-# Using npm
-npm run e2e
-
-# Using yarn
-yarn e2e
-
-# Using Nx directly
-npx nx e2e front-end-e2e
-
+5. 构建生产环境
+```bash
+npm run build
 ```
-### 打包项目
-```sh
-# Using npm
-npm run build:back-end
 
-# Using yarn
-yarn build:back-end
-
-# Using Nx directly
-npx nx build back-end
-
-# Using npm
-npm run build:front-end
-
-# Using yarn
-yarn build:front-end
-
-# Using Nx directly
-npx nx build front-end
-
-# Using npm
-npm run build:all
-
-# Using yarn
-yarn build:all
-
-# Using Nx directly
-npx nx run-many --target=build --projects=back-end,front-end --parallel
+6. 运行生产环境
+```bash
+npm start
 ```
-## 可用脚本
-```sh
-start:back-end       - Starts the backend application in development mode
-start:front-end      - Starts the frontend application in development mode
-start:all            - Starts both backend and frontend applications
-test:back-end        - Runs tests for the backend application
-test:front-end       - Runs tests for the frontend application
-test:all             - Runs tests for all applications
-lint:back-end        - Lints the backend application code
-lint:front-end       - Lints the frontend application code
-lint:all             - Lints all applications
-build:back-end       - Builds the backend application for production
-build:front-end      - Builds the frontend application for production
-build:all            - Builds all applications for production
-e2e                  - Runs end-to-end tests
-```
+
+## API 端点
+
+- `GET /home` - 获取首页内容
+- `GET /news` - 获取所有新闻
+- `GET /news/:id` - 获取特定新闻
+- `POST /news/fetch` - 手动触发新闻抓取
+- `GET /archives` - 获取归档列表
+- `POST /auth/login` - 用户登录
+- `POST /auth/register` - 用户注册
+- `GET /users/profile` - 获取用户资料
+
+## 贡献指南
+
+1. Fork 本仓库
+2. 创建你的特性分支 (`git checkout -b feature/amazing-feature`)
+3. 提交你的更改 (`git commit -m 'Add some amazing feature'`)
+4. 推送到分支 (`git push origin feature/amazing-feature`)
+5. 打开一个 Pull Request
+
+## 许可证
+
+[MIT](LICENSE)
+
+## 联系方式
+
+Diana Tang - [wangyaotang0228@gmail.com](mailto:wangyaotang0228@gmail.com)
+
+项目链接: [https://github.com/yourusername/ai-health-news-agent-backend](https://github.com/yourusername/ai-health-news-agent-backend)
