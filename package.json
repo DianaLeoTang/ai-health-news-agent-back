@@ -7,6 +7,8 @@
     "update-imports": "ts-node scripts/update-imports.ts",
     "start": "node dist/server.js",
     "build": "tsc && cp -r netlify/functions/api.js dist/netlify/functions/ || true",
+    "prebuild": "mkdir -p dist/netlify/functions public",
+    "deploy": "netlify deploy --prod",
     "dev": "netlify dev",
     "node-dev": "nodemon",
     "local-build": "tsc && cp -r reports dist/",
@@ -18,7 +20,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@netlify/functions": "^3.0.1",
     "axios": "^1.8.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
@@ -33,6 +34,7 @@
     "serverless-http": "^3.2.0"
   },
   "devDependencies": {
+    "@netlify/functions": "^3.0.1",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/markdown-it": "^14.1.2",

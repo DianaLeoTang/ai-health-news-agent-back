@@ -6,7 +6,8 @@
  * @FilePath: /AI-Health-News-Agent-Back/netlify/functions/simple-api.ts
  */
 // netlify/functions/simple-api.ts
-export const handler = async (event) => {
+import { Handler } from '@netlify/functions';
+export const handler:Handler = async (event) => {
     // 简单的路由逻辑
     const path = event.path.replace('/.netlify/functions/simple-api', '');
     

@@ -1,7 +1,7 @@
 [build]
   command = "npm run build"
-  functions = "netlify/functions"
-  publish = "public"  # 如果有静态文件，放在这个目录
+  publish = "dist" # Change this to match your actual build output directory
+  functions = "dist/netlify/functions"
 
 [[redirects]]
   from = "/api/*"

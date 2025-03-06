@@ -1,13 +1,13 @@
-
-import { fetchNewsWithPuppeteer } from '../../src/services/fetchNewsWithPuppeteer';
+import { Handler } from '@netlify/functions';
+import { getAllNews } from '../../src/services/fetchNewsWithPuppeteer';
 
 // 标准 Netlify Functions 格式
-export const handler = async (event, context) => {
+export const handler: Handler = async (event, context) => {
   // 检查是否是定时触发
   if (event.body === '{"scheduled":true}') {
     try {
       console.log('开始自动抓取新闻');
-      const news = await fetchNewsWithPuppeteer();
+      const news = await getAllNews();
       console.log(`成功抓取 ${news.length} 条新闻`);
       return {
         statusCode: 200,
