@@ -120,4 +120,4 @@ npm start
 
 Diana Tang - [wangyaotang0228@gmail.com](mailto:wangyaotang0228@gmail.com)
 
-项目链接: [https://github.com/yourusername/ai-health-news-agent-backend](https://github.com/yourusername/ai-health-news-agent-backend)
+项目链接: [https://github.com/DianaLeoTang/ai-health-news-agent-back](https://github.com/DianaLeoTang/ai-health-news-agent-back)
