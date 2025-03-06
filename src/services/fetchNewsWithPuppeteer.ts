@@ -1,6 +1,13 @@
+/*
+ * @Author: Diana Tang
+ * @Date: 2025-03-06 16:24:10
+ * @LastEditors: Diana Tang
+ * @Description: some description
+ * @FilePath: /AI-Health-News-Agent-Back/src/services/fetchNewsWithPuppeteer.ts
+ */
 
 import puppeteer from 'puppeteer';
-import { NEWS_SOURCES } from './config';
+import { NEWS_SOURCES  } from './config';
 
 interface NewsArticle {
   title: string;

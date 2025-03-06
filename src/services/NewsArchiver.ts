@@ -30,7 +30,7 @@ export class NewsArchiver {
   constructor(options: Partial<ArchiverConfig> = {}) {
     // 默认配置
     this.config = {
-      apiUrl: 'http://localhost:3000/news',
+      apiUrl: 'http://localhost:4000/news',
       archiveDir: path.join(process.cwd(), 'news-archives'),
       scheduleCron: '0 0 * * *', // 默认每天午夜执行
       ...options

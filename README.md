@@ -72,7 +72,7 @@ npm install
 3. 配置环境变量
 创建 `.env` 文件并填入必要的配置:
 ```
-PORT=3000
+PORT=4000
 NODE_ENV=development
 JWT_SECRET=your_jwt_secret
 # 其他配置...

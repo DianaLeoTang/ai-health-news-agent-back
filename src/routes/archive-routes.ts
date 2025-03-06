@@ -3,7 +3,7 @@
  * @Date: 2025-03-05
  * @LastEditors: Diana Tang
  * @Description: 存档相关路由
- * @FilePath: /AI-Health-News-Agent/apps/back-end/src/routes/archive-routes.ts
+ * @FilePath: /AI-Health-News-Agent-Back/src/routes/archive-routes.ts
  */
 import { Router } from 'express';
 import * as path from 'path';
@@ -17,7 +17,7 @@ const router = Router();
 /*
 // 初始化新闻存档服务
 const newsArchiver = new NewsArchiver({
-  apiUrl: 'http://localhost:3000/news', // 此处使用自己的API路径
+  apiUrl: 'http://localhost:4000/news', // 此处使用自己的API路径
   archiveDir: path.join(process.cwd(), 'news-archives'),
   scheduleCron: '0 0 * * *' // 每天午夜执行
 });

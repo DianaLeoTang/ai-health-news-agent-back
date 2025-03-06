@@ -1,3 +1,10 @@
+/*
+ * @Author: Diana Tang
+ * @Date: 2025-03-06 16:24:10
+ * @LastEditors: Diana Tang
+ * @Description: some description
+ * @FilePath: /AI-Health-News-Agent-Back/src/services/config.ts
+ */
 
 interface EmailConfig {
     USER: string | undefined;
@@ -44,7 +51,7 @@ interface EmailConfig {
       PASS: process.env.EMAIL_PASS,
     },
     SERVER: {
-      PORT: process.env.PORT || 3000,
+      PORT: process.env.PORT || 4000,
     },
   };
   

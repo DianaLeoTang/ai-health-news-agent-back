@@ -1,78 +1,73 @@
 /*
  * @Author: Diana Tang
- * @Date: 2025-03-05
+ * @Date: 2025-03-05 17:47:31
  * @LastEditors: Diana Tang
- * @Description: 用户认证相关路由
- * @FilePath: /AI-Health-News-Agent/apps/back-end/src/routes/auth-routes.ts
+ * @Description: 用户认证路由
+ * @FilePath: /AI-Health-News-Agent-Back/src/routes/auth-routes.ts
  */
-import { Router, Request, Response } from 'express';
+import { Router, Request, Response, NextFunction } from 'express';
 import { setAccess } from './user-routes';
 
 const router = Router();
 
-// 用于跟踪用户访问级别的变量(在实际应用中应使用会话/JWT)
-// 已移至user-routes模块中，通过setAccess方法设置
-
 // 登录接口
-router.post("/login/account", async (req: Request, res: Response) => {
-  // 获取查询参数中的token（如果存在）
-  const token = req.query.token;
-  
-  // 从请求体中获取登录信息
-  const { password, username, type } = req.body;
-  
-  // 可以根据需要验证token
-  // if (token !== '123') {
-  //   return res.status(401).json({
-  //     status: 'error',
-  //     message: '无效的token'
-  //   });
-  // }
-  
-  // 管理员登录
-  if (password === 'ant.design' && username === 'admin') {
-    setAccess('admin');
-    return res.json({
-      status: 'ok',
-      type,
-      currentAuthority: 'admin',
-    });
-  }
-  
-  // 普通用户登录
-  if (password === 'ant.design' && username === 'user') {
-    setAccess('user');
-    return res.json({
-      status: 'ok',
-      type,
-      currentAuthority: 'user',
-    });
-  }
-  
-  // 移动端登录
-  if (type === 'mobile') {
-    setAccess('admin');
-    return res.json({
-      status: 'ok',
-      type,
-      currentAuthority: 'admin',
-    });
-  }
-  
-  // 登录失败
-  setAccess('guest');
-  return res.json({
-    status: 'error',
-    type,
-    currentAuthority: 'guest',
-  });
+router.post("/login/account", (req: Request, res: Response, next: NextFunction) => {
+  (async () => {
+    try {
+      // 获取查询参数中的token（如果存在）
+      const token = req.query.token;
+      
+      // 从请求体中获取登录信息
+      const { password, username, type } = req.body;
+      
+      // 管理员登录
+      if (password === 'ant.design' && username === 'admin') {
+        setAccess('admin');
+        res.json({
+          status: 'ok',
+          type,
+          currentAuthority: 'admin',
+        });
+        return;
+      }
+      
+      // 普通用户登录
+      if (password === 'ant.design' && username === 'user') {
+        setAccess('user');
+        res.json({
+          status: 'ok',
+          type,
+          currentAuthority: 'user',
+        });
+        return;
+      }
+      
+      // 移动端登录
+      if (type === 'mobile') {
+        setAccess('admin');
+        res.json({
+          status: 'ok',
+          type,
+          currentAuthority: 'admin',
+        });
+        return;
+      }
+      
+      // 登录失败
+      setAccess('guest');
+      res.json({
+        status: 'error',
+        type,
+        currentAuthority: 'guest',
+      });
+    } catch (error) {
+      console.error('登录处理时出错:', error);
+      res.status(500).json({
+        status: 'error',
+        message: '登录处理时发生内部错误'
+      });
+    }
+  })();
 });
-
-// 获取当前用户访问级别 - 已移至user-routes模块中
-// router.get("/api/currentUser", (req: Request, res: Response) => {
-//   res.json({
-//     access,
-//   });
-// });
 
 export default router;
