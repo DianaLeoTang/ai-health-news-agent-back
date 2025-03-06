@@ -6,7 +6,7 @@
   "scripts": {
     "update-imports": "ts-node scripts/update-imports.ts",
     "start": "node dist/server.js",
-    "build": "tsc && cp -r netlify/functions/api.js dist/netlify/functions/ || true",
+    "build": "tsc && mkdir -p dist/netlify/functions && cp -r netlify/functions/* dist/netlify/functions/ || true",
     "prebuild": "mkdir -p dist/netlify/functions public",
     "deploy": "netlify deploy --prod",
     "dev": "netlify dev",
