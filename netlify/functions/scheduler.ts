@@ -1,5 +1,6 @@
 import { Handler } from '@netlify/functions';
-import { getAllNews } from '../../src/services/fetchNewsWithPuppeteer';
+// import { getAllNews } from '../../src/services/fetchNewsWithPuppeteer';
+import { getAllNews } from '../../src/services/getAllNews';
 
 // 标准 Netlify Functions 格式
 export const handler: Handler = async (event, context) => {
