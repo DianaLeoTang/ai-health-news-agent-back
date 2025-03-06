@@ -101,56 +101,56 @@ import { CrawlerConfig ,EmailConfig,ServerConfig,Config} from './types';
       PORT: process.env.PORT || 4000,
       NODE_ENV: process.env.NODE_ENV || 'development',
     },
-    // 配置
-    CONFIG: CrawlerConfig :{
-      // 并发控制
-      concurrentLimit: 5,
-      
-      // 请求配置
-      requestTimeout: 20000,
-      retries: 3,
-      retryDelay: 1000,
-      
-      // 缓存配置
-      useCache: true,
-      cacheDir: './.cache',
-      cacheTTL: 30 * 60 * 1000, // 30分钟
-      
-      // 代理配置
-      useProxy: false,
-      proxyUrl: 'http://127.0.0.1:7890',
-      
-      // 输出配置
-      outputDir: './data',
-      saveRawHtml: false,
-      
-      // 提取配置
-      selectors: {
-        // 通用选择器
-        title: 'title',
-        description: 'meta[name="description"]',
-        links: 'a',
-        
-        // 特定站点选择器 (优先级高于通用选择器)
-        'jamanetwork.com': {
-          articles: '.card-article',
-          title: '.card-article h3',
-          date: '.card-article .meta-date',
-        },
-        'nejm.org': {
-          articles: '.o-article',
-          title: '.o-article h4',
-          authors: '.o-article .m-article-meta__authors',
-        },
-        'who.int': {
-          articles: '.list-view--item',
-          title: '.list-view--item .heading',
-          date: '.list-view--item .date',
-        },
-      }
-    },
+    
   };
+  export const CONFIGS: CrawlerConfig :{
+    // 并发控制
+    concurrentLimit: 5,
+    
+    // 请求配置
+    requestTimeout: 20000,
+    retries: 3,
+    retryDelay: 1000,
+    
+    // 缓存配置
+    useCache: true,
+    cacheDir: './.cache',
+    cacheTTL: 30 * 60 * 1000, // 30分钟
+    
+    // 代理配置
+    useProxy: false,
+    proxyUrl: '',
+    
+    // 输出配置
+    outputDir: './data',
+    saveRawHtml: false,
+    
+    // 提取配置
+    selectors: {
+      // 通用选择器
+      title: 'title',
+      description: 'meta[name="description"]',
+      links: 'a',
+      
+      // 特定站点选择器 (优先级高于通用选择器)
+      'jamanetwork.com': {
+        articles: '.card-article',
+        title: '.card-article h3',
+        date: '.card-article .meta-date',
+      },
+      'nejm.org': {
+        articles: '.o-article',
+        title: '.o-article h4',
+        authors: '.o-article .m-article-meta__authors',
+      },
+      'who.int': {
+        articles: '.list-view--item',
+        title: '.list-view--item .heading',
+        date: '.list-view--item .date',
+      },
+    }
+  },
   
-  export const { NEWS_SOURCES, EMAIL, SERVER,NEWS_SOURCES_FEED,NEWS_OFFICE,CONFIG } = config;
+  export const { NEWS_SOURCES, EMAIL, SERVER,NEWS_SOURCES_FEED,NEWS_OFFICE} = config;
   export default config;
   

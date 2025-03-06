@@ -6,7 +6,7 @@ import * as path from 'path';
 import { URL } from 'url';
 import HttpsProxyAgent from 'https-proxy-agent';
 import UserAgent from 'user-agents';
-import { NEWS_SOURCES ,CONFIG} from './config';
+import { NEWS_SOURCES ,CONFIGS} from './config';
 import { 
   CacheData,
   RequestResult, 
@@ -46,7 +46,7 @@ function getCacheFilePath(url: string): string {
   const search = urlObj.search.replace(/[?&=]/g, '_');
   
   const filename = `${hostname}${pathname}${search}.json`;
-  return path.join(CONFIG.cacheDir, filename);
+  return path.join(CONFIGS.cacheDir, filename);
 }
 
 /**
@@ -55,12 +55,12 @@ function getCacheFilePath(url: string): string {
  * @returns 缓存数据或null
  */
 async function getFromCache(url: string): Promise<RequestResult | null> {
-  if (!CONFIG.useCache) return null;
+  if (!CONFIGS.useCache) return null;
   
   // 先检查内存缓存
   if (memoryCache.has(url)) {
     const cachedData = memoryCache.get(url)!;
-    if (Date.now() - cachedData.timestamp < CONFIG.cacheTTL) {
+    if (Date.now() - cachedData.timestamp < CONFIGS.cacheTTL) {
       return { ...cachedData.data, fromCache: 'memory' };
     } else {
       memoryCache.delete(url);
@@ -72,7 +72,7 @@ async function getFromCache(url: string): Promise<RequestResult | null> {
     const cacheFile = getCacheFilePath(url);
     const data = JSON.parse(await fs.readFile(cacheFile, 'utf8')) as RequestResult;
     
-    if (Date.now() - data.timestamp < CONFIG.cacheTTL) {
+    if (Date.now() - data.timestamp < CONFIGS.cacheTTL) {
       // 同时更新内存缓存
       memoryCache.set(url, {
         data: { ...data, fromCache: 'file' },
@@ -93,7 +93,7 @@ async function getFromCache(url: string): Promise<RequestResult | null> {
  * @param data - 要缓存的数据
  */
 async function saveToCache(url: string, data: RequestResult): Promise<void> {
-  if (!CONFIG.useCache) return;
+  if (!CONFIGS.useCache) return;
   
   // 保存到内存缓存
   const cacheData = {
@@ -108,7 +108,7 @@ async function saveToCache(url: string, data: RequestResult): Promise<void> {
   
   // 保存到文件缓存
   try {
-    await ensureDir(CONFIG.cacheDir);
+    await ensureDir(CONFIGS.cacheDir);
     const cacheFile = getCacheFilePath(url);
     await fs.writeFile(cacheFile, JSON.stringify(cacheData, null, 2));
   } catch (error) {
@@ -144,12 +144,12 @@ async function fetchWithAxios(url: string, options: Partial<{
   proxyUrl: string;
 }> = {}): Promise<RequestResult> {
   const {
-    timeout = CONFIG.requestTimeout,
-    retries = CONFIG.retries,
-    retryDelay = CONFIG.retryDelay,
+    timeout = CONFIGS.requestTimeout,
+    retries = CONFIGS.retries,
+    retryDelay = CONFIGS.retryDelay,
     headers = {},
-    useProxy = CONFIG.useProxy,
-    proxyUrl = CONFIG.proxyUrl
+    useProxy = CONFIGS.useProxy,
+    proxyUrl = CONFIGS.proxyUrl
   } = options;
 
   // 检查缓存
@@ -279,7 +279,7 @@ function batchFetchWithConcurrency(urls: string[], options: Partial<{
   progressInterval: number;
 }> & Partial<Parameters<typeof fetchWithAxios>[1]> = {}): Promise<RequestResult[]> {
   const {
-    concurrentLimit = CONFIG.concurrentLimit,
+    concurrentLimit = CONFIGS.concurrentLimit,
     progressInterval = 2000,
     ...fetchOptions
   } = options;
@@ -379,16 +379,16 @@ function getSelector(url: string, selectorType: string): string {
   const hostname = new URL(url).hostname;
   
   // 检查是否有针对特定域名的选择器
-  for (const domain in CONFIG.selectors) {
+  for (const domain in CONFIGS.selectors) {
     if (hostname.includes(domain) && 
-        typeof CONFIG.selectors[domain] === 'object' && 
-        CONFIG.selectors[domain][selectorType]) {
-      return CONFIG.selectors[domain][selectorType] as string;
+        typeof CONFIGS.selectors[domain] === 'object' && 
+        CONFIGS.selectors[domain][selectorType]) {
+      return CONFIGS.selectors[domain][selectorType] as string;
     }
   }
   
   // 如果没有特定域名的选择器，返回通用选择器
-  return (CONFIG.selectors[selectorType] as string) || '';
+  return (CONFIGS.selectors[selectorType] as string) || '';
 }
 
 /**
@@ -525,7 +525,7 @@ function extractContentWithCheerio(html: string, url: string): ExtractedContent 
  */
 async function saveResults(results: RequestResult[]): Promise<void> {
   try {
-    await ensureDir(CONFIG.outputDir);
+    await ensureDir(CONFIGS.outputDir);
     
     // 保存汇总数据
     const summary = results.map(result => ({
@@ -539,7 +539,7 @@ async function saveResults(results: RequestResult[]): Promise<void> {
     }));
     
     await fs.writeFile(
-      path.join(CONFIG.outputDir, 'summary.json'),
+      path.join(CONFIGS.outputDir, 'summary.json'),
       JSON.stringify(summary, null, 2)
     );
     
@@ -550,21 +550,21 @@ async function saveResults(results: RequestResult[]): Promise<void> {
         const filename = `${urlObj.hostname}${urlObj.pathname.replace(/\//g, '_')}.json`;
         
         await fs.writeFile(
-          path.join(CONFIG.outputDir, filename),
+          path.join(CONFIGS.outputDir, filename),
           JSON.stringify(result.extracted, null, 2)
         );
         
         // 可选：保存原始HTML
-        if (CONFIG.saveRawHtml && result.data) {
+        if (CONFIGS.saveRawHtml && result.data) {
           await fs.writeFile(
-            path.join(CONFIG.outputDir, `${filename}.html`),
+            path.join(CONFIGS.outputDir, `${filename}.html`),
             result.data
           );
         }
       }
     }
     
-    console.log(`结果已保存到 ${CONFIG.outputDir} 目录`);
+    console.log(`结果已保存到 ${CONFIGS.outputDir} 目录`);
   } catch (error) {
     console.error('保存结果失败:', error);
   }
@@ -616,7 +616,7 @@ async function getAllNews(
     console.time('getAllNews');
     
     // 合并选项和CONFIG
-    const mergedOptions = { ...CONFIG, ...options };
+    const mergedOptions = { ...CONFIGS, ...options };
     
     console.log(`开始抓取 ${urls.length} 个URL...`);
     
