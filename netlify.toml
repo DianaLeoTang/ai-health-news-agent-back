@@ -15,3 +15,10 @@
 
 [functions.scheduler]
   schedule = "0 */12 * * *"  # 每6小时运行一次
+
+[functions]
+  included_files = ["node_modules/puppeteer/**/*"]
+  node_bundler = "esbuild"
+
+[functions.api]
+  timeout = 60
