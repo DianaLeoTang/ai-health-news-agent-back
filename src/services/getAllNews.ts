@@ -5,7 +5,7 @@ import * as path from 'path';
 import { URL } from 'url';
 // 修正导入方式
 import UserAgent from 'user-agents';
-import { NEWS_SOURCES, CONFIGS, SERVER } from './config';
+import { NEWS_SOURCES, CONFIGS, SERVER ,NEWS_OFFICE} from './config';
 import { 
   CacheData,
   RequestResult, 
@@ -652,12 +652,14 @@ export async function getAllNews(
     
     // 使用Cheerio提取内容
     console.log('正在提取内容...');
-    
+    // 初始化杂志名称映射（只需初始化一次）
+    const { urlToMagazine, domainToMagazine } = createMagazineUrlMap(NEWS_OFFICE);
+
     const processedResults = results.map((result: RequestResult) => {
       if (result.status === 'success' && result.data) {
         try {
           const tempData=extractContentWithCheerio(result.data, result.url);
-          result.title = tempData.title
+          result.title = getMagazineName(result.url, urlToMagazine, domainToMagazine);
           
           // 从提取的内容更新links和articles到主结果对象
           result.links = tempData.links || [];
