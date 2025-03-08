@@ -42,21 +42,21 @@ export interface RequestResult {
   url: string;
   data?: string;
   status: 'success' | 'error';
-  headers?: any;
   statusCode?: number;
   errorCode?: string;
   error?: string;
   timestamp: number;
   extracted?: ExtractedContent;
-  fromCache?: 'memory' | 'file' | null;
+  fromCache?: 'memory' | 'file' | null | undefined| string;
   links: Link[];
   articles: Article[];
+  title?: string;  // 添加这个可选字段
 }
 
 export interface ExtractedContent {
   url: string;
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   links: Link[];
   articles: Article[];
   metadata: Record<string, string>;
@@ -88,7 +88,6 @@ export interface DomainSelectors {
 export interface CrawlerConfig {
   // 并发控制
   concurrentLimit: number;
-  
   
   // 请求配置
   requestTimeout: number;

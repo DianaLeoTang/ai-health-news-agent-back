@@ -650,11 +650,12 @@ export async function getAllNews(
     const processedResults = results.map((result: RequestResult) => {
       if (result.status === 'success' && result.data) {
         try {
-          result.extracted = extractContentWithCheerio(result.data, result.url);
+          const tempData=extractContentWithCheerio(result.data, result.url);
+          result.title = tempData.title
           
           // 从提取的内容更新links和articles到主结果对象
-          result.links = result.extracted.links || [];
-          result.articles = result.extracted.articles || [];
+          result.links = tempData.links || [];
+          result.articles = tempData.articles || [];
           
           // 移除原始HTML以节省内存
           if (!mergedOptions.saveRawHtml) {
@@ -665,11 +666,8 @@ export async function getAllNews(
           // 处理失败时，确保有空数组
           result.links = [];
           result.articles = [];
-          result.extracted = { 
-            url: result.url, 
-            error: '内容处理失败: ' + error.message,
-            title: 'Error extracting content'
-          };
+          result.title='Error extracting content'
+          
         }
       } else if (result.status === 'error') {
         // 确保错误结果有空数组
