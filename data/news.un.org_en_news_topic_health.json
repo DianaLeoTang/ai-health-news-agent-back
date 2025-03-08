@@ -1,0 +1,532 @@
+{
+  "url": "https://news.un.org/en/news/topic/health",
+  "title": "Health | UN News",
+  "description": "",
+  "links": [
+    {
+      "url": "https://news.un.org/ar/",
+      "title": "العربية"
+    },
+    {
+      "url": "https://news.un.org/zh/",
+      "title": "中文"
+    },
+    {
+      "url": "https://news.un.org/en/",
+      "title": "English"
+    },
+    {
+      "url": "https://news.un.org/fr/",
+      "title": "Français"
+    },
+    {
+      "url": "https://news.un.org/ru/",
+      "title": "Русский"
+    },
+    {
+      "url": "https://news.un.org/es/",
+      "title": "Español"
+    },
+    {
+      "url": "https://news.un.org/pt/",
+      "title": "Português"
+    },
+    {
+      "url": "https://news.un.org/sw/",
+      "title": "Kiswahili"
+    },
+    {
+      "url": "https://news.un.org/hi/",
+      "title": "Hindi हिंदी"
+    },
+    {
+      "url": "https://news.un.org/ur/",
+      "title": "Urdu اردو"
+    },
+    {
+      "url": "https://news.un.org/en/",
+      "title": "UN News"
+    },
+    {
+      "url": "https://news.un.org/en/advanced-search",
+      "title": "Advanced Search"
+    },
+    {
+      "url": "https://news.un.org/ar/",
+      "title": "العربية"
+    },
+    {
+      "url": "https://news.un.org/zh/",
+      "title": "中文"
+    },
+    {
+      "url": "https://news.un.org/en/",
+      "title": "English"
+    },
+    {
+      "url": "https://news.un.org/fr/",
+      "title": "Français"
+    },
+    {
+      "url": "https://news.un.org/ru/",
+      "title": "Русский"
+    },
+    {
+      "url": "https://news.un.org/es/",
+      "title": "Español"
+    },
+    {
+      "url": "https://news.un.org/pt/",
+      "title": "Português"
+    },
+    {
+      "url": "https://news.un.org/sw/",
+      "title": "Kiswahili"
+    },
+    {
+      "url": "https://news.un.org/hi/",
+      "title": "Hindi हिंदी"
+    },
+    {
+      "url": "https://news.un.org/ur/",
+      "title": "Urdu اردو"
+    },
+    {
+      "url": "https://news.un.org/en/",
+      "title": "UN News"
+    },
+    {
+      "url": "https://news.un.org/en/",
+      "title": "Home"
+    },
+    {
+      "url": "https://news.un.org/en/news/region/global",
+      "title": "Global"
+    },
+    {
+      "url": "https://news.un.org/en/news/region/africa",
+      "title": "Africa"
+    },
+    {
+      "url": "https://news.un.org/en/news/region/americas",
+      "title": "Americas"
+    },
+    {
+      "url": "https://news.un.org/en/news/region/asia-pacific",
+      "title": "Asia Pacific"
+    },
+    {
+      "url": "https://news.un.org/en/news/region/middle-east",
+      "title": "Middle East"
+    },
+    {
+      "url": "https://news.un.org/en/news/region/europe",
+      "title": "Europe"
+    },
+    {
+      "url": "https://news.un.org/en/spotlight/un-art-and-gifts",
+      "title": "UN Art and Gifts"
+    },
+    {
+      "url": "https://news.un.org/en/spotlight/character-sketches-brian-urquhart",
+      "title": "History Corner"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/peace-and-security",
+      "title": "Peace and Security"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/economic-development",
+      "title": "Economic Development"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/humanitarian-aid",
+      "title": "Humanitarian Aid"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/climate-change",
+      "title": "Climate and Environment"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/human-rights",
+      "title": "Human Rights"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/un-affairs",
+      "title": "UN Affairs"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/women",
+      "title": "Women"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/law-and-crime-prevention",
+      "title": "Law and Crime Prevention"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health",
+      "title": "Health"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/culture-and-education",
+      "title": "Culture and Education"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/sdgs",
+      "title": "SDGs"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/migrants-and-refugees",
+      "title": "Migrants and Refugees"
+    },
+    {
+      "url": "https://news.un.org/en/interviews",
+      "title": "Interviews"
+    },
+    {
+      "url": "https://news.un.org/en/features",
+      "title": "Features"
+    },
+    {
+      "url": "https://news.un.org/en/gallery",
+      "title": "Photo Stories"
+    },
+    {
+      "url": "https://news.un.org/en/audio-product/un-news-today",
+      "title": "UN News Today"
+    },
+    {
+      "url": "https://news.un.org/en/audio-product/podcast-the-lid-is-on",
+      "title": "The Lid is On"
+    },
+    {
+      "url": "https://news.un.org/en/audio-product/focus-gender",
+      "title": "UN Gender Focus"
+    },
+    {
+      "url": "https://news.un.org/en/audio-product/un-and-africa",
+      "title": "UN and Africa"
+    },
+    {
+      "url": "https://news.un.org/en/un-podcasts",
+      "title": "UN Podcasts"
+    },
+    {
+      "url": "https://news.un.org/ar/",
+      "title": "العربية"
+    },
+    {
+      "url": "https://news.un.org/zh/",
+      "title": "中文"
+    },
+    {
+      "url": "https://news.un.org/en/",
+      "title": "English"
+    },
+    {
+      "url": "https://news.un.org/fr/",
+      "title": "Français"
+    },
+    {
+      "url": "https://news.un.org/ru/",
+      "title": "Русский"
+    },
+    {
+      "url": "https://news.un.org/es/",
+      "title": "Español"
+    },
+    {
+      "url": "https://news.un.org/pt/",
+      "title": "Português"
+    },
+    {
+      "url": "https://news.un.org/sw/",
+      "title": "Kiswahili"
+    },
+    {
+      "url": "https://news.un.org/hi/",
+      "title": "Hindi हिंदी"
+    },
+    {
+      "url": "https://news.un.org/ur/",
+      "title": "Urdu اردو"
+    },
+    {
+      "url": "https://news.un.org/en/advanced-search",
+      "title": "Advanced Search"
+    },
+    {
+      "url": "https://news.un.org/en/audio-hub",
+      "title": "Audio Hub"
+    },
+    {
+      "url": "https://news.un.org/en/content/un-newsletter-subscribe",
+      "title": "Subscribe"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=audio%3A1",
+      "title": "Audio"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=video%3A1",
+      "title": "Video"
+    },
+    {
+      "url": "https://news.un.org/en/story/2025/03/1160856",
+      "title": "Choose compassion, reject cruelty to end HIV, says top UN rights official"
+    },
+    {
+      "url": "https://news.un.org/en/news/region/global",
+      "title": "Global"
+    },
+    {
+      "url": "https://news.un.org/en/story/2025/03/1160826",
+      "title": "Funding cuts jeopardise global fight against tuberculosis, WHO warns"
+    },
+    {
+      "url": "https://news.un.org/en/news/region/global",
+      "title": "Global"
+    },
+    {
+      "url": "https://news.un.org/en/story/2025/03/1160741",
+      "title": "‘Rapid expansion’ of synthetic drugs reshaping illicit markets, UN anti-narcotics body warns"
+    },
+    {
+      "url": "https://news.un.org/en/story/2025/02/1160596",
+      "title": "DR Congo: WHO tracks deadly mysterious illness"
+    },
+    {
+      "url": "https://news.un.org/en/news/region/africa",
+      "title": "Africa"
+    },
+    {
+      "url": "https://news.un.org/en/story/2025/02/1160561",
+      "title": "New report flags severity of US funding cuts to global AIDS response"
+    },
+    {
+      "url": "https://news.un.org/en/news/region/global",
+      "title": "Global"
+    },
+    {
+      "url": "https://news.un.org/en/story/2025/02/1160501",
+      "title": "World News in Brief: Conflict in DR Congo, Europe’s ‘cradle to cane’ crisis, millions may go hungry "
+    },
+    {
+      "url": "https://news.un.org/en/news/region/global",
+      "title": "Global"
+    },
+    {
+      "url": "https://news.un.org/en/story/2025/02/1160481",
+      "title": "WHO marks 20 years of its lifesaving tobacco control treaty"
+    },
+    {
+      "url": "https://news.un.org/en/news/region/global",
+      "title": "Global"
+    },
+    {
+      "url": "https://news.un.org/en/story/2025/02/1160391",
+      "title": "Breast cancer cases projected to rise by nearly 40 per cent by 2050, WHO warns"
+    },
+    {
+      "url": "https://news.un.org/en/news/region/global",
+      "title": "Global"
+    },
+    {
+      "url": "https://news.un.org/en/story/2025/02/1160411",
+      "title": "New round of polio vaccinations begins in Gaza"
+    },
+    {
+      "url": "https://news.un.org/en/news/region/middle-east",
+      "title": "Middle East"
+    },
+    {
+      "url": "https://news.un.org/en/story/2025/02/1160241",
+      "title": "Explainer: 5 common myths about child marriage"
+    },
+    {
+      "url": "https://news.un.org/en/news/region/global",
+      "title": "Global"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?page=1",
+      "title": "2"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?page=2",
+      "title": "3"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?page=3",
+      "title": "4"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?page=4",
+      "title": "5"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=date%3A2025",
+      "title": "2025"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=date%3A2024",
+      "title": "2024"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=date%3A2023",
+      "title": "2023"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=date%3A2022",
+      "title": "2022"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=date%3A2021",
+      "title": "2021"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=date%3A2020",
+      "title": "2020"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=date%3A2019",
+      "title": "2019"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=date%3A2018",
+      "title": "2018"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=date%3A2017",
+      "title": "2017"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=date%3A2016",
+      "title": "2016"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=date%3A2015",
+      "title": "2015"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=date%3A2014",
+      "title": "2014"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=date%3A2013",
+      "title": "2013"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=date%3A2011",
+      "title": "2011"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=date%3A2010",
+      "title": "2010"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=date%3A2009",
+      "title": "2009"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=date%3A2008",
+      "title": "2008"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=date%3A2007",
+      "title": "2007"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=date%3A2006",
+      "title": "2006"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=date%3A2005",
+      "title": "2005"
+    },
+    {
+      "url": "https://news.un.org/en/news/topic/health?f%5B0%5D=date%3A2001",
+      "title": "2001"
+    },
+    {
+      "url": "https://news.un.org/en/focus/sudan-conflict",
+      "title": "Sudan Conflict"
+    },
+    {
+      "url": "https://news.un.org/en/focus/ukraine",
+      "title": "Ukraine"
+    },
+    {
+      "url": "https://news.un.org/en/focus/afghanistan",
+      "title": "Afghanistan"
+    },
+    {
+      "url": "https://news.un.org/en/focus/rohingya-refugee-crisis",
+      "title": "Rohingya Refugee Crisis"
+    },
+    {
+      "url": "https://news.un.org/en/focus/democratic-peoples-republic-korea",
+      "title": "Democratic People’s Republic of Korea"
+    },
+    {
+      "url": "https://news.un.org/en/focus/mali",
+      "title": "Mali"
+    },
+    {
+      "url": "https://news.un.org/en/focus/yemen",
+      "title": "Yemen"
+    },
+    {
+      "url": "https://news.un.org/en/focus",
+      "title": "More"
+    },
+    {
+      "url": "https://news.un.org/en/content/navigate-news",
+      "title": "Navigate the News"
+    },
+    {
+      "url": "https://news.un.org/en/content/un-system-links",
+      "title": "Information for Broadcasters"
+    },
+    {
+      "url": "https://news.un.org/en/content/un-system-links",
+      "title": "UN System Links"
+    },
+    {
+      "url": "https://news.un.org/en/content/un-news-go",
+      "title": "UN News App"
+    },
+    {
+      "url": "https://news.un.org/en/rss-feeds",
+      "title": "RSS"
+    }
+  ],
+  "articles": [],
+  "metadata": {
+    "news_keywords": "UN News, Global perspectives, Human Stories",
+    "rights": "COPYRIGHT © UNITED NATIONS",
+    "al:android:package": "org.un.mobile.news&hl=en",
+    "og:site_name": "UN News",
+    "og:type": "article",
+    "og:url": "https://news.un.org/en/news/topic/health",
+    "og:title": "Health",
+    "twitter:card": "summary",
+    "twitter:site": "@UN_News_Centre",
+    "twitter:title": "Health",
+    "twitter:url": "https://news.un.org/en/news/topic/health",
+    "twitter:app:name:iphone": "UN News Reader",
+    "twitter:app:id:iphone": "496893005",
+    "twitter:app:name:ipad": "UN News Reader",
+    "twitter:app:id:ipad": "496893005",
+    "twitter:app:name:googleplay": "UN News Reader",
+    "twitter:app:id:googleplay": "org.un.mobile.news",
+    "msvalidate.01": "4810E42D0C6EFA40969557F307A275F0",
+    "apple-itunes-app": "app-id=496893005",
+    "apple-mobile-web-app-title": "UN News Reader",
+    "format-detection": "telephone=no",
+    "MobileOptimized": "width",
+    "HandheldFriendly": "true",
+    "viewport": "width=device-width, initial-scale=1, shrink-to-fit=no"
+  },
+  "hostname": "news.un.org",
+  "extracted_at": "2025-03-08T08:39:01.309Z"
+}

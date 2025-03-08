@@ -1,0 +1,18 @@
+{
+  "url": "https://www.bmj.com/",
+  "title": "Site Maintenance Page",
+  "description": "Site Maintenance Page",
+  "links": [
+    {
+      "url": "https://www.bmj.com/",
+      "title": ".fil0 {fill:#000000} >"
+    }
+  ],
+  "articles": [],
+  "metadata": {
+    "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no",
+    "description": "Site Maintenance Page"
+  },
+  "hostname": "www.bmj.com",
+  "extracted_at": "2025-03-08T08:39:01.232Z"
+}

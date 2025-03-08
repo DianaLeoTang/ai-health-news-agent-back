@@ -1,0 +1,544 @@
+{
+  "url": "https://www.nature.com/subjects/health-sciences/nature",
+  "title": "Health sciences | Nature",
+  "description": "Read the latest Research articles in Health sciences from Nature",
+  "links": [
+    {
+      "url": "https://www.nature.com/siteindex",
+      "title": "View all journals"
+    },
+    {
+      "url": "https://www.nature.com/nature/subscribe",
+      "title": "Subscribe"
+    },
+    {
+      "url": "https://www.nature.com/nature.rss",
+      "title": "RSS feed"
+    },
+    {
+      "url": "https://www.nature.com/",
+      "title": "nature"
+    },
+    {
+      "url": "https://www.nature.com/subjects/health-sciences/nature.atom",
+      "title": "Atom"
+    },
+    {
+      "url": "https://www.nature.com/subjects/health-sciences/nature.rss",
+      "title": "RSS Feed"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00606-1",
+      "title": "Who’s likely to wake up from a coma? Brain waves provide a clue"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-025-08792-8",
+      "title": "Sensing ceramides by CYSLTR2 and P2RY6 to aggravate atherosclerosis"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00694-z",
+      "title": "Trump’s nominee for NIH chief talks frozen grants and fostering ‘scientific dissent’"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00703-1",
+      "title": "Exclusive: NIH to terminate hundreds of active research grants"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00653-8",
+      "title": "Vision: protecting and restoring a prized sense"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00657-4",
+      "title": "Human echolocation can be taught"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00658-3",
+      "title": "Artificial intelligence could boost eye care in low-income countries"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00682-3",
+      "title": "Why women’s brains are more resilient: it could be their ‘silent’ X chromosome"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00655-6",
+      "title": "How can treatment for eye disease be made easier?"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00656-5",
+      "title": "Restoring vision with optogenetics"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00659-2",
+      "title": "The search for solutions to geographic atrophy of the retina"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00654-7",
+      "title": "Eye problems cloud NASA’s vision of Mars"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00546-w",
+      "title": "Designer cannabinoids could be the key to pain relief without adverse effects"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00631-0",
+      "title": "How the brain decides when to stick at it, give up or try something new"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00634-x",
+      "title": "Diversity in neuronal activity could be caused by differences in inputs"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00689-w",
+      "title": "This key protein could be responsible for brain ageing"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00675-2",
+      "title": "How the brain decides whether to persist — and when to give up"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-025-08637-4",
+      "title": "Fine-scale patterns of SARS-CoV-2 spread from identical pathogen sequences"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00618-x",
+      "title": "Train clinical AI to reason like a team of doctors"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00619-w",
+      "title": "Use your research to beat health inequities: four strategies from experts"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00603-4",
+      "title": "How academia’s ‘lone wolf’ culture is harming researcher mental health"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-025-08810-9",
+      "title": "Automated loss of pulse detection on a consumer smartwatch"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00601-6",
+      "title": "If your heart stops, this smartwatch-AI can call for help"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00554-w",
+      "title": "‘Slime’ keeps the brain safe ― and could guard against ageing"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00366-y",
+      "title": "How blowing the whistle on the Theranos scandal transformed Erika Cheung’s career"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00306-w",
+      "title": "Nursing-home residents’ skin is a source of transmitted harmful and drug-resistant microbes"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00595-1",
+      "title": "NIH turmoil sparks anxiety over future of its global grants"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-025-08584-0",
+      "title": "Mass-spectrometry-based proteomics: from single cells to clinical applications"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-025-08589-9",
+      "title": "Glycocalyx dysregulation impairs blood–brain barrier in ageing and disease"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-025-08608-9",
+      "title": "Clonal Candida auris and ESKAPE pathogens on the skin of residents of nursing homes"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-025-08623-w",
+      "title": "Rare disease gene association discovery in the 100,000 Genomes Project"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00587-1",
+      "title": "National climate policies must address mental health"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00566-6",
+      "title": "How quickly are you ageing? What molecular ‘clocks’ can tell you about your health"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00265-2",
+      "title": "Breast cancer is on the rise: data reveal drastic gap in survival rates"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00458-9",
+      "title": "The racial injustice laid bare by COVID must not be forgotten"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00549-7",
+      "title": "How a junk-food splurge can change your brain activity"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00530-4",
+      "title": "Putting early cancer detection to the test"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00538-w",
+      "title": "How to bring health and happiness to your lab"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00467-8",
+      "title": "Cancer evolution could inform targets for personalized anticancer vaccines"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00426-3",
+      "title": "What sparked the COVID pandemic? Mounting evidence points to raccoon dogs"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00528-y",
+      "title": "AI tool diagnoses diabetes, HIV and COVID from a blood sample"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00502-8",
+      "title": "How chronic stress warps decision-making"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00470-z",
+      "title": "Bespoke vaccines can elicit long-lived immune activity against pancreatic cancer"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00302-0",
+      "title": "Peptides from abnormal RNA processing in cancer offer an immunotherapy target"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00449-w",
+      "title": "What’s next for the World Health Organization? US exit could reshape agency"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-024-08564-w",
+      "title": "Artificial intelligence for modelling infectious disease epidemics"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00498-1",
+      "title": "Learn COVID pandemic lessons — before it’s too late"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00454-z",
+      "title": "Could psychedelics be fine-tuned to relieve anxiety but skip the ‘trip’?"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00456-x",
+      "title": "Migraine is more than a headache — a radical rethink offers hope to one billion people"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-025-00501-9",
+      "title": "Pinpointing neurons that hinder cancer treatment"
+    },
+    {
+      "url": "https://www.nature.com/subjects/anatomy/nature",
+      "title": "Anatomy"
+    },
+    {
+      "url": "https://www.nature.com/subjects/biomarkers/nature",
+      "title": "Biomarkers"
+    },
+    {
+      "url": "https://www.nature.com/subjects/cardiology/nature",
+      "title": "Cardiology"
+    },
+    {
+      "url": "https://www.nature.com/subjects/diseases/nature",
+      "title": "Diseases"
+    },
+    {
+      "url": "https://www.nature.com/subjects/endocrinology/nature",
+      "title": "Endocrinology"
+    },
+    {
+      "url": "https://www.nature.com/subjects/gastroenterology/nature",
+      "title": "Gastroenterology"
+    },
+    {
+      "url": "https://www.nature.com/subjects/health-care/nature",
+      "title": "Health care"
+    },
+    {
+      "url": "https://www.nature.com/subjects/health-occupations/nature",
+      "title": "Health occupations"
+    },
+    {
+      "url": "https://www.nature.com/subjects/medical-research/nature",
+      "title": "Medical research"
+    },
+    {
+      "url": "https://www.nature.com/subjects/molecular-medicine/nature",
+      "title": "Molecular medicine"
+    },
+    {
+      "url": "https://www.nature.com/subjects/nephrology/nature",
+      "title": "Nephrology"
+    },
+    {
+      "url": "https://www.nature.com/subjects/neurology/nature",
+      "title": "Neurology"
+    },
+    {
+      "url": "https://www.nature.com/subjects/oncology/nature",
+      "title": "Oncology"
+    },
+    {
+      "url": "https://www.nature.com/subjects/pathogenesis/nature",
+      "title": "Pathogenesis"
+    },
+    {
+      "url": "https://www.nature.com/subjects/rheumatology/nature",
+      "title": "Rheumatology"
+    },
+    {
+      "url": "https://www.nature.com/subjects/risk-factors/nature",
+      "title": "Risk factors"
+    },
+    {
+      "url": "https://www.nature.com/subjects/signs-and-symptoms/nature",
+      "title": "Signs and symptoms"
+    },
+    {
+      "url": "https://www.nature.com/subjects/urology/nature",
+      "title": "Urology"
+    },
+    {
+      "url": "https://www.nature.com/subjects/health-sciences",
+      "title": "Browse Health sciences across other nature.com journals"
+    },
+    {
+      "url": "https://www.nature.com/subjects/health-sciences/nature?searchType=journalSearch&sort=PubDate&page=2",
+      "title": "page 2"
+    },
+    {
+      "url": "https://www.nature.com/subjects/health-sciences/nature?searchType=journalSearch&sort=PubDate&page=3",
+      "title": "page 3"
+    },
+    {
+      "url": "https://www.nature.com/subjects/health-sciences/nature?searchType=journalSearch&sort=PubDate&page=181",
+      "title": "page 181"
+    },
+    {
+      "url": "https://www.nature.com/subjects/health-sciences/nature?searchType=journalSearch&sort=PubDate&page=2",
+      "title": "Next page"
+    },
+    {
+      "url": "https://www.nature.com/nature/research-articles",
+      "title": "Research articles"
+    },
+    {
+      "url": "https://www.nature.com/news",
+      "title": "News"
+    },
+    {
+      "url": "https://www.nature.com/opinion",
+      "title": "Opinion"
+    },
+    {
+      "url": "https://www.nature.com/research-analysis",
+      "title": "Research Analysis"
+    },
+    {
+      "url": "https://www.nature.com/careers",
+      "title": "Careers"
+    },
+    {
+      "url": "https://www.nature.com/books-culture",
+      "title": "Books & Culture"
+    },
+    {
+      "url": "https://www.nature.com/nature/podcasts",
+      "title": "Podcasts"
+    },
+    {
+      "url": "https://www.nature.com/nature/videos",
+      "title": "Videos"
+    },
+    {
+      "url": "https://www.nature.com/nature/current-issue",
+      "title": "Current issue"
+    },
+    {
+      "url": "https://www.nature.com/nature/browse-issues",
+      "title": "Browse issues"
+    },
+    {
+      "url": "https://www.nature.com/nature/collections",
+      "title": "Collections"
+    },
+    {
+      "url": "https://www.nature.com/nature/browse-subjects",
+      "title": "Subjects"
+    },
+    {
+      "url": "https://www.nature.com/nature/subscribe",
+      "title": "Subscribe"
+    },
+    {
+      "url": "https://www.nature.com/my-account/alerts/subscribe-journal?list-id=1",
+      "title": "Sign up for alerts"
+    },
+    {
+      "url": "https://www.nature.com/nature.rss",
+      "title": "RSS feed"
+    },
+    {
+      "url": "https://www.nature.com/nature/journal-staff",
+      "title": "Journal Staff"
+    },
+    {
+      "url": "https://www.nature.com/nature/editors",
+      "title": "About the Editors"
+    },
+    {
+      "url": "https://www.nature.com/nature/journal-information",
+      "title": "Journal Information"
+    },
+    {
+      "url": "https://www.nature.com/nature/our-publishing-models",
+      "title": "Our publishing models"
+    },
+    {
+      "url": "https://www.nature.com/nature/editorial-values-statement",
+      "title": "Editorial Values Statement"
+    },
+    {
+      "url": "https://www.nature.com/nature/journal-impact",
+      "title": "Journal Metrics"
+    },
+    {
+      "url": "https://www.nature.com/nature/awards",
+      "title": "Awards"
+    },
+    {
+      "url": "https://www.nature.com/nature/contact",
+      "title": "Contact"
+    },
+    {
+      "url": "https://www.nature.com/nature/editorial-policies",
+      "title": "Editorial policies"
+    },
+    {
+      "url": "https://www.nature.com/nature/history-of-nature",
+      "title": "History of Nature"
+    },
+    {
+      "url": "https://www.nature.com/nature/send-a-news-tip",
+      "title": "Send a news tip"
+    },
+    {
+      "url": "https://www.nature.com/nature/for-authors",
+      "title": "For Authors"
+    },
+    {
+      "url": "https://www.nature.com/nature/for-referees",
+      "title": "For Referees"
+    },
+    {
+      "url": "https://www.nature.com/search/advanced",
+      "title": "Advanced search"
+    },
+    {
+      "url": "https://www.nature.com/subjects",
+      "title": "Explore articles by subject"
+    },
+    {
+      "url": "https://www.nature.com/naturecareers",
+      "title": "Find a job"
+    },
+    {
+      "url": "https://www.nature.com/authors/index.html",
+      "title": "Guide to authors"
+    },
+    {
+      "url": "https://www.nature.com/authors/editorial_policies/",
+      "title": "Editorial policies"
+    },
+    {
+      "url": "https://www.nature.com/npg_/company_info/index.html",
+      "title": "About us"
+    },
+    {
+      "url": "https://www.nature.com/npg_/press_room/press_releases.html",
+      "title": "Press releases"
+    },
+    {
+      "url": "https://www.nature.com/siteindex",
+      "title": "Journals A-Z"
+    },
+    {
+      "url": "https://www.nature.com/subjects",
+      "title": "Articles by subject"
+    },
+    {
+      "url": "https://www.nature.com/authors/editorial_policies",
+      "title": "Nature portfolio policies"
+    },
+    {
+      "url": "https://www.nature.com/nature-research/open-access",
+      "title": "Open access"
+    },
+    {
+      "url": "https://www.nature.com/reprints",
+      "title": "Reprints & permissions"
+    },
+    {
+      "url": "https://www.nature.com/openresearch/about-open-access/information-for-institutions",
+      "title": "Open research"
+    },
+    {
+      "url": "https://www.nature.com/naturecareers/",
+      "title": "Nature Careers"
+    },
+    {
+      "url": "https://www.nature.com/natafrica",
+      "title": "Nature Africa"
+    },
+    {
+      "url": "https://www.nature.com/nindia",
+      "title": "Nature India"
+    },
+    {
+      "url": "https://www.nature.com/natitaly",
+      "title": "Nature Italy"
+    },
+    {
+      "url": "https://www.nature.com/nmiddleeast",
+      "title": "Nature Middle East"
+    },
+    {
+      "url": "https://www.nature.com/info/privacy",
+      "title": "Privacy Policy"
+    },
+    {
+      "url": "https://www.nature.com/info/cookies",
+      "title": "Use of cookies"
+    },
+    {
+      "url": "https://www.nature.com/info/legal-notice",
+      "title": "Legal notice"
+    },
+    {
+      "url": "https://www.nature.com/info/accessibility-statement",
+      "title": "Accessibility statement"
+    },
+    {
+      "url": "https://www.nature.com/info/terms-and-conditions",
+      "title": "Terms & Conditions"
+    }
+  ],
+  "articles": [],
+  "metadata": {
+    "applicable-device": "pc,mobile",
+    "viewport": "width=device-width,initial-scale=1.0,maximum-scale=5,user-scalable=yes",
+    "360-site-verification": "5a2dc4ab3fcb9b0393241ffbbb490480",
+    "msapplication-TileColor": "#000000",
+    "msapplication-config": "/static/browserconfig.xml",
+    "theme-color": "#000000",
+    "application-name": "Nature",
+    "description": "Read the latest Research articles in Health sciences from Nature",
+    "robots": "noarchive",
+    "access": "Yes",
+    "dc.rights": "© 2025 Springer Nature Limited",
+    "prism.issn": "1476-4687"
+  },
+  "hostname": "www.nature.com",
+  "extracted_at": "2025-03-08T08:39:01.321Z"
+}

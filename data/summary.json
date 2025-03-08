@@ -1,0 +1,182 @@
+[
+  {
+    "url": "https://jamanetwork.com/",
+    "status": "error",
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": "file",
+    "timestamp": 1741422077491
+  },
+  {
+    "url": "https://jamanetwork.com/journals/jama-health-forum",
+    "status": "error",
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": "file",
+    "timestamp": 1741422077484
+  },
+  {
+    "url": "https://jamanetwork.com/journals/jama",
+    "status": "error",
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": "file",
+    "timestamp": 1741422077484
+  },
+  {
+    "url": "https://www.nejm.org/equity",
+    "status": "error",
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": "file",
+    "timestamp": 1741422078013
+  },
+  {
+    "url": "https://www.nejm.org/browse/specialty/climate-change",
+    "status": "error",
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": "file",
+    "timestamp": 1741422078013
+  },
+  {
+    "url": "https://www.nejm.org/ai-in-medicine",
+    "status": "error",
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": "file",
+    "timestamp": 1741422081573
+  },
+  {
+    "url": "https://www.bmj.com/",
+    "status": "success",
+    "title": "Site Maintenance Page",
+    "articles_count": 1,
+    "links_count": 0,
+    "from_cache": "file",
+    "timestamp": 1741422082502
+  },
+  {
+    "url": "https://www.bmj.com/news/news",
+    "status": "success",
+    "title": "Site Maintenance Page",
+    "articles_count": 1,
+    "links_count": 0,
+    "from_cache": "file",
+    "timestamp": 1741422082504
+  },
+  {
+    "url": "https://www.annualreviews.org/content/journals/soc",
+    "status": "error",
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": "file",
+    "timestamp": 1741422078725
+  },
+  {
+    "url": "https://www.who.int/news-room/headlines",
+    "status": "success",
+    "title": "Many pregnancy-related complications going undetected and untreated – WHO",
+    "articles_count": 219,
+    "links_count": 10,
+    "from_cache": "file",
+    "timestamp": 1741422081699
+  },
+  {
+    "url": "https://www.annualreviews.org/content/journals/publhealth",
+    "status": "error",
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": "file",
+    "timestamp": 1741422079437
+  },
+  {
+    "url": "https://www.annualreviews.org/content/journals/nutr",
+    "status": "error",
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": "file",
+    "timestamp": 1741422080111
+  },
+  {
+    "url": "https://www.nature.com/collections/ggahieiica",
+    "status": "success",
+    "title": "Women’s health throughout the lifecourse",
+    "articles_count": 100,
+    "links_count": 0,
+    "from_cache": "file",
+    "timestamp": 1741422083637
+  },
+  {
+    "url": "https://www.cdc.gov/media/site.html",
+    "status": "success",
+    "title": "Site Index | CDC Newsroom",
+    "articles_count": 148,
+    "links_count": 0,
+    "from_cache": "file",
+    "timestamp": 1741422083781
+  },
+  {
+    "url": "https://www.nature.com/nm/articles?type=research-highlight",
+    "status": "success",
+    "title": "Research Highlights\n  | Nature Medicine",
+    "articles_count": 83,
+    "links_count": 0,
+    "from_cache": "file",
+    "timestamp": 1741422084762
+  },
+  {
+    "url": "https://news.un.org/en/news/topic/health",
+    "status": "success",
+    "title": "Health | UN News",
+    "articles_count": 124,
+    "links_count": 0,
+    "from_cache": "file",
+    "timestamp": 1741422083631
+  },
+  {
+    "url": "https://www.nature.com/subjects/health-sciences/nature",
+    "status": "success",
+    "title": "Health sciences | Nature",
+    "articles_count": 130,
+    "links_count": 0,
+    "from_cache": "file",
+    "timestamp": 1741422086065
+  },
+  {
+    "url": "https://www.thelancet.com/journals/lanpub/home",
+    "status": "error",
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": "file",
+    "timestamp": 1741422085848
+  },
+  {
+    "url": "https://www.who.int/news-room",
+    "status": "success",
+    "title": "Many pregnancy-related complications going undetected and untreated – WHO",
+    "articles_count": 226,
+    "links_count": 9,
+    "from_cache": "file",
+    "timestamp": 1741422084046
+  },
+  {
+    "url": "https://news.un.org/en/news/topic/women",
+    "status": "success",
+    "title": "Women | UN News",
+    "articles_count": 123,
+    "links_count": 0,
+    "from_cache": "file",
+    "timestamp": 1741422084346
+  }
+]

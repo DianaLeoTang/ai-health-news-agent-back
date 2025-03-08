@@ -1,0 +1,955 @@
+{
+  "url": "https://www.who.int/news-room/headlines",
+  "title": "Many pregnancy-related complications going undetected and untreated – WHO",
+  "description": "",
+  "links": [
+    {
+      "url": "https://www.who.int/",
+      "title": "Global"
+    },
+    {
+      "url": "https://www.who.int/southeastasia",
+      "title": "South-East Asia"
+    },
+    {
+      "url": "https://www.who.int/europe/",
+      "title": "Europe"
+    },
+    {
+      "url": "https://www.who.int/westernpacific/",
+      "title": "Western Pacific"
+    },
+    {
+      "url": "https://www.who.int/",
+      "title": "Home"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/health-topics",
+      "title": "Health Topics"
+    },
+    {
+      "url": "https://www.who.int/health-topics/",
+      "title": "All topics"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#A",
+      "title": "A"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#B",
+      "title": "B"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#C",
+      "title": "C"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#D",
+      "title": "D"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#E",
+      "title": "E"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#F",
+      "title": "F"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#G",
+      "title": "G"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#H",
+      "title": "H"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#I",
+      "title": "I"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#J",
+      "title": "J"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#K",
+      "title": "K"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#L",
+      "title": "L"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#M",
+      "title": "M"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#N",
+      "title": "N"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#O",
+      "title": "O"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#P",
+      "title": "P"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#Q",
+      "title": "Q"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#R",
+      "title": "R"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#S",
+      "title": "S"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#T",
+      "title": "T"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#U",
+      "title": "U"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#V",
+      "title": "V"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#W",
+      "title": "W"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#X",
+      "title": "X"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#Y",
+      "title": "Y"
+    },
+    {
+      "url": "https://www.who.int/health-topics/#Z",
+      "title": "Z"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/health-topics/resources",
+      "title": "Resources"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/health-topics/resources/fact-sheets",
+      "title": "Fact sheets"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/health-topics/resources/facts-in-pictures",
+      "title": "Facts in pictures"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/health-topics/resources/multimedia",
+      "title": "Multimedia"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/health-topics/resources/podcasts",
+      "title": "Podcasts"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/health-topics/resources/publications",
+      "title": "Publications"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/health-topics/resources/questions-and-answers",
+      "title": "Questions and answers"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/health-topics/resources/tools-and-toolkits",
+      "title": "Tools and toolkits"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/health-topics/popular",
+      "title": "Popular"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/health-topics/popular/dengue",
+      "title": "Dengue"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/health-topics/popular/endometriosis",
+      "title": "Endometriosis"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/health-topics/popular/excessive-heat",
+      "title": "Excessive heat"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/health-topics/popular/herpes",
+      "title": "Herpes"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/health-topics/popular/mental-disorders",
+      "title": "Mental disorders"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/health-topics/popular/mpox",
+      "title": "Mpox"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/countries",
+      "title": "Countries"
+    },
+    {
+      "url": "https://www.who.int/countries",
+      "title": "All countries"
+    },
+    {
+      "url": "https://www.who.int/countries/#A",
+      "title": "A"
+    },
+    {
+      "url": "https://www.who.int/countries/#B",
+      "title": "B"
+    },
+    {
+      "url": "https://www.who.int/countries/#C",
+      "title": "C"
+    },
+    {
+      "url": "https://www.who.int/countries/#D",
+      "title": "D"
+    },
+    {
+      "url": "https://www.who.int/countries/#E",
+      "title": "E"
+    },
+    {
+      "url": "https://www.who.int/countries/#F",
+      "title": "F"
+    },
+    {
+      "url": "https://www.who.int/countries/#G",
+      "title": "G"
+    },
+    {
+      "url": "https://www.who.int/countries/#H",
+      "title": "H"
+    },
+    {
+      "url": "https://www.who.int/countries/#I",
+      "title": "I"
+    },
+    {
+      "url": "https://www.who.int/countries/#J",
+      "title": "J"
+    },
+    {
+      "url": "https://www.who.int/countries/#K",
+      "title": "K"
+    },
+    {
+      "url": "https://www.who.int/countries/#L",
+      "title": "L"
+    },
+    {
+      "url": "https://www.who.int/countries/#M",
+      "title": "M"
+    },
+    {
+      "url": "https://www.who.int/countries/#N",
+      "title": "N"
+    },
+    {
+      "url": "https://www.who.int/countries/#O",
+      "title": "O"
+    },
+    {
+      "url": "https://www.who.int/countries/#P",
+      "title": "P"
+    },
+    {
+      "url": "https://www.who.int/countries/#Q",
+      "title": "Q"
+    },
+    {
+      "url": "https://www.who.int/countries/#R",
+      "title": "R"
+    },
+    {
+      "url": "https://www.who.int/countries/#S",
+      "title": "S"
+    },
+    {
+      "url": "https://www.who.int/countries/#T",
+      "title": "T"
+    },
+    {
+      "url": "https://www.who.int/countries/#U",
+      "title": "U"
+    },
+    {
+      "url": "https://www.who.int/countries/#V",
+      "title": "V"
+    },
+    {
+      "url": "https://www.who.int/countries/#W",
+      "title": "W"
+    },
+    {
+      "url": "https://www.who.int/countries/#X",
+      "title": "X"
+    },
+    {
+      "url": "https://www.who.int/countries/#Y",
+      "title": "Y"
+    },
+    {
+      "url": "https://www.who.int/countries/#Z",
+      "title": "Z"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/countries/regions",
+      "title": "Regions"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/countries/regions/africa",
+      "title": "Africa"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/countries/regions/americas",
+      "title": "Americas"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/countries/regions/europe",
+      "title": "Europe"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/countries/regions/eastern-mediterranean",
+      "title": "Eastern Mediterranean"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/countries/regions/south-east-asia",
+      "title": "South-East Asia"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/countries/regions/western-pacific",
+      "title": "Western Pacific"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/countries/who-in-countries",
+      "title": "WHO in countries"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/countries/who-in-countries/data-by-country",
+      "title": "Data by country"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/countries/who-in-countries/country-presence",
+      "title": "Country presence"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/countries/who-in-countries/country-strengthening",
+      "title": "Country strengthening"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/countries/who-in-countries/country-cooperation-strategies",
+      "title": "Country cooperation strategies"
+    },
+    {
+      "url": "https://www.who.int/news-room",
+      "title": "Newsroom"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/news/all-news",
+      "title": "All news"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/news/all-news/releases",
+      "title": "News releases"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/news/all-news/statements",
+      "title": "Statements"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/news/all-news/campaigns",
+      "title": "Campaigns"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/news/all-news/events",
+      "title": "Events"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/news/all-news/feature-stories",
+      "title": "Feature stories"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/news/all-news/press-conferences",
+      "title": "Press conferences"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/news/all-news/speecheshub",
+      "title": "Speeches"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/news/all-news/commentaries",
+      "title": "Commentaries"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/news/all-news/photo-library",
+      "title": "Photo library"
+    },
+    {
+      "url": "https://www.who.int/news-room/headlines",
+      "title": "Headlines"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/emergencies",
+      "title": "Emergencies"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/emergencies/emergencies",
+      "title": "Focus on"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/emergencies/emergencies/cholera",
+      "title": "Cholera"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/emergencies/emergencies/coronavirus-disease-(covio-19)",
+      "title": "Coronavirus disease (COVID-19)"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/emergencies/emergencies/greater-horn-of-africa",
+      "title": "Greater Horn of Africa"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/emergencies/emergencies/israel-and-occupied-palestinian-territory",
+      "title": "Israel and occupied Palestinian territory"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/emergencies/emergencies/mpox",
+      "title": "Mpox"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/emergencies/emergencies/sudan",
+      "title": "Sudan"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/emergencies/emergencies/ukraine-emergency",
+      "title": "Ukraine"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/emergencies/news",
+      "title": "Latest"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/emergencies/news/disease-outbreak-news",
+      "title": "Disease Outbreak News"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/emergencies/news/situation-reports",
+      "title": "Situation reports"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/emergencies/news/weekly-epidemiological-record",
+      "title": "Weekly Epidemiological Record"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/emergencies/who-in-emergencies",
+      "title": "WHO in emergencies"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/emergencies/who-in-emergencies/surveillance",
+      "title": "Surveillance"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/emergencies/who-in-emergencies/operations",
+      "title": "Operations"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/emergencies/who-in-emergencies/research-development",
+      "title": "Research"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/emergencies/who-in-emergencies/funding",
+      "title": "Funding"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/emergencies/who-in-emergencies/partners",
+      "title": "Partners"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/emergencies/who-in-emergencies/health-emergency-appeal",
+      "title": "Health emergency appeals"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/emergencies/who-in-emergencies/international-health-regulations",
+      "title": "International Health Regulations"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/emergencies/who-in-emergencies/independent-oversight-and-advisory-committee",
+      "title": "Independent Oversight and Advisory Committee"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/data",
+      "title": "Data"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/data/data-at-who",
+      "title": "Data at WHO"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/data/data-at-who/data-hub",
+      "title": "Data hub"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/data/data-at-who/global-health-estimates",
+      "title": "Global Health Estimates"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/data/data-at-who/mortality",
+      "title": "Mortality"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/data/data-at-who/health-inequality",
+      "title": "Health inequality"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/data/dashboards",
+      "title": "Dashboards"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/data/dashboards/triple-billion-progress",
+      "title": "Triple Billion Progress"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/data/dashboards/health-inequality-monitor",
+      "title": "Health Inequality Monitor"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/data/dashboards/delivery-for-impact",
+      "title": "Delivery for impact"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/data/dashboards/covid-19-dashboard",
+      "title": "COVID-19 dashboard"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/data/data-collection",
+      "title": "Data collection"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/data/data-collection/classifications",
+      "title": "Classifications"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/data/data-collection/score",
+      "title": "SCORE"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/data/data-collection/surveys",
+      "title": "Surveys"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/data/data-collection/civil-registration-and-vital-statistics",
+      "title": "Civil registration and vital statistics"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/data/data-collection/routine-health-information-systems",
+      "title": "Routine health information systems"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/data/data-collection/harmonized-health-facility-assessment",
+      "title": "Harmonized health facility assessment"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/data/data-collection/gis-centre-for-health",
+      "title": "GIS centre for health"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/data/reports",
+      "title": "Reports"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/data/reports/world-health-statistics",
+      "title": "World Health Statistics"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/data/reports/uhc-global-monitoring-report",
+      "title": "UHC global monitoring report"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us",
+      "title": "About WHO"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/about",
+      "title": "About WHO"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/about/partnerships-and-collaboration",
+      "title": "Partnerships"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/about/expert-groups",
+      "title": "Committees and advisory groups"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/about/collaborating-centres",
+      "title": "Collaborating centres"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/about/teams",
+      "title": "Technical teams"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/about/structure",
+      "title": "Organizational structure"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/about/who-we-are",
+      "title": "Who we are"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/our-work",
+      "title": "Our work"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/our-work/activities",
+      "title": "Activities"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/our-work/initiatives",
+      "title": "Initiatives"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/our-work/global-programme-of-work",
+      "title": "General Programme of Work"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/our-work/who-academy",
+      "title": "WHO Academy"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/who-funding",
+      "title": "Funding"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/who-funding/investment-case",
+      "title": "Investment in WHO"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/who-funding/who-foundation",
+      "title": "WHO Foundation"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/accountability",
+      "title": "Accountability"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/accountability/audit",
+      "title": "External audit"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/accountability/financial-statements",
+      "title": "Financial statements"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/accountability/internal-audit-and-investigations",
+      "title": "Internal audit and investigations"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/accountability/budget",
+      "title": "Programme Budget"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/accountability/results-report",
+      "title": "Results reports"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/governance",
+      "title": "Governance"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/governance/governing-bodies-website",
+      "title": "Governing bodies"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/governance/wha",
+      "title": "World Health Assembly"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/governance/eb",
+      "title": "Executive Board"
+    },
+    {
+      "url": "https://www.who.int/mega-menu/about-us/governance/member-states-portal",
+      "title": "Member States Portal"
+    },
+    {
+      "url": "https://www.who.int/",
+      "title": "Home"
+    },
+    {
+      "url": "https://www.who.int/news-room",
+      "title": "Newsroom"
+    },
+    {
+      "url": "https://www.who.int/news/item/08-03-2025-many-pregnancy-related-complications-going-undetected-and-untreated--who",
+      "title": "8 March 2025 News release Many pregnancy-related complications going undetected and untreated – WHO"
+    },
+    {
+      "url": "https://www.who.int/news/item/06-03-2025-who-announces-new-collaborating-centre-on-ai-for-health-governance",
+      "title": "6 March 2025 News release WHO announces new collaborating centre on AI for health governance"
+    },
+    {
+      "url": "https://www.who.int/news/item/28-02-2025-recommendations-announced-for-influenza-vaccine-composition-for-the-2025-2026-northern-hemisphere-influenza-season",
+      "title": "28 February 2025 News release Recommendations announced for influenza vaccine composition for the 20"
+    },
+    {
+      "url": "https://www.who.int/news/item/27-02-2025-third-meeting-of-the-international-health-regulations-2005-emmergency-committee-regarding-the-upsurge-of-mpox-2024-temporary-recommendations",
+      "title": "27 February 2025 Statement Third meeting of the International Health Regulations (2005) Emergency Co"
+    },
+    {
+      "url": "https://www.who.int/news/item/26-02-2025-who-strengthens-support-for-grassroots-crowdsourcing-campaign--a-global-movement-of-unity-and-solidarity",
+      "title": "26 February 2025 News release WHO strengthens support for grassroots crowdsourcing campaign: a globa"
+    },
+    {
+      "url": "https://www.who.int/news/item/11-02-2025-who-st.-jude-launch-groundbreaking-international-delivery-of--childhood-cancer-medicines",
+      "title": "11 February 2025 News release WHO, St. Jude launch groundbreaking international delivery of childhoo"
+    },
+    {
+      "url": "https://www.who.int/news/item/07-02-2025-dire-health-and-humanitarian-crisis-in-eastern-democratic-republic-of-the-congo-prompts-escalation-of-efforts-by-who--partners",
+      "title": "7 February 2025 News release Dire health and humanitarian crisis in eastern Democratic Republic of t"
+    },
+    {
+      "url": "https://www.who.int/news/item/03-02-2025-groundbreaking-ebola-vaccination-trial-launches-today-in-uganda",
+      "title": "3 February 2025 News release Groundbreaking Ebola vaccination trial launches today in Uganda"
+    },
+    {
+      "url": "https://www.who.int/news/item/31-01-2025-who-and-partners-enable-access-to-candidate-vaccine-and-treatments-for-outbreak-of-sudan-ebola-virus-disease-in-uganda",
+      "title": "31 January 2025 News release WHO and partners enable access to candidate vaccine and treatments for "
+    },
+    {
+      "url": "https://www.who.int/news/item/30-01-2025-who-verifies-niger-as-the-first-country-in-the-african-region-to-eliminate-onchocerciasis",
+      "title": "30 January 2025 News release WHO verifies Niger as the first country in the African Region to elimin"
+    },
+    {
+      "url": "https://www.who.int/news-room/headlines/1",
+      "title": "1 (current)"
+    },
+    {
+      "url": "https://www.who.int/news-room/headlines/2",
+      "title": "2"
+    },
+    {
+      "url": "https://www.who.int/news-room/headlines/3",
+      "title": "3"
+    },
+    {
+      "url": "https://www.who.int/news-room/headlines/4",
+      "title": "4"
+    },
+    {
+      "url": "https://www.who.int/news-room/headlines/5",
+      "title": "5"
+    },
+    {
+      "url": "https://www.who.int/news-room/headlines/6",
+      "title": "6"
+    },
+    {
+      "url": "https://www.who.int/news-room/headlines/7",
+      "title": "7"
+    },
+    {
+      "url": "https://www.who.int/news-room/headlines/8",
+      "title": "8"
+    },
+    {
+      "url": "https://www.who.int/news-room/headlines/9",
+      "title": "9"
+    },
+    {
+      "url": "https://www.who.int/news-room/headlines/10",
+      "title": "10"
+    },
+    {
+      "url": "https://www.who.int/news-room/headlines/11",
+      "title": "»"
+    },
+    {
+      "url": "https://www.who.int/redirect-pages/footer/regions",
+      "title": "Regions"
+    },
+    {
+      "url": "https://www.who.int/redirect-pages/footer/regions/africa",
+      "title": "Africa"
+    },
+    {
+      "url": "https://www.who.int/redirect-pages/footer/regions/americas",
+      "title": "Americas"
+    },
+    {
+      "url": "https://www.who.int/redirect-pages/footer/regions/eastern-mediterranen",
+      "title": "Eastern Mediterranean"
+    },
+    {
+      "url": "https://www.who.int/redirect-pages/footer/regions/europe",
+      "title": "Europe"
+    },
+    {
+      "url": "https://www.who.int/redirect-pages/footer/regions/south-east-asia",
+      "title": "South-East Asia"
+    },
+    {
+      "url": "https://www.who.int/redirect-pages/footer/regions/western-pacific",
+      "title": "Western Pacific"
+    },
+    {
+      "url": "https://www.who.int/redirect-pages/footer/who-policies",
+      "title": "Policies"
+    },
+    {
+      "url": "https://www.who.int/redirect-pages/footer/who-policies/cybersecurity",
+      "title": "Cybersecurity"
+    },
+    {
+      "url": "https://www.who.int/redirect-pages/footer/who-policies/ethics",
+      "title": "Ethics"
+    },
+    {
+      "url": "https://www.who.int/redirect-pages/footer/who-policies/information-disclosure",
+      "title": "Information disclosure"
+    },
+    {
+      "url": "https://www.who.int/redirect-pages/footer/who-policies/permissions-and-licensing",
+      "title": "Permissions and licensing"
+    },
+    {
+      "url": "https://www.who.int/redirect-pages/footer/who-policies/preventing-sexual-exploitation",
+      "title": "Preventing sexual exploitation"
+    },
+    {
+      "url": "https://www.who.int/redirect-pages/footer/who-policies/terms-of-use",
+      "title": "Terms of use"
+    },
+    {
+      "url": "https://www.who.int/redirect-pages/footer/about-us",
+      "title": "About us"
+    },
+    {
+      "url": "https://www.who.int/redirect-pages/footer/about-us/careers",
+      "title": "Careers"
+    },
+    {
+      "url": "https://www.who.int/redirect-pages/footer/about-us/frequently-asked-questions",
+      "title": "Frequently asked questions"
+    },
+    {
+      "url": "https://www.who.int/redirect-pages/footer/about-us/library",
+      "title": "Library"
+    },
+    {
+      "url": "https://www.who.int/redirect-pages/footer/about-us/newsletters",
+      "title": "Newsletters"
+    },
+    {
+      "url": "https://www.who.int/redirect-pages/footer/about-us/procurement",
+      "title": "Procurement"
+    },
+    {
+      "url": "https://www.who.int/redirect-pages/footer/about-us/publications",
+      "title": "Publications"
+    },
+    {
+      "url": "https://www.who.int/about/contact-us",
+      "title": "Contact us"
+    },
+    {
+      "url": "https://www.who.int/about/ethics/integrity-hotline",
+      "title": "Report misconduct"
+    },
+    {
+      "url": "https://www.who.int/about/policies/privacy",
+      "title": "Privacy policy"
+    },
+    {
+      "url": "https://www.who.int/about/policies/terms-of-use",
+      "title": "WHO"
+    }
+  ],
+  "articles": [
+    {
+      "title": "Many pregnancy-related complications going undetected and untreated – WHO",
+      "url": "https://www.who.int/news/item/08-03-2025-many-pregnancy-related-complications-going-undetected-and-untreated--who",
+      "date": "8 March 2025\n                                \n                                    News release",
+      "summary": "Many pregnancy-related complications going undetected and untreated – WHO"
+    },
+    {
+      "title": "WHO announces new collaborating centre on AI for health governance",
+      "url": "https://www.who.int/news/item/06-03-2025-who-announces-new-collaborating-centre-on-ai-for-health-governance",
+      "date": "6 March 2025\n                                \n                                    News release",
+      "summary": "WHO announces new collaborating centre on AI for health governance"
+    },
+    {
+      "title": "Recommendations announced for influenza vaccine composition for the 2025–2026 northern hemisphere influenza season",
+      "url": "https://www.who.int/news/item/28-02-2025-recommendations-announced-for-influenza-vaccine-composition-for-the-2025-2026-northern-hemisphere-influenza-season",
+      "date": "28 February 2025\n                                \n                                    News release",
+      "summary": "Recommendations announced for influenza vaccine composition for the 2025–2026 northern hemisphere influenza season"
+    },
+    {
+      "title": "Third meeting of the International Health Regulations (2005) Emergency Committee regarding the upsurge of mpox 2024 – Temporary recommendations",
+      "url": "https://www.who.int/news/item/27-02-2025-third-meeting-of-the-international-health-regulations-2005-emmergency-committee-regarding-the-upsurge-of-mpox-2024-temporary-recommendations",
+      "date": "27 February 2025\n                                \n                                    Statement",
+      "summary": "Third meeting of the International Health Regulations (2005) Emergency Committee regarding the upsurge of mpox 2024 – Temporary recommendations"
+    },
+    {
+      "title": "WHO strengthens support for grassroots crowdsourcing campaign: a global movement of unity and solidarity",
+      "url": "https://www.who.int/news/item/26-02-2025-who-strengthens-support-for-grassroots-crowdsourcing-campaign--a-global-movement-of-unity-and-solidarity",
+      "date": "26 February 2025\n                                \n                                    News release",
+      "summary": "WHO strengthens support for grassroots crowdsourcing campaign: a global movement of unity and solidarity"
+    },
+    {
+      "title": "WHO, St. Jude launch groundbreaking international delivery of\nchildhood cancer medicines",
+      "url": "https://www.who.int/news/item/11-02-2025-who-st.-jude-launch-groundbreaking-international-delivery-of--childhood-cancer-medicines",
+      "date": "11 February 2025\n                                \n                                    News release",
+      "summary": "WHO, St. Jude launch groundbreaking international delivery of\nchildhood cancer medicines"
+    },
+    {
+      "title": "Dire health and humanitarian crisis in eastern Democratic Republic of the Congo prompts escalation of efforts by WHO, partners",
+      "url": "https://www.who.int/news/item/07-02-2025-dire-health-and-humanitarian-crisis-in-eastern-democratic-republic-of-the-congo-prompts-escalation-of-efforts-by-who--partners",
+      "date": "7 February 2025\n                                \n                                    News release",
+      "summary": "Dire health and humanitarian crisis in eastern Democratic Republic of the Congo prompts escalation of efforts by WHO, partners"
+    },
+    {
+      "title": "Groundbreaking Ebola vaccination trial launches today in Uganda",
+      "url": "https://www.who.int/news/item/03-02-2025-groundbreaking-ebola-vaccination-trial-launches-today-in-uganda",
+      "date": "3 February 2025\n                                \n                                    News release",
+      "summary": "Groundbreaking Ebola vaccination trial launches today in Uganda"
+    },
+    {
+      "title": "WHO and partners enable access to candidate vaccine and treatments for outbreak of Sudan Ebola virus disease in Uganda",
+      "url": "https://www.who.int/news/item/31-01-2025-who-and-partners-enable-access-to-candidate-vaccine-and-treatments-for-outbreak-of-sudan-ebola-virus-disease-in-uganda",
+      "date": "31 January 2025\n                                \n                                    News release",
+      "summary": "WHO and partners enable access to candidate vaccine and treatments for outbreak of Sudan Ebola virus disease in Uganda"
+    },
+    {
+      "title": "WHO verifies Niger as the first country in the African Region to eliminate onchocerciasis",
+      "url": "https://www.who.int/news/item/30-01-2025-who-verifies-niger-as-the-first-country-in-the-african-region-to-eliminate-onchocerciasis",
+      "date": "30 January 2025\n                                \n                                    News release",
+      "summary": "WHO verifies Niger as the first country in the African Region to eliminate onchocerciasis"
+    }
+  ],
+  "metadata": {
+    "viewport": "width=device-width, initial-scale=1",
+    "theme-color": "#007eb4",
+    "og:locale": "en_US",
+    "og:title": "Headlines",
+    "og:image": "https://cdn.who.int/media/images/default-source/infographics/business-3343885-1920.tmb-1200v.jpg?sfvrsn=d4238092_35",
+    "twitter:card": "summary_large_image"
+  },
+  "hostname": "www.who.int",
+  "extracted_at": "2025-03-08T08:39:01.254Z"
+}
