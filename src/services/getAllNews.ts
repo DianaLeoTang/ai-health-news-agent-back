@@ -668,13 +668,7 @@ export async function getAllNews(
           result.extracted = { 
             url: result.url, 
             error: '内容处理失败: ' + error.message,
-            title: 'Error extracting content',
-            description: '',
-            links: [],
-            articles: [],
-            metadata: {},
-            hostname: new URL(result.url).hostname,
-            extracted_at: new Date().toISOString()
+            title: 'Error extracting content'
           };
         }
       } else if (result.status === 'error') {
