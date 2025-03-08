@@ -47,8 +47,10 @@ export interface RequestResult {
   errorCode?: string;
   error?: string;
   timestamp: number;
-  fromCache?: 'memory' | 'file' | false;
   extracted?: ExtractedContent;
+  fromCache?: 'memory' | 'file' | null;
+  links: Link[];
+  articles: Article[];
 }
 
 export interface ExtractedContent {
@@ -65,7 +67,7 @@ export interface ExtractedContent {
 
 export interface Link {
   url: string;
-  text: string;
+  title: string;
 }
 
 export interface Article {

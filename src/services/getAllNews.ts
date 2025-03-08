@@ -129,17 +129,6 @@ function getRandomUserAgent(): string {
 }
 
 /**
- * 使用超时功能获取资源
- * @param url - 要请求的URL
- * @param timeout - 超时时间（毫秒）
- * @returns Promise
- */
-function fetchWithTimeout(url: string, timeout: number = 10000): Promise<any> {
-  // 你的原始实现...
-  return Promise.resolve();
-}
-
-/**
  * 使用axios请求单个URL，带超时和重试机制
  * @param url - 要请求的URL
  * @param options - 配置选项
@@ -202,9 +191,10 @@ async function fetchWithAxios(url: string, options: Partial<{
         url,
         data: response.data,
         status: 'success',
-        headers: response.headers as Record<string, string>,
         statusCode: response.status,
-        timestamp: Date.now()
+        timestamp: Date.now(),
+        links: [],
+        articles: []
       };
       
       // 将结果存入缓存
@@ -234,14 +224,16 @@ async function fetchWithAxios(url: string, options: Partial<{
     }
   }
 
-  // 所有重试都失败后返回错误结果
+  // 所有重试都失败后返回错误结果 - 按照新格式
   const errorResult: RequestResult = {
     url,
-    error: lastError.message,
     status: 'error',
     statusCode: lastError.response?.status,
     errorCode: lastError.code,
-    timestamp: Date.now()
+    timestamp: Date.now(),
+    fromCache: null,
+    links: [],    // 请求失败时提供空数组
+    articles: []  // 请求失败时提供空数组
   };
   
   // 缓存错误结果（缓存时间较短）
@@ -271,23 +263,6 @@ function formatTime(seconds: number): string {
     const mins = Math.floor((seconds % 3600) / 60);
     return `${hours}小时${mins}分`;
   }
-}
-
-/**
- * 使用并发限制批量获取数据
- * @param urls - URL数组
- * @param concurrentLimit - 并发限制
- * @param timeout - 超时时间
- * @returns 结果Promise
- */
-function batchFetchWithConcurrencyLimit(
-  urls: string[], 
-  concurrentLimit: number = 5, 
-  timeout: number = 10000
-): Promise<RequestResult[]> {
-  // 你的原始实现...
-  const results: RequestResult[] = [];
-  return Promise.resolve(results);
 }
 
 /**
@@ -361,11 +336,15 @@ function batchFetchWithConcurrency(urls: string[], options: Partial<{
           })
           .catch(error => {
             console.error(`未捕获的错误 (${url}):`, error);
+            // 处理未捕获的错误 - 使用新格式
             results.push({
               url,
-              error: error.message,
               status: 'error',
-              timestamp: Date.now()
+              statusCode: error.response?.status,
+              errorCode: error.code,
+              timestamp: Date.now(),
+              links: [],     // 确保错误情况下有空数组
+              articles: []   // 确保错误情况下有空数组
             });
             
             completed++;
@@ -449,9 +428,9 @@ function extractContentWithCheerio(html: string, url: string): ExtractedContent 
   $(linkSelector).each((i, el) => {
     const $el = $(el);
     const href = $el.attr('href');
-    const text = $el.text().trim();
+    const title = $el.text().trim();
     
-    if (href && text && !href.startsWith('#') && !href.startsWith('javascript:')) {
+    if (href && title && !href.startsWith('#') && !href.startsWith('javascript:')) {
       try {
         // 处理相对URL
         const absoluteUrl = new URL(href, url).href;
@@ -460,7 +439,7 @@ function extractContentWithCheerio(html: string, url: string): ExtractedContent 
         if (new URL(absoluteUrl).hostname === hostname) {
           links.push({
             url: absoluteUrl,
-            text: text.replace(/\s+/g, ' ').substr(0, 100) // 规范化空白并限制长度
+            title: title.replace(/\s+/g, ' ').substr(0, 100) // 规范化空白并限制长度
           });
         }
       } catch (error) {
@@ -537,8 +516,8 @@ function extractContentWithCheerio(html: string, url: string): ExtractedContent 
     url,
     title,
     description,
-    links: links.slice(0, 30), // 限制数量
-    articles: articles.slice(0, 20), // 限制数量
+    links, // 直接返回链接数组
+    articles, // 直接返回文章数组
     metadata,
     hostname,
     extracted_at: new Date().toISOString()
@@ -558,8 +537,8 @@ async function saveResults(results: RequestResult[]): Promise<void> {
       url: result.url,
       status: result.status,
       title: result.extracted?.title || null,
-      articles_count: result.extracted?.articles?.length || 0,
-      links_count: result.extracted?.links?.length || 0,
+      articles_count: result.links?.length || 0,
+      links_count: result.articles?.length || 0,
       from_cache: result.fromCache || false,
       timestamp: result.timestamp
     }));
@@ -597,38 +576,6 @@ async function saveResults(results: RequestResult[]): Promise<void> {
 }
 
 /**
- * 提取所有文本内容（用于文本分析）
- * @param extractedData - 提取的数据对象
- * @returns 连接的文本内容
- */
-function extractAllText(extractedData: ExtractedContent): string {
-  const textParts: string[] = [];
-  
-  if (extractedData.title) textParts.push(extractedData.title);
-  if (extractedData.description) textParts.push(extractedData.description);
-  
-  if (extractedData.articles && extractedData.articles.length > 0) {
-    for (const article of extractedData.articles) {
-      if (article.title) textParts.push(article.title);
-      if (article.summary) textParts.push(article.summary);
-    }
-  }
-  
-  if (extractedData.links && extractedData.links.length > 0) {
-    for (const link of extractedData.links) {
-      if (link.text) textParts.push(link.text);
-    }
-  }
-  
-  if (extractedData.metadata) {
-    const metaDesc = extractedData.metadata['description'] || extractedData.metadata['og:description'];
-    if (metaDesc) textParts.push(metaDesc);
-  }
-  
-  return textParts.join('\n').replace(/\s+/g, ' ').trim();
-}
-
-/**
  * 主函数：获取并处理所有新闻源
  * @param urls - URL数组
  * @param options - 配置选项
@@ -663,12 +610,20 @@ export async function getAllNews(
       if (result.status === 'success' && result.data) {
         try {
           result.extracted = extractContentWithCheerio(result.data, result.url);
+          
+          // 从提取的内容更新links和articles到主结果对象
+          result.links = result.extracted.links || [];
+          result.articles = result.extracted.articles || [];
+          
           // 移除原始HTML以节省内存
           if (!mergedOptions.saveRawHtml) {
             delete result.data;
           }
         } catch (error: any) {
           console.error(`处理内容失败 (${result.url}):`, error);
+          // 处理失败时，确保有空数组
+          result.links = [];
+          result.articles = [];
           result.extracted = { 
             url: result.url, 
             error: '内容处理失败: ' + error.message,
@@ -681,6 +636,10 @@ export async function getAllNews(
             extracted_at: new Date().toISOString()
           };
         }
+      } else if (result.status === 'error') {
+        // 确保错误结果有空数组
+        result.links = [];
+        result.articles = [];
       }
       return result;
     });
