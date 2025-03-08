@@ -62,7 +62,7 @@ async function getFromCache(url: string): Promise<RequestResult | null> {
     if (Date.now() - cachedData.timestamp < CONFIGS.cacheTTL) {
       // 确保只返回需要的字段
       const { data, status, statusCode, timestamp, links, articles } = cachedData.data;
-      return { 
+      const result: RequestResult = { 
         url, 
         data, 
         status, 
@@ -72,6 +72,7 @@ async function getFromCache(url: string): Promise<RequestResult | null> {
         links: links || [],
         articles: articles || []
       };
+      return result;
     } else {
       memoryCache.delete(url);
     }
@@ -85,7 +86,9 @@ async function getFromCache(url: string): Promise<RequestResult | null> {
     if (Date.now() - rawData.timestamp < CONFIGS.cacheTTL) {
       // 提取我们需要的字段，确保不包含headers
       const { data, status, statusCode, timestamp, links, articles } = rawData;
-      const cleanData = { 
+      
+      // 创建符合RequestResult类型的对象
+      const cleanData: RequestResult = { 
         url, 
         data, 
         status, 
@@ -96,11 +99,12 @@ async function getFromCache(url: string): Promise<RequestResult | null> {
         articles: articles || []
       };
       
-      // 同时更新内存缓存
-      memoryCache.set(url, {
+      // 同时更新内存缓存 - 避免使用类型断言
+      const cacheEntry: CacheData<RequestResult> = {
         data: cleanData,
         timestamp: rawData.timestamp
-      });
+      };
+      memoryCache.set(url, cacheEntry);
       
       return cleanData;
     }
@@ -121,21 +125,23 @@ async function saveToCache(url: string, data: RequestResult): Promise<void> {
   
   // 只选择需要的字段保存到缓存
   const { data: htmlData, status, statusCode, timestamp, links, articles } = data;
-  const cleanData = {
+  // 创建一个符合RequestResult类型的对象
+  const cleanData: RequestResult = {
     url,
     data: htmlData,
     status,
     statusCode,
     timestamp: timestamp || Date.now(),
+    // 不设置fromCache属性，因为这是原始数据
     links: links || [],
     articles: articles || []
   };
   
-  // 保存到内存缓存
-  memoryCache.set(url, {
+  // 创建缓存条目 - 明确类型
+  const cacheEntry: CacheData<RequestResult> = {
     data: cleanData,
     timestamp: cleanData.timestamp
-  });
+  };
   
   // 保存到文件缓存
   try {
