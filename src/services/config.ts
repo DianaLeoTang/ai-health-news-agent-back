@@ -110,7 +110,7 @@ const config: Config = {
     "https://www.cell.com/cell/current.rss",
     "https://www.jci.org/rss.xml",
   ],
-  NEWS_OFFICE: [
+  NEWS_OFFICEAA: [
     { "Lancet Global Health": "https://www.thelancet.com/journals/langlo" },
     {
       "Annual Review of Public Health":
@@ -199,6 +199,136 @@ const config: Config = {
     { "Occupational and Environmental Medicine": "https://oem.bmj.com" },
     {
       "Scandinavian Journal of Work Environment Health": "https://www.sjweh.fi",
+    },
+  ],
+  // 格式化后的NEWS_OFFICE数组
+  NEWS_OFFICE = [
+    {
+      title: "Lancet Global Health",
+      url: "https://www.thelancet.com/journals/langlo",
+    },
+    {
+      title: "Annual Review of Public Health",
+      url: "https://www.annualreviews.org/journal/publhealth",
+    },
+    {
+      title: "American Journal of Public Health",
+      url: "https://ajph.aphapublications.org",
+    },
+    { title: "Journal of Global Health", url: "https://jogh.org" },
+    {
+      title: "American Journal of Preventive Medicine",
+      url: "https://www.ajpmonline.org",
+    },
+    {
+      title: "Preventive Medicine",
+      url: "https://www.journals.elsevier.com/preventive-medicine",
+    },
+    {
+      title: "The New England Journal of Medicine (NEJM)",
+      url: "https://www.nejm.org",
+    },
+    { title: "The Lancet", url: "https://www.thelancet.com" },
+    {
+      title: "JAMA (Journal of the American Medical Association)",
+      url: "https://jamanetwork.com/journals/jama",
+    },
+    { title: "BMJ (British Medical Journal)", url: "https://www.bmj.com" },
+    {
+      title: "Annals of Internal Medicine",
+      url: "https://www.acpjournals.org/journal/aim",
+    },
+    { title: "Nature Medicine", url: "https://www.nature.com/nm" },
+    {
+      title: "Lancet Infectious Diseases",
+      url: "https://www.thelancet.com/journals/laninf",
+    },
+    { title: "Cell", url: "https://www.cell.com" },
+    { title: "PLOS Medicine", url: "https://journals.plos.org/plosmedicine" },
+    {
+      title: "The Journal of Clinical Investigation (JCI)",
+      url: "https://www.jci.org",
+    },
+    { title: "Journal of Adolescent", url: "https://www.jahonline.org" },
+    { title: "The Journal of Pediatrics", url: "https://www.jpeds.com" },
+    { title: "BMC Pediatrics", url: "https://bmcpediatr.biomedcentral.com" },
+    { title: "Nutrients", url: "https://www.mdpi.com/journal/nutrients" },
+    {
+      title: "Public Health Nutrition",
+      url: "https://www.cambridge.org/core/journals/public-health-nutrition",
+    },
+    { title: "Toxicological Sciences", url: "https://academic.oup.com/toxsci" },
+    {
+      title: "Toxicology",
+      url: "https://www.journals.elsevier.com/toxicology",
+    },
+    {
+      title: "Archives of Toxicology",
+      url: "https://www.springer.com/journal/403",
+    },
+    {
+      title: "Toxicology Letters",
+      url: "https://www.journals.elsevier.com/toxicology-letters",
+    },
+    {
+      title: "Social Science Medicine",
+      url: "https://www.journals.elsevier.com/social-science-and-medicine",
+    },
+    { title: "Tobacco Control", url: "https://tobaccocontrol.bmj.com" },
+    { title: "Epidemiology and Community Health", url: "https://jech.bmj.com" },
+    {
+      title: "Medical Care",
+      url: "https://journals.lww.com/medicalcare/pages/default.aspx",
+    },
+    {
+      title: "Health Economics",
+      url: "https://onlinelibrary.wiley.com/journal/10991166",
+    },
+    { title: "Health Affairs", url: "https://www.healthaffairs.org" },
+    {
+      title: "International Journal for Equity in Health",
+      url: "https://equityhealthj.biomedcentral.com",
+    },
+    {
+      title: "International Journal of Epidemiology",
+      url: "https://academic.oup.com/ije",
+    },
+    {
+      title: "Statistics In Medicine",
+      url: "https://onlinelibrary.wiley.com/journal/10970258",
+    },
+    {
+      title: "European Journal of Epidemiology",
+      url: "https://www.springer.com/journal/10654",
+    },
+    {
+      title: "Annual Review of Epidemiology",
+      url: "https://www.annualreviews.org/journal/epidem",
+    },
+    {
+      title: "International Journal of Obesity",
+      url: "https://www.nature.com/ijo",
+    },
+    { title: "Hypertension", url: "https://www.ahajournals.org/journal/hyp" },
+    {
+      title: "Lancet Diabetes & Endocrinology",
+      url: "https://www.thelancet.com/journals/landia",
+    },
+    {
+      title: "Environmental Health Perspectives",
+      url: "https://ehp.niehs.nih.gov",
+    },
+    {
+      title: "Environmental Research",
+      url: "https://www.journals.elsevier.com/environmental-research",
+    },
+    {
+      title: "Occupational and Environmental Medicine",
+      url: "https://oem.bmj.com",
+    },
+    {
+      title: "Scandinavian Journal of Work Environment Health",
+      url: "https://www.sjweh.fi",
     },
   ],
   EMAIL: {
