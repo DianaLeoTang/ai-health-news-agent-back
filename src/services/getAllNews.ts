@@ -14,7 +14,7 @@ import {
   Article,
   CrawlerConfig
 } from './types';
-
+import {createMagazineUrlMap,getMagazineName} from './matchMagezine'
 // 缓存存储
 const memoryCache = new Map<string, CacheData<RequestResult>>();
 

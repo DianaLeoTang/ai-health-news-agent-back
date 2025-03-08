@@ -22,14 +22,18 @@ export interface ServerConfig {
   PORT: string | number;
   NODE_ENV: string;
 }
-
+export interface MagazineInfo {
+  title: string;
+  url: string;
+}
 export interface Config {
   NEWS_SOURCES: string[];
   EMAIL: EmailConfig;
   SERVER: ServerConfig;
   NEWS_SOURCES_FEED:string[];
-  NEWS_OFFICE:Array<{ [journalName: string]: string }>;
-
+  NEWS_OFFICEAA:Array<{ [journalName: string]: string }>;
+  NEWS_SOURCESAA:string[];
+  NEWS_OFFICE:MagazineInfo[]
 }
 
 // 类型定义

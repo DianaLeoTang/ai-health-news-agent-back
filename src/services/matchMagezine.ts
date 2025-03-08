@@ -1,11 +1,8 @@
 // 新的杂志数据格式
-interface MagazineInfo {
-    title: string;
-    url: string;
-  }
+import { MagazineInfo } from './types'
   
   // 将NEWS_OFFICE格式转换为更易用的映射
-  function createMagazineUrlMap(newsOffice: MagazineInfo[]) {
+ export  function createMagazineUrlMap(newsOffice: MagazineInfo[]) {
     // 创建URL到杂志名称的映射
     const urlToMagazine = new Map<string, string>();
     // 创建域名到杂志名称的映射（作为备用）
@@ -44,7 +41,7 @@ interface MagazineInfo {
    * @param domainToMagazine - 域名到杂志名称的映射
    * @returns 杂志名称
    */
-  function getMagazineTitle(url: string, urlToMagazine: Map<string, string>, domainToMagazine: Map<string, string>): string {
+export  function getMagazineName(url: string, urlToMagazine: Map<string, string>, domainToMagazine: Map<string, string>): string {
     // 首先尝试完全匹配URL
     for (const [magazineUrl, name] of urlToMagazine.entries()) {
       if (url === magazineUrl || url.startsWith(magazineUrl)) {
