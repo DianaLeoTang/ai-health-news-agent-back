@@ -9,6 +9,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*", "netlify/**/*"],
+  "include": ["src/**/*", "netlify/**/*", "netlify/functions/**/*"],
   "exclude": ["node_modules", "**/*.test.ts", "dist"]
 }
