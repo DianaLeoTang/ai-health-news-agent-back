@@ -60,7 +60,18 @@ async function getFromCache(url: string): Promise<RequestResult | null> {
   if (memoryCache.has(url)) {
     const cachedData = memoryCache.get(url)!;
     if (Date.now() - cachedData.timestamp < CONFIGS.cacheTTL) {
-      return { ...cachedData.data, fromCache: 'memory' };
+      // 确保只返回需要的字段
+      const { data, status, statusCode, timestamp, links, articles } = cachedData.data;
+      return { 
+        url, 
+        data, 
+        status, 
+        statusCode, 
+        timestamp,
+        fromCache: 'memory',
+        links: links || [],
+        articles: articles || []
+      };
     } else {
       memoryCache.delete(url);
     }
@@ -69,15 +80,29 @@ async function getFromCache(url: string): Promise<RequestResult | null> {
   // 再检查文件缓存
   try {
     const cacheFile = getCacheFilePath(url);
-    const data = JSON.parse(await fs.readFile(cacheFile, 'utf8')) as RequestResult;
+    const rawData = JSON.parse(await fs.readFile(cacheFile, 'utf8')) as RequestResult;
     
-    if (Date.now() - data.timestamp < CONFIGS.cacheTTL) {
+    if (Date.now() - rawData.timestamp < CONFIGS.cacheTTL) {
+      // 提取我们需要的字段，确保不包含headers
+      const { data, status, statusCode, timestamp, links, articles } = rawData;
+      const cleanData = { 
+        url, 
+        data, 
+        status, 
+        statusCode, 
+        timestamp,
+        fromCache: 'file',
+        links: links || [],
+        articles: articles || []
+      };
+      
       // 同时更新内存缓存
       memoryCache.set(url, {
-        data: { ...data, fromCache: 'file' },
-        timestamp: data.timestamp
+        data: cleanData,
+        timestamp: rawData.timestamp
       });
-      return { ...data, fromCache: 'file' };
+      
+      return cleanData;
     }
   } catch (error) {
     // 缓存不存在或已过期，忽略错误
@@ -94,22 +119,29 @@ async function getFromCache(url: string): Promise<RequestResult | null> {
 async function saveToCache(url: string, data: RequestResult): Promise<void> {
   if (!CONFIGS.useCache) return;
   
-  // 保存到内存缓存
-  const cacheData = {
-    ...data,
-    timestamp: Date.now()
+  // 只选择需要的字段保存到缓存
+  const { data: htmlData, status, statusCode, timestamp, links, articles } = data;
+  const cleanData = {
+    url,
+    data: htmlData,
+    status,
+    statusCode,
+    timestamp: timestamp || Date.now(),
+    links: links || [],
+    articles: articles || []
   };
   
+  // 保存到内存缓存
   memoryCache.set(url, {
-    data: cacheData,
-    timestamp: cacheData.timestamp
+    data: cleanData,
+    timestamp: cleanData.timestamp
   });
   
   // 保存到文件缓存
   try {
     await ensureDir(CONFIGS.cacheDir);
     const cacheFile = getCacheFilePath(url);
-    await fs.writeFile(cacheFile, JSON.stringify(cacheData, null, 2));
+    await fs.writeFile(cacheFile, JSON.stringify(cleanData, null, 2));
   } catch (error) {
     console.warn(`保存缓存失败 (${url}): ${(error as Error).message}`);
   }
@@ -151,10 +183,21 @@ async function fetchWithAxios(url: string, options: Partial<{
     proxyUrl = CONFIGS.proxyUrl
   } = options;
 
-  // 检查缓存
+      // 检查缓存
   const cachedData = await getFromCache(url);
   if (cachedData) {
-    return cachedData;
+    // 确保缓存数据符合我们期望的结构
+    const { url, data, status, statusCode, timestamp, fromCache, links, articles } = cachedData;
+    return { 
+      url, 
+      data, 
+      status, 
+      statusCode, 
+      timestamp, 
+      fromCache, 
+      links: links || [], 
+      articles: articles || [] 
+    };
   }
 
   // 创建axios请求配置
@@ -224,12 +267,11 @@ async function fetchWithAxios(url: string, options: Partial<{
     }
   }
 
-  // 所有重试都失败后返回错误结果 - 按照新格式
+  // 所有重试都失败后返回错误结果 - 按照新格式，不包含error字段
   const errorResult: RequestResult = {
     url,
     status: 'error',
     statusCode: lastError.response?.status,
-    errorCode: lastError.code,
     timestamp: Date.now(),
     fromCache: null,
     links: [],    // 请求失败时提供空数组
@@ -336,12 +378,11 @@ function batchFetchWithConcurrency(urls: string[], options: Partial<{
           })
           .catch(error => {
             console.error(`未捕获的错误 (${url}):`, error);
-            // 处理未捕获的错误 - 使用新格式
+            // 处理未捕获的错误 - 使用新格式，不包含error和errorCode字段
             results.push({
               url,
               status: 'error',
               statusCode: error.response?.status,
-              errorCode: error.code,
               timestamp: Date.now(),
               links: [],     // 确保错误情况下有空数组
               articles: []   // 确保错误情况下有空数组
