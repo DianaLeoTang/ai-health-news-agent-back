@@ -70,4 +70,21 @@ router.post("/login/account", (req: Request, res: Response, next: NextFunction) 
   })();
 });
 
+/**
+ * 用户登出接口
+ * 对应前端mock: 'POST /api/login/outLogin': { data: {}, success: true }
+ */
+router.post('/login/outLogin', (req, res) => {
+  // 在实际应用中，这里可能需要:
+  // 1. 清除服务器端的用户session
+  // 2. 使JWT token失效
+  // 3. 记录用户登出日志等
+  setAccess('')
+  // 返回与前端mock一致的数据结构
+  res.json({
+    data: {},
+    success: true
+  });
+});
+
 export default router;
