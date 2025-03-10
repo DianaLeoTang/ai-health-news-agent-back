@@ -69,7 +69,7 @@ export const handleFileUpload = (req: Request, res: Response) => {
 
     try {
       // 从请求中获取文件信息
-      const { originalname, mimetype, path: filePath, size } = req.file;
+      const { originalname, mimetype, path: filePath='', size } = req.file;
       // 获取用户ID (考虑认证用户和匿名用户)
       const userId = (req as any).user?.id || 'anonymous';
       

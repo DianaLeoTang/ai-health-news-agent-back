@@ -19,7 +19,7 @@ export const uploadPdf = async (req: FileRequest, res: Response): Promise<void> 
       return;
     }
 
-    const { originalname, mimetype, path: filePath, size } = req.file;
+    const { originalname, mimetype, path: filePath='', size } = req.file;
     
     // 确保是PDF文件
     if (mimetype !== 'application/pdf') {
