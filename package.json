@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "update-imports": "ts-node scripts/update-imports.ts",
-    "build":"tsc && mkdir -p dist/netlify/functions && [ -d netlify/functions ] && find netlify/functions -name '*.js' -exec cp {} dist/netlify/functions/ \\; || true",
+    "build": "tsc && mkdir -p dist/netlify/functions && [ -d netlify/functions ] && find netlify/functions -name '*.js' -exec cp {} dist/netlify/functions/ \\; || true",
     "prebuild": "mkdir -p dist/netlify/functions public",
     "deploy": "netlify deploy --prod",
     "dev": "netlify dev",
@@ -24,15 +24,18 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "fs-extra": "^11.3.0",
     "helmet": "^8.0.0",
     "markdown-it": "^14.1.0",
     "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
     "node-cron": "^3.0.3",
     "node-schedule": "^2.1.1",
     "nodemailer": "^6.10.0",
     "puppeteer": "^24.4.0",
     "serverless-http": "^3.2.0",
-    "user-agents": "^1.1.470"
+    "user-agents": "^1.1.470",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@netlify/functions": "^3.0.1",
