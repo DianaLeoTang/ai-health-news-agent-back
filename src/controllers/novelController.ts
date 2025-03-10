@@ -14,6 +14,7 @@ interface FileRequest extends Request {
 // 处理PDF上传并转换为小说格式
 export const uploadPdf = async (req: FileRequest, res: Response): Promise<void> => {
   try {
+    console.log(req,'这都什么参数')
     if (!req.file) {
       res.status(400).json({ message: '没有上传文件' });
       return;

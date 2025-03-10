@@ -64,7 +64,7 @@ export const handleFileUpload = (req: Request, res: Response) => {
     
     // 检查文件是否存在
     if (!req.file) {
-      return res.status(400).json({ message: '没有上传文件' });
+      return res.status(400).json({ message: '没有上传文件吗？' });
     }
 
     try {
