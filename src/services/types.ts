@@ -55,6 +55,8 @@ export interface RequestResult {
   links: Link[];
   articles: Article[];
   title?: string;  // 添加这个可选字段
+  // 其他可能的属性
+  [key: string]: any;
 }
 
 export interface ExtractedContent {

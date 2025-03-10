@@ -8,9 +8,13 @@
 import { Router, Request, Response, NextFunction } from 'express';
 // import { getAllNews } from '../services/fetchNewsWithPuppeteer';
 import { getAllNews } from "../services/getAllNews"
-
+ import {RequestResult} from '../services/types'
 const router = Router();
 
+function filterSuccessItems(dataArray: RequestResult[]): RequestResult[] {
+  // 使用filter方法筛选出status为"success"的项目
+  return dataArray.filter(item => item.status === "success");
+}
 // 获取所有新闻的接口 - 支持任何 HTTP 方法
 router.all("/news", (req: Request, res: Response, next: NextFunction) => {
   (async () =>{
@@ -20,8 +24,9 @@ router.all("/news", (req: Request, res: Response, next: NextFunction) => {
       console.log('查询参数:', req.query);  // 查看 URL 查询参数
       
       let newsData = await getAllNews();
-      const resp={ok:true, data: newsData,status:200}
-      console.log(`新闻数据获取成功，返回 ${newsData.length || 0} 条记录`);
+      const successOnlyData = filterSuccessItems(newsData);
+      const resp={ok:true, data: successOnlyData,status:200}
+      console.log(`新闻数据获取成功，返回 ${successOnlyData.length || 0} 条记录`);
       
       return res.json(resp);
     } catch (error) {
