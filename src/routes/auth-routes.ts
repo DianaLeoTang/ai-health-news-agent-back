@@ -32,7 +32,7 @@ router.post("/login/account", (req: Request, res: Response, next: NextFunction) 
       }
       
       // 普通用户登录
-      if (password === 'ant.design' && username === 'user') {
+      if (password === '666' && username === 'user') {
         setAccess('user');
         res.json({
           status: 'ok',

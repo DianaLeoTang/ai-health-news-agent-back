@@ -3,7 +3,7 @@
  * @Date: 2025-03-05
  * @LastEditors: Diana Tang
  * @Description: 用户信息相关路由
- * @FilePath: /AI-Health-News-Agent/apps/back-end/src/routes/user-routes.ts
+ * @FilePath: /AI-Health-News-Agent-Back/src/routes/user-routes.ts
  */
 import { Router, Request, Response } from 'express';
 
@@ -39,7 +39,7 @@ router.get("/currentUser", (req: Request, res: Response) => {
   }
   // 根据不同的用户角色返回不同的用户信息（可根据实际需求修改）
   const userInfo = {
-    name: 'Serati Ma',
+    name: 'Admin',
     avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
     userid: '00000001',
     email: 'antdesign@alipay.com',
@@ -89,11 +89,70 @@ router.get("/currentUser", (req: Request, res: Response) => {
     address: '西湖区工专路 77 号',
     phone: '0752-268888888',
   };
+  const userInfo2={
+    name: 'user',
+    avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
+    userid: '00000001',
+    email: 'antdesign@alipay.com',
+    signature: '海纳百川，有容乃大',
+    title: '交互专家',
+    group: '蚂蚁金服－某某某事业群－某某平台部－某某技术部－UED',
+    tags: [
+      {
+        key: '0',
+        label: '很有想法的',
+      },
+      {
+        key: '1',
+        label: '专注设计',
+      },
+      {
+        key: '2',
+        label: '辣~',
+      },
+      {
+        key: '3',
+        label: '大长腿',
+      },
+      {
+        key: '4',
+        label: '川妹子',
+      },
+      {
+        key: '5',
+        label: '海纳百川',
+      },
+    ],
+    notifyCount: 12,
+    unreadCount: 11,
+    country: 'China',
+    access: getAccess(), // 当前用户的权限
+    geographic: {
+      province: {
+        label: '浙江省',
+        key: '330000',
+      },
+      city: {
+        label: '杭州市',
+        key: '330100',
+      },
+    },
+    address: '西湖区工专路 77 号',
+    phone: '0752-268888888',
+  };
+  if (getAccess() === 'user') {
+    res.send({
+      success: true,
+      data: userInfo2,
+    });
+  }
+  else if (getAccess() === 'admin') {
+    res.send({
+      success: true,
+      data: userInfo,
+    });
+  }
   
-  res.send({
-    success: true,
-    data: userInfo,
-  });
 });
 
 export default router;
