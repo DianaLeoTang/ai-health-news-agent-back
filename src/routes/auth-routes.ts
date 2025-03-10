@@ -21,7 +21,7 @@ router.post("/login/account", (req: Request, res: Response, next: NextFunction) 
       const { password, username, type } = req.body;
       
       // 管理员登录
-      if (password === 'ant.design' && username === 'admin') {
+      if (password === 'ant.design2025' && username === 'admin') {
         setAccess('admin');
         res.json({
           status: 'ok',
