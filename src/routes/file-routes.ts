@@ -1,23 +1,11 @@
 import express, { Request, Response, Router } from "express";
-import multer, { StorageEngine, FileFilterCallback } from "multer";
+import multer from "multer";
 import path from "path";
 
 const router: Router = Router();
 
-// 配置存储方式
-const storage: StorageEngine = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/"); // 存储在 uploads 目录
-  },
-  filename: (req, file, cb) => {
-    // 处理中文文件名
-    const originalName = Buffer.from(file.originalname, 'latin1').toString('utf8');
-    const fileExt = path.extname(originalName);
-    const safeFileName = `${Date.now()}${fileExt}`; // 生成唯一文件名
-    cb(null, safeFileName);
-  },
-});
-
+// 使用内存存储而不是磁盘存储
+const storage = multer.memoryStorage();
 
 const upload = multer({ storage });
 
@@ -27,12 +15,31 @@ const handleFileUpload = ((req, res) => {
     return res.status(400).json({ error: "No file uploaded" });
   }
 
-  console.log(req.file); // 输出文件信息
-  res.status(200).json({ message: "File uploaded successfully", file: req.file });
+  // 从内存中处理文件
+  const fileInfo = { ...req.file };
+  
+  // 修正文件名编码
+  fileInfo.originalname = Buffer.from(req.file.originalname, 'latin1').toString('utf8');
+  
+  // 由于使用内存存储，文件内容在 buffer 属性中
+  console.log(`接收到文件: ${fileInfo.originalname}, 大小: ${fileInfo.size} 字节`);
+  
+  // 在实际应用中，你可能需要将文件上传到S3或其他云存储
+  // 这里我们只返回文件信息
+  res.status(200).json({ 
+    message: "File uploaded successfully", 
+    file: {
+      originalName: fileInfo.originalname,
+      size: fileInfo.size,
+      mimeType: fileInfo.mimetype,
+      // 你可以选择不返回buffer内容，它可能很大
+      // buffer: fileInfo.buffer.toString('base64') 
+    }
+  });
 }) as express.RequestHandler;
 
 router.post(
-  "/novels/uploadFIle",
+  "/novels/upload",
   upload.single("file"),
   handleFileUpload
 );
