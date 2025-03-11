@@ -14,8 +14,9 @@ import homeRoutes from './routes/home-routes';
 import archiveRoutes from './routes/archive-routes';
 import authRoutes from './routes/auth-routes';
 import userRoutes from './routes/user-routes';
+import fileRoutes from './routes/file-routes';
 
-import errorHandler from './middleware/error-handler'
+import errorHandler from './middleware/error-handler';
 
 // 创建Express应用
 const app = express();
@@ -46,6 +47,7 @@ app.use(newsRoutes);
 app.use(archiveRoutes);
 app.use(userRoutes); // 注意：需要在authRoutes之前加载，确保setAccess方法可用
 app.use(authRoutes);
+app.use(fileRoutes);
 app.use(errorHandler);
 
 export default app;
