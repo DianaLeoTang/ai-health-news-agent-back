@@ -34,12 +34,13 @@ app.use(cors({
     'http://localhost:8000', 
     'http://localhost:4200',
     'https://aihealthnews.netlify.app',
+    'https://aihealthnews.netlify.app/',
     'https://aihealthnews.duckdns.org',
     'https://www.aihealthnews.duckdns.org'
   ], // 允许的前端源
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // 允许的HTTP方法
-  allowedHeaders: ['Content-Type', 'Authorization'], // 允许的头信息
-  credentials: true // 允许跨域请求携带凭证（如cookies）
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // 添加OPTIONS方法
+  allowedHeaders: ['Content-Type', 'Authorization', 'Accept'], // 添加Accept头
+  credentials: true 
 }));
 console.log('走没有？')
 
