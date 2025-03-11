@@ -41,7 +41,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization'], // 允许的头信息
   credentials: true // 允许跨域请求携带凭证（如cookies）
 }));
-
+console.log('走没有？')
 
 // 解析请求体中的JSON数据
 app.use(express.json());
