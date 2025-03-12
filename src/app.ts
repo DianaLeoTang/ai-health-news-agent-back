@@ -21,6 +21,7 @@ import authRoutes from './routes/auth-routes';
 import userRoutes from './routes/user-routes';
 import fileRoutes from './routes/file-routes';
 import pdfRoutes from './routes/pdf-routes';
+import adminRoutes from './routes/admin-routes';
 
 import errorHandler from './middleware/error-handler';
 
@@ -57,5 +58,6 @@ app.use(authRoutes);
 app.use(fileRoutes);
 app.use(pdfRoutes);
 app.use(errorHandler);
+app.use(adminRoutes);
 
 export default app;
