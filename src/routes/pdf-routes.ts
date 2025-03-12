@@ -5,106 +5,97 @@
  * @Description: some description
  * @FilePath: /AI-Health-News-Agent-Back/src/routes/pdf-routes.ts
  */
-// interface Env {
-//     BUCKET: R2Bucket;
-//   }
-  
-//   export const onRequest: PagesFunction<Env> = async (context) => {
-//     const obj = await context.env.BUCKET.get("some-key");
-//     if (obj === null) {
-//       return new Response("Not found", { status: 404 });
-//     }
-//     return new Response(obj.body);
-//   };
-
-
-import express,{Router} from 'express';
-import { PdfNovelService } from '../services/r2Service';
+import express, { Request, Response, NextFunction,Router } from 'express';
+import { PdfService } from '../services/pdf-service';
 
 const router = Router();
+const pdfService = new PdfService();
 
-// // 获取小说目录信息
-// router.get('/book/:fileName', (req, res, next) => {
-//   (async () => {
-//     try {
-//       const fileName = req.params.fileName;
-//       const novelService = new PdfNovelService();
-//       const bookInfo = await novelService.getPdfAsNovel(fileName);
+// PDF信息获取路由
+router.get('/pdf-info/:filePath(*)', (req: Request, res: Response, next: NextFunction) => {
+  (async () => {
+    try {
+      const filePath = req.params.filePath;
+      console.log(`接收到PDF信息请求: ${req.path}, 文件路径: ${filePath}`);
       
-//       res.status(200).json({
-//         success: true,
-//         data: bookInfo
-//       });
-//     } catch (error) {
-//       console.error('获取小说信息时出错:', error);
-//       if (!res.headersSent) {
-//         res.status(500).json({
-//           success: false,
-//           message: '获取小说信息失败',
-//           error: (error as Error).message
-//         });
-//       }
-//     }
-//   })();
-// });
+      const result = await pdfService.getFileInfo(filePath);
+      
+      if (result.success) {
+        res.status(200).json(result);
+      } else {
+        res.status(404).json(result);
+      }
+    } catch (error) {
+      console.error('获取PDF信息时出错:', error);
+      res.status(500).json({
+        success: false,
+        message: '获取PDF信息失败',
+        error: (error as Error).message,
+        stack: (error as Error).stack
+      });
+    }
+  })();
+});
 
-// // 获取章节内容
-// router.get('/book/:fileName/chapter/:chapterIndex', (req, res, next) => {
-//   (async () => {
-//     try {
-//       const fileName = req.params.fileName;
-//       const chapterIndex = parseInt(req.params.chapterIndex);
+// 小说信息获取路由
+router.get('/novel/book/:filePath(*)', (req: Request, res: Response, next: NextFunction) => {
+  (async () => {
+    try {
+      const filePath = req.params.filePath;
+      console.log(`接收到小说请求: ${req.path}, 文件路径: ${filePath}`);
       
-//       if (isNaN(chapterIndex)) {
-//         res.status(400).json({
-//           success: false,
-//           message: '章节索引必须是数字'
-//         });
-//         return;
-//       }
+      const result = await pdfService.getNovelInfo(filePath);
       
-//       const novelService = new PdfNovelService();
-//       const chapterContent = await novelService.getChapter(fileName, chapterIndex);
-      
-//       res.status(200).json({
-//         success: true,
-//         data: chapterContent
-//       });
-//     } catch (error) {
-//       console.error('获取章节内容时出错:', error);
-//       if (!res.headersSent) {
-//         res.status(500).json({
-//           success: false,
-//           message: '获取章节内容失败',
-//           error: (error as Error).message
-//         });
-//       }
-//     }
-//   })();
-// });
+      if (result.success) {
+        res.status(200).json(result);
+      } else {
+        res.status(404).json(result);
+      }
+    } catch (error) {
+      console.error('处理小说请求时出错:', error);
+      res.status(500).json({
+        success: false,
+        message: '处理小说请求失败',
+        error: (error as Error).message,
+        stack: (error as Error).stack
+      });
+    }
+  })();
+});
 
-// 创建服务实例
-const novelService = new PdfNovelService();
-
-// 添加测试端点
-router.get('/test-r2', async (req, res) => {
-  try {
-    console.log('收到R2测试请求');
-    const bucketContents = await novelService.listBucketContents();
-    
-    res.status(200).json({
-      success: true,
-      message: 'R2连接测试成功',
-      data: bucketContents
-    });
-  } catch (error) {
-    console.error('R2测试端点出错:', error);
-    res.status(500).json({
-      success: false,
-      message: 'R2连接测试失败',
-      error: (error as Error).message
-    });
-  }
+// 获取章节内容路由
+router.get('/novel/book/:filePath(*)/chapter/:chapterIndex', (req: Request, res: Response, next: NextFunction) => {
+  (async () => {
+    try {
+      const filePath = req.params.filePath;
+      const chapterIndex = parseInt(req.params.chapterIndex);
+      
+      if (isNaN(chapterIndex)) {
+        return res.status(400).json({
+          success: false,
+          message: '章节索引必须是数字'
+        });
+      }
+      
+      console.log(`接收到章节请求: ${req.path}, 文件: ${filePath}, 章节: ${chapterIndex}`);
+      
+      const result = await pdfService.getChapterContent(filePath, chapterIndex);
+      
+      if (result.success) {
+        res.status(200).json(result);
+      } else {
+        res.status(404).json(result);
+      }
+    } catch (error) {
+      console.error('获取章节内容时出错:', error);
+      res.status(500).json({
+        success: false,
+        message: '获取章节内容失败',
+        error: (error as Error).message,
+        stack: (error as Error).stack
+      });
+    }
+  })();
 });
 
 export default router;
