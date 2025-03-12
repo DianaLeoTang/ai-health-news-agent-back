@@ -58,7 +58,6 @@ export interface RequestResult {
   // 其他可能的属性
   [key: string]: any;
 }
-
 export interface ExtractedContent {
   url: string;
   title?: string;
@@ -117,4 +116,45 @@ export interface CrawlerConfig {
   selectors: {
     [key: string]: SiteSelectors | string;
   };
+}
+// Extend RequestResult to include 'pending' status
+export interface ExtendedRequestResult extends Omit<RequestResult, 'status'> {
+  status: 'success' | 'error' | 'pending';
+}
+
+// 任务状态类型
+export type TaskStatus = 'pending' | 'processing' | 'completed' | 'error';
+
+// 错误响应类型
+export interface ErrorResponse {
+  status?: number;
+  statusText?: string;
+  data?: any;
+}
+
+// 错误类型
+export interface TaskError {
+  message: string;
+  response?: ErrorResponse;
+  stack?: string;
+  code?: string;
+}
+
+// 任务结果类型
+export interface TaskResult {
+  url: string;
+  status: 'success' | 'error';
+  statusCode?: number;
+  timestamp: number;
+  links: string[];
+  articles: any[]; // 这里可以根据实际文章结构定义更具体的类型
+  title: string;
+}
+
+// 任务类型
+export interface Task {
+  url: string;
+  status: TaskStatus;
+  result: TaskResult | null;
+  // 其他可能的任务属性...
 }
