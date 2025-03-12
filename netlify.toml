@@ -8,10 +8,6 @@
   to = "/.netlify/functions/api/:splat"
   status = 200
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
 
 [functions.scheduler]
   schedule = "0 */12 * * *"  # 每6小时运行一次
@@ -22,3 +18,13 @@
 
 [functions.api]
   timeout = 60
+
+[[redirects]]
+  from = "/.netlify/functions/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200

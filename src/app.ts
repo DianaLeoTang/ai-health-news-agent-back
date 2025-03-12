@@ -20,7 +20,7 @@ import archiveRoutes from './routes/archive-routes';
 import authRoutes from './routes/auth-routes';
 import userRoutes from './routes/user-routes';
 import fileRoutes from './routes/file-routes';
-// import pdfRoutes from './routes/pdf-routes';
+import pdfRoutes from './routes/pdf-routes';
 
 import errorHandler from './middleware/error-handler';
 
@@ -41,7 +41,6 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization', 'Accept'], // 添加Accept头
   credentials: true 
 }));
-console.log('走没有？')
 
 
 
@@ -56,7 +55,7 @@ app.use(archiveRoutes);
 app.use(userRoutes); // 注意：需要在authRoutes之前加载，确保setAccess方法可用
 app.use(authRoutes);
 app.use(fileRoutes);
-// app.use(pdfRoutes);
+app.use(pdfRoutes);
 app.use(errorHandler);
 
 export default app;
