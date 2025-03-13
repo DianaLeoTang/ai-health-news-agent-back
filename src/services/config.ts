@@ -264,6 +264,17 @@ const config: Config = {
     { title: "World Health Organization", url: "https://www.who.int/news-room" },
     { title: "UN News Women", url: "https://news.un.org/en/news/topic/women" }
   ],
+  AI_SOURCE:[
+    'https://www.nature.com/search?journal=nm&q=AI',
+    'https://www.kdnuggets.com/',
+    'https://www.kdnuggets.com/tag/artificial-intelligence',
+    'https://www.healthcareitnews.com/projects',
+    'https://search.nih.gov/search?utf8=%E2%9C%93&affiliate=hip&dc=940&query=AI',
+    'https://aiforgood.itu.int/',
+    'https://www.jmir.org/themes/797-artificial-intelligence',
+    'https://www.fiercehealthcare.com/digital-health',
+    'https://www.fiercehealthcare.com/ai-and-machine-learning',
+  ],
   EMAIL: {
     USER: process.env.EMAIL_USER,
     PASS: process.env.EMAIL_PASS,
@@ -321,6 +332,6 @@ export const CONFIGS: CrawlerConfig = {
     },
   },
 };
-export const { NEWS_SOURCES, EMAIL, SERVER, NEWS_SOURCES_FEED, NEWS_OFFICE } =
+export const { NEWS_SOURCES, EMAIL, SERVER, NEWS_SOURCES_FEED, NEWS_OFFICE,AI_SOURCE } =
   config;
 export default config;

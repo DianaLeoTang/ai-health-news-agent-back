@@ -33,7 +33,8 @@ export interface Config {
   NEWS_SOURCES_FEED:string[];
   NEWS_OFFICEAA:Array<{ [journalName: string]: string }>;
   NEWS_SOURCESAA:string[];
-  NEWS_OFFICE:MagazineInfo[]
+  NEWS_OFFICE:MagazineInfo[];
+  AI_SOURCE:string[];
 }
 
 // 类型定义
