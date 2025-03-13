@@ -505,7 +505,7 @@ function extractContentWithCheerio(html: string, url: string): ExtractedContent 
       
       // 提取文章标题
       const titleSel = getSelector(url, 'title').replace(/^.*?\s+/, ''); // 从完整选择器中移除前缀
-      const articleTitle = $article.find(titleSel).text().trim() || $article.find('h1, h2, h3, h4').first().text().trim();
+      const articleTitle = $article.find(titleSel).text().trim() || $article.find('h1, h2, h3, h4,a,font').first().text().trim();
       
       // 提取文章链接
       const linkEl = $article.find('a').first();
