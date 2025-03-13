@@ -121,17 +121,3 @@ npm start
 Diana Tang - [wangyaotang0228@gmail.com](mailto:wangyaotang0228@gmail.com)
 
 项目链接: [https://github.com/DianaLeoTang/ai-health-news-agent-back](https://github.com/DianaLeoTang/ai-health-news-agent-back)
-
-
-方法 2：使用 Cloudflare R2 公共访问
-如果您的 PDF 没有敏感信息，可以考虑启用 R2 存储桶的公共访问：
-
-在 Cloudflare 控制台中，找到您的 R2 存储桶
-点击"设置"选项卡
-在"Public URL Access"部分，选择"Allow public access"
-添加一个新的自定义域名（如：assets.yourdomain.com）指向您的 R2 存储桶
-
-这样，您可以直接使用格式为 https://assets.yourdomain.com/公共卫生与预防医学导论.pdf 的链接访问您的文件。
-
-
-https://pub-04e1a8056507443a9e433df36f7c0463.r2.dev/books/%E6%B5%81%E8%A1%8C%E7%97%85%E5%AD%A6_%E7%AC%AC9%E7%89%88.pdf

@@ -7,11 +7,6 @@
  */
 import express from 'express';
 import cors from 'cors';
-import dotenv from "dotenv";
-
-// 加载环境变量
-dotenv.config();
-// import 'dotenv/config';
 
 // 导入路由
 import newsRoutes from './routes/news-routes';
@@ -19,11 +14,8 @@ import homeRoutes from './routes/home-routes';
 import archiveRoutes from './routes/archive-routes';
 import authRoutes from './routes/auth-routes';
 import userRoutes from './routes/user-routes';
-import fileRoutes from './routes/file-routes';
-import pdfRoutes from './routes/pdf-routes';
-import adminRoutes from './routes/admin-routes';
 
-import errorHandler from './middleware/error-handler';
+import errorHandler from './middleware/error-handler'
 
 // 创建Express应用
 const app = express();
@@ -42,8 +34,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization', 'Accept'], // 添加Accept头
   credentials: true 
 }));
-
-
+console.log('走没有？')
 
 // 解析请求体中的JSON数据
 app.use(express.json());
@@ -55,9 +46,6 @@ app.use(newsRoutes);
 app.use(archiveRoutes);
 app.use(userRoutes); // 注意：需要在authRoutes之前加载，确保setAccess方法可用
 app.use(authRoutes);
-app.use(fileRoutes);
-app.use(pdfRoutes);
 app.use(errorHandler);
-app.use(adminRoutes);
 
 export default app;

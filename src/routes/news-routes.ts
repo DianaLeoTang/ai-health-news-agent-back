@@ -11,7 +11,7 @@ import { getAllNews } from "../services/getAllNews"
  import {RequestResult} from '../services/types'
 const router = Router();
 
-function filterSuccessItems<T extends { status: string }>(dataArray: T[]): T[] {
+function filterSuccessItems(dataArray: RequestResult[]): RequestResult[] {
   // 使用filter方法筛选出status为"success"的项目
   return dataArray.filter(item => item.status === "success");
 }
