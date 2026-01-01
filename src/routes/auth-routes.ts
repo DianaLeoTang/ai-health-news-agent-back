@@ -7,6 +7,7 @@
  */
 import { Router, Request, Response, NextFunction } from 'express';
 import { setAccess } from './user-routes';
+import { smsService } from '../services/smsService';
 
 const router = Router();
 
@@ -43,7 +44,7 @@ setInterval(cleanExpiredCaptchas, 5 * 60 * 1000);
  * 获取验证码接口
  * GET /api/login/captcha?token=xxx&phone=xxx
  */
-router.get("/login/captcha", (req: Request, res: Response) => {
+router.get("/login/captcha", async (req: Request, res: Response) => {
   try {
     const { token, phone } = req.query;
     
@@ -80,8 +81,32 @@ router.get("/login/captcha", (req: Request, res: Response) => {
 
     console.log(`验证码已生成 - 手机号: ${phoneStr}, 验证码: ${captcha}, Token: ${tokenStr}`);
 
-    // 在实际生产环境中，这里应该调用短信服务发送验证码
-    // 例如：await smsService.send(phoneStr, captcha);
+    // 发送短信验证码
+    const smsSent = await smsService.sendCaptcha(phoneStr, captcha);
+    
+    if (!smsSent) {
+      // 如果短信发送失败，删除已存储的验证码
+      delete captchaStore[tokenStr];
+      console.warn('⚠️ 短信发送失败，但在开发环境会继续返回验证码');
+      
+      // 开发环境下即使短信发送失败也返回验证码（方便测试）
+      if (process.env.NODE_ENV === 'development') {
+        res.json({
+          status: 'ok',
+          message: '验证码已生成（短信发送失败，仅开发环境）',
+          captcha: captcha,
+          smsError: true
+        });
+        return;
+      }
+      
+      // 生产环境短信发送失败则返回错误
+      res.status(500).json({
+        status: 'error',
+        message: '验证码发送失败，请稍后重试'
+      });
+      return;
+    }
     
     res.json({
       status: 'ok',
