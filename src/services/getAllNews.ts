@@ -572,7 +572,7 @@ function extractContentWithCheerio(html: string, url: string): ExtractedContent 
 }
 
 /**
- * 保存抓取结果到文件
+ * 保存抓取结果到文件（原有逻辑，覆盖保存）
  * @param results - 抓取结果
  */
 async function saveResults(results: RequestResult[]): Promise<void> {
@@ -583,7 +583,7 @@ async function saveResults(results: RequestResult[]): Promise<void> {
     const summary = results.map(result => ({
       url: result.url,
       status: result.status,
-      title: result.extracted?.title || null,
+      title: result.title || result.extracted?.title || null,
       articles_count: result.links?.length || 0,
       links_count: result.articles?.length || 0,
       from_cache: result.fromCache || false,
@@ -619,6 +619,90 @@ async function saveResults(results: RequestResult[]): Promise<void> {
     console.log(`结果已保存到 ${CONFIGS.outputDir} 目录`);
   } catch (error) {
     console.error('保存结果失败:', error);
+  }
+}
+
+/**
+ * 获取当前日期的格式化字符串
+ * @returns YYYY-MM-DD 格式的日期字符串
+ */
+function getFormattedDate(): string {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+/**
+ * 按日期归档保存结果（新增功能，不影响原有逻辑）
+ * @param results - 抓取结果
+ */
+async function saveArchiveResults(results: RequestResult[]): Promise<void> {
+  try {
+    const dateStr = getFormattedDate();
+    const archiveDir = path.join(CONFIGS.outputDir, dateStr);
+    
+    // 创建日期归档目录
+    await ensureDir(archiveDir);
+    
+    // 保存汇总数据
+    const summary = results.map(result => ({
+      url: result.url,
+      status: result.status,
+      title: result.title || result.extracted?.title || null,
+      articles_count: result.articles?.length || 0,
+      links_count: result.links?.length || 0,
+      from_cache: result.fromCache || false,
+      timestamp: result.timestamp,
+      date: dateStr
+    }));
+    
+    // 保存到归档目录
+    await fs.writeFile(
+      path.join(archiveDir, 'summary.json'),
+      JSON.stringify(summary, null, 2)
+    );
+    
+    // 保存最新数据元信息到主目录
+    await fs.writeFile(
+      path.join(CONFIGS.outputDir, 'latest.json'),
+      JSON.stringify({
+        date: dateStr,
+        updated_at: new Date().toISOString(),
+        total: results.length,
+        successful: results.filter(r => r.status === 'success').length,
+        failed: results.filter(r => r.status === 'error').length,
+        results: summary
+      }, null, 2)
+    );
+    
+    // 保存详细数据到归档目录
+    for (const result of results) {
+      if (result.status === 'success') {
+        const urlObj = new URL(result.url);
+        const filename = `${urlObj.hostname}${urlObj.pathname.replace(/\//g, '_')}.json`;
+        
+        const detailData = {
+          url: result.url,
+          title: result.title,
+          links: result.links || [],
+          articles: result.articles || [],
+          timestamp: result.timestamp,
+          date: dateStr,
+          from_cache: result.fromCache
+        };
+        
+        await fs.writeFile(
+          path.join(archiveDir, filename),
+          JSON.stringify(detailData, null, 2)
+        );
+      }
+    }
+    
+    console.log(`📚 历史归档已保存: ${archiveDir}`);
+  } catch (error) {
+    console.error('❌ 保存归档失败:', error);
   }
 }
 
@@ -685,9 +769,12 @@ export async function getAllNews(
       return result;
     });
     
-    // 保存结果
+    // 保存结果（原有逻辑）
     if (mergedOptions.outputDir) {
       await saveResults(processedResults);
+      
+      // 同时保存历史归档（新增功能）
+      await saveArchiveResults(processedResults);
     }
     
     console.timeEnd('getAllNews');
