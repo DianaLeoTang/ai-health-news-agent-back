@@ -30,6 +30,7 @@ app.use(cors({
     'http://localhost:8000', 
     'http://localhost:8001', 
     'http://localhost:4200',
+    'http://192.168.1.5:8000',  // 添加局域网IP地址
     'https://aihealthnews.netlify.app',
     'https://aihealthnews.netlify.app/',
     'https://aihealthnews.duckdns.org',
