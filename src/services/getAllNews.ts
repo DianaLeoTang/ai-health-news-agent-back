@@ -912,6 +912,31 @@ export async function getAllNews(
       return result;
     });
     
+    // JAMA：axios 返回 200 但 articles 为空（SPA），直接用 RSS 补全
+    for (let i = 0; i < processedResults.length; i++) {
+      const r = processedResults[i];
+      if (
+        r.status === 'success' &&
+        r.url &&
+        r.url.includes('jamanetwork.com') &&
+        (!r.articles || r.articles.length === 0) &&
+        JAMA_RSS_MAP && JAMA_RSS_MAP[r.url]
+      ) {
+        try {
+          const rssResult = await fetchRssAsRequestResult(
+            r.url,
+            JAMA_RSS_MAP[r.url],
+            getMagazineName(r.url, urlToMagazine, domainToMagazine)
+          );
+          r.articles = rssResult.articles || [];
+          r.title = rssResult.title || r.title;
+          console.log(`✅ JAMA RSS 补充: ${r.url} (${r.articles.length} 条)`);
+        } catch (err) {
+          console.warn(`❌ JAMA RSS 补充失败 ${r.url}:`, err instanceof Error ? err.message : err);
+        }
+      }
+    }
+
     // 保存结果（原有逻辑）
     if (mergedOptions.outputDir) {
       await saveResults(processedResults);

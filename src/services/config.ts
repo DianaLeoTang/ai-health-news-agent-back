@@ -272,6 +272,13 @@ const config: Config = {
     "https://jamanetwork.com/journals/jama-health-forum": "https://jamanetwork.com/rss/site_193/185.xml",
     "https://jamanetwork.com/journals/jama": "https://jamanetwork.com/rss/site_3/latestIssue_67.xml",
   },
+  // NEJM 官网 HTML 常 403，用官方 Current Issue RSS 替代
+  NEJM_RSS_MAP: {
+    "https://www.nejm.org": "https://www.nejm.org/action/showFeed?jc=nejm&type=etoc&feed=rss",
+    "https://www.nejm.org/equity": "https://www.nejm.org/action/showFeed?jc=nejm&type=etoc&feed=rss",
+    "https://www.nejm.org/browse/specialty/climate-change": "https://www.nejm.org/action/showFeed?jc=nejm&type=etoc&feed=rss",
+    "https://www.nejm.org/ai-in-medicine": "https://www.nejm.org/action/showFeed?jc=nejm&type=etoc&feed=rss",
+  },
   AI_SOURCE:[
     'https://www.nature.com/search?journal=nm&q=AI',
     'https://www.kdnuggets.com/',
@@ -340,6 +347,6 @@ export const CONFIGS: CrawlerConfig = {
     },
   },
 };
-export const { NEWS_SOURCES, EMAIL, SERVER, NEWS_SOURCES_FEED, NEWS_OFFICE, AI_SOURCE, JAMA_RSS_MAP } =
+export const { NEWS_SOURCES, EMAIL, SERVER, NEWS_SOURCES_FEED, NEWS_OFFICE, AI_SOURCE, JAMA_RSS_MAP, NEJM_RSS_MAP } =
   config;
 export default config;
