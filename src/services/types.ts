@@ -37,6 +37,7 @@ export interface Config {
   AI_SOURCE:string[];
   JAMA_RSS_MAP?: Record<string, string>;
   NEJM_RSS_MAP?: Record<string, string>;
+  LANCET_RSS_MAP?: Record<string, string>;
 }
 
 // 类型定义

@@ -5,7 +5,7 @@ import * as path from 'path';
 import { URL } from 'url';
 // 修正导入方式
 import UserAgent from 'user-agents';
-import { NEWS_SOURCES, CONFIGS, SERVER , NEWS_OFFICE, JAMA_RSS_MAP } from './config';
+import { NEWS_SOURCES, CONFIGS, SERVER , NEWS_OFFICE, JAMA_RSS_MAP, NEJM_RSS_MAP, LANCET_RSS_MAP } from './config';
 import { fetchNewsWithPuppeteer } from './fetchNewsWithPuppeteer';
 import { 
   CacheData,
@@ -459,7 +459,7 @@ async function fetchRssAsRequestResult(
   }
   const $ = cheerio.load(response.data, { xmlMode: true });
   const articles: Article[] = [];
-  $('channel item').each((_, el) => {
+  $('item').each((_, el) => {
     const $item = $(el);
     const title = $item.find('title').first().text().trim();
     const link = $item.find('link').first().text().trim();
@@ -843,6 +843,23 @@ export async function getAllNews(
       }
     }
     
+    // NEJM / Lancet 403 → RSS 兜底
+    for (const rssMap of [NEJM_RSS_MAP, LANCET_RSS_MAP]) {
+      if (!rssMap || Object.keys(rssMap).length === 0) continue;
+      for (let i = 0; i < results.length; i++) {
+        const r = results[i];
+        if (r.status === 'error' && r.url && rssMap[r.url]) {
+          try {
+            const title = getMagazineName(r.url, urlToMagazine, domainToMagazine);
+            results[i] = await fetchRssAsRequestResult(r.url, rssMap[r.url], title);
+            console.log(`✅ RSS 替代: ${r.url}`);
+          } catch (err) {
+            console.warn(`❌ RSS 替代失败 ${r.url}:`, err instanceof Error ? err.message : err);
+          }
+        }
+      }
+    }
+
     // 统计
     const successful = results.filter((result: RequestResult) => result.status === 'success').length;
     const failed = results.filter((result: RequestResult) => result.status === 'error').length;
@@ -912,27 +929,29 @@ export async function getAllNews(
       return result;
     });
     
-    // JAMA：axios 返回 200 但 articles 为空（SPA），直接用 RSS 补全
-    for (let i = 0; i < processedResults.length; i++) {
-      const r = processedResults[i];
-      if (
-        r.status === 'success' &&
-        r.url &&
-        r.url.includes('jamanetwork.com') &&
-        (!r.articles || r.articles.length === 0) &&
-        JAMA_RSS_MAP && JAMA_RSS_MAP[r.url]
-      ) {
-        try {
-          const rssResult = await fetchRssAsRequestResult(
-            r.url,
-            JAMA_RSS_MAP[r.url],
-            getMagazineName(r.url, urlToMagazine, domainToMagazine)
-          );
-          r.articles = rssResult.articles || [];
-          r.title = rssResult.title || r.title;
-          console.log(`✅ JAMA RSS 补充: ${r.url} (${r.articles.length} 条)`);
-        } catch (err) {
-          console.warn(`❌ JAMA RSS 补充失败 ${r.url}:`, err instanceof Error ? err.message : err);
+    // SPA 返回 200 但 articles 为空（如 JAMA、Lancet），用 RSS 补全
+    for (const rssMap of [JAMA_RSS_MAP, LANCET_RSS_MAP, NEJM_RSS_MAP]) {
+      if (!rssMap || Object.keys(rssMap).length === 0) continue;
+      for (let i = 0; i < processedResults.length; i++) {
+        const r = processedResults[i];
+        if (
+          r.status === 'success' &&
+          r.url &&
+          (!r.articles || r.articles.length === 0) &&
+          rssMap[r.url]
+        ) {
+          try {
+            const rssResult = await fetchRssAsRequestResult(
+              r.url,
+              rssMap[r.url],
+              getMagazineName(r.url, urlToMagazine, domainToMagazine)
+            );
+            r.articles = rssResult.articles || [];
+            r.title = rssResult.title || r.title;
+            console.log(`✅ RSS 补充(200空): ${r.url} (${r.articles.length} 条)`);
+          } catch (err) {
+            console.warn(`❌ RSS 补充失败 ${r.url}:`, err instanceof Error ? err.message : err);
+          }
         }
       }
     }

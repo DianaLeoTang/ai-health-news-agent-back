@@ -279,6 +279,14 @@ const config: Config = {
     "https://www.nejm.org/browse/specialty/climate-change": "https://www.nejm.org/action/showFeed?jc=nejm&type=etoc&feed=rss",
     "https://www.nejm.org/ai-in-medicine": "https://www.nejm.org/action/showFeed?jc=nejm&type=etoc&feed=rss",
   },
+  // Lancet 系列期刊 403，用各期刊 RSS 替代
+  LANCET_RSS_MAP: {
+    "https://www.thelancet.com": "https://www.thelancet.com/rssfeed/lancet_current.xml",
+    "https://www.thelancet.com/journals/langlo": "https://www.thelancet.com/rssfeed/langlo_current.xml",
+    "https://www.thelancet.com/journals/lanpub/home": "https://www.thelancet.com/rssfeed/lanpub_current.xml",
+    "https://www.thelancet.com/journals/laninf": "https://www.thelancet.com/rssfeed/laninf_current.xml",
+    "https://www.thelancet.com/journals/landia": "https://www.thelancet.com/rssfeed/landia_current.xml",
+  },
   AI_SOURCE:[
     'https://www.nature.com/search?journal=nm&q=AI',
     'https://www.kdnuggets.com/',
@@ -347,6 +355,6 @@ export const CONFIGS: CrawlerConfig = {
     },
   },
 };
-export const { NEWS_SOURCES, EMAIL, SERVER, NEWS_SOURCES_FEED, NEWS_OFFICE, AI_SOURCE, JAMA_RSS_MAP, NEJM_RSS_MAP } =
+export const { NEWS_SOURCES, EMAIL, SERVER, NEWS_SOURCES_FEED, NEWS_OFFICE, AI_SOURCE, JAMA_RSS_MAP, NEJM_RSS_MAP, LANCET_RSS_MAP } =
   config;
 export default config;
