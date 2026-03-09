@@ -8,6 +8,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
 dotenv.config();
 
 // 导入路由
@@ -45,6 +46,7 @@ console.log('走没有？')
 // 解析请求体中的JSON数据
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser()); // 解析 Cookie
 
 // 应用路由
 app.use(homeRoutes);

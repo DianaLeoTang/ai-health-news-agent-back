@@ -81,7 +81,7 @@ router.get('/api/archives/dates', async (req: Request, res: Response) => {
  */
 router.get('/api/archives/:date/summary', async (req: Request, res: Response) => {
   try {
-    const { date } = req.params;
+    const date = typeof req.params.date === 'string' ? req.params.date : (req.params.date as string[])?.[0] ?? '';
     
     // 验证日期格式
     const datePattern = /^\d{4}-\d{2}-\d{2}$/;
@@ -124,7 +124,8 @@ router.get('/api/archives/:date/summary', async (req: Request, res: Response) =>
  */
 router.get('/api/archives/:date/details/:filename', async (req: Request, res: Response) => {
   try {
-    const { date, filename } = req.params;
+    const date = typeof req.params.date === 'string' ? req.params.date : (req.params.date as string[])?.[0] ?? '';
+    const filename = typeof req.params.filename === 'string' ? req.params.filename : (req.params.filename as string[])?.[0] ?? '';
     
     // 验证日期格式
     const datePattern = /^\d{4}-\d{2}-\d{2}$/;

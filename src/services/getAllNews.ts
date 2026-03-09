@@ -5,7 +5,8 @@ import * as path from 'path';
 import { URL } from 'url';
 // 修正导入方式
 import UserAgent from 'user-agents';
-import { NEWS_SOURCES, CONFIGS, SERVER ,NEWS_OFFICE} from './config';
+import { NEWS_SOURCES, CONFIGS, SERVER , NEWS_OFFICE, JAMA_RSS_MAP } from './config';
+import { fetchNewsWithPuppeteer } from './fetchNewsWithPuppeteer';
 import { 
   CacheData,
   RequestResult, 
@@ -56,10 +57,18 @@ function getCacheFilePath(url: string): string {
 async function getFromCache(url: string): Promise<RequestResult | null> {
   if (!CONFIGS.useCache) return null;
   
+  // jamanetwork.com 一律不走缓存，始终用 Puppeteer 抓取
+  if (url.includes('jamanetwork.com')) return null;
+  
   // 先检查内存缓存
   if (memoryCache.has(url)) {
     const cachedData = memoryCache.get(url)!;
     if (Date.now() - cachedData.timestamp < CONFIGS.cacheTTL) {
+      // 不使用 403 等错误缓存，确保可以重试
+      if (cachedData.data.status === 'error' && cachedData.data.statusCode === 403) {
+        memoryCache.delete(url);
+        return null;
+      }
       // 确保只返回需要的字段
       const { data, status, statusCode, timestamp, links, articles } = cachedData.data;
       const result: RequestResult = { 
@@ -82,8 +91,12 @@ async function getFromCache(url: string): Promise<RequestResult | null> {
   try {
     const cacheFile = getCacheFilePath(url);
     const rawData = JSON.parse(await fs.readFile(cacheFile, 'utf8')) as RequestResult;
-    
+
     if (Date.now() - rawData.timestamp < CONFIGS.cacheTTL) {
+      // 不使用 403 等错误缓存，确保可以重试
+      if (rawData.status === 'error' && rawData.statusCode === 403) {
+        return null;
+      }
       // 提取我们需要的字段，确保不包含headers
       const { data, status, statusCode, timestamp, links, articles } = rawData;
       
@@ -122,6 +135,8 @@ async function getFromCache(url: string): Promise<RequestResult | null> {
  */
 async function saveToCache(url: string, data: RequestResult): Promise<void> {
   if (!CONFIGS.useCache) return;
+  // jamanetwork.com 不写入缓存，始终走 Puppeteer
+  if (url.includes('jamanetwork.com')) return;
   
   // 只选择需要的字段保存到缓存
   const { data: htmlData, status, statusCode, timestamp, links, articles } = data;
@@ -207,6 +222,7 @@ async function fetchWithAxios(url: string, options: Partial<{
   }
 
   // 创建axios请求配置
+  const isJamaNetwork = url.includes('jamanetwork.com');
   const config: AxiosRequestConfig = {
     timeout,
     headers: {
@@ -216,6 +232,13 @@ async function fetchWithAxios(url: string, options: Partial<{
       'Cache-Control': 'no-cache',
       'Pragma': 'no-cache',
       'Upgrade-Insecure-Requests': '1',
+      // 对 jamanetwork 增加更接近真实浏览器的头，减少 403
+      ...(isJamaNetwork ? {
+        'Referer': 'https://jamanetwork.com/',
+        'Sec-Fetch-Dest': 'document',
+        'Sec-Fetch-Mode': 'navigate',
+        'Sec-Fetch-Site': url.startsWith('https://jamanetwork.com') ? 'same-origin' : 'none',
+      } : {}),
       ...headers
     },
     validateStatus: (status: number) => status >= 200 && status < 300,
@@ -283,12 +306,9 @@ async function fetchWithAxios(url: string, options: Partial<{
     links: [],    // 请求失败时提供空数组
     articles: []  // 请求失败时提供空数组
   };
-  
-  // 缓存错误结果（缓存时间较短）
-  await saveToCache(url, {
-    ...errorResult,
-    timestamp: Date.now()
-  });
+
+  // 不缓存错误结果，避免 403 等临时失败被长期缓存导致无法重试
+  // await saveToCache(url, { ... });
   
   return errorResult;
 }
@@ -415,6 +435,50 @@ function batchFetchWithConcurrency(urls: string[], options: Partial<{
       resolve([]);
     }
   });
+}
+
+/**
+ * 抓取 RSS 并转为与 HTML 抓取一致的 RequestResult（用于 JAMA 等 403 站点的替代）
+ */
+async function fetchRssAsRequestResult(
+  htmlSourceUrl: string,
+  rssUrl: string,
+  magazineTitle: string
+): Promise<RequestResult> {
+  const response = await axios.get(rssUrl, {
+    timeout: CONFIGS.requestTimeout,
+    responseType: 'text',
+    headers: {
+      'User-Agent': getRandomUserAgent(),
+      'Accept': 'application/rss+xml, application/xml, text/xml, */*',
+    },
+    validateStatus: (s) => s === 200,
+  });
+  if (response.status !== 200 || !response.data) {
+    throw new Error(`RSS 请求失败: ${response.status}`);
+  }
+  const $ = cheerio.load(response.data, { xmlMode: true });
+  const articles: Article[] = [];
+  $('channel item').each((_, el) => {
+    const $item = $(el);
+    const title = $item.find('title').first().text().trim();
+    const link = $item.find('link').first().text().trim();
+    const desc = $item.find('description').first().text().trim().replace(/<[^>]+>/g, '').substr(0, 300);
+    const pubDate = $item.find('pubDate').first().text().trim();
+    if (title && link) {
+      articles.push({ title, url: link, date: pubDate, summary: desc });
+    }
+  });
+  return {
+    url: htmlSourceUrl,
+    status: 'success',
+    statusCode: 200,
+    timestamp: Date.now(),
+    fromCache: undefined,
+    links: [],
+    articles,
+    title: magazineTitle,
+  };
 }
 
 /**
@@ -583,6 +647,7 @@ async function saveResults(results: RequestResult[]): Promise<void> {
     const summary = results.map(result => ({
       url: result.url,
       status: result.status,
+      statusCode: result.statusCode ?? null,
       title: result.title || result.extracted?.title || null,
       articles_count: result.links?.length || 0,
       links_count: result.articles?.length || 0,
@@ -650,6 +715,7 @@ async function saveArchiveResults(results: RequestResult[]): Promise<void> {
     const summary = results.map(result => ({
       url: result.url,
       status: result.status,
+      statusCode: result.statusCode ?? null,
       title: result.title || result.extracted?.title || null,
       articles_count: result.articles?.length || 0,
       links_count: result.links?.length || 0,
@@ -727,17 +793,94 @@ export async function getAllNews(
     // 获取所有页面的HTML
     const results: RequestResult[] = await batchFetchWithConcurrency(urls, mergedOptions);
     
+    // 对 jamanetwork.com（HTML 与 RSS 均 403）：用 Puppeteer 抓取
+    const { urlToMagazine, domainToMagazine } = createMagazineUrlMap(NEWS_OFFICE);
+    const jamaErrors = results.filter((r) => r.status === 'error' && r.url && r.url.includes('jamanetwork.com'));
+    if (jamaErrors.length > 0) {
+      console.log(`\n🔄 检测到 ${jamaErrors.length} 个 JAMA 源 403，尝试用 Puppeteer 抓取...`);
+    }
+    for (let i = 0; i < results.length; i++) {
+      const r = results[i];
+      if (r.status === 'error' && r.url && r.url.includes('jamanetwork.com')) {
+        try {
+          const puppeteerArticles = await fetchNewsWithPuppeteer(r.url, 25000);
+          const title = getMagazineName(r.url, urlToMagazine, domainToMagazine);
+          results[i] = {
+            url: r.url,
+            status: 'success',
+            statusCode: 200,
+            timestamp: Date.now(),
+            fromCache: undefined,
+            links: [],
+            articles: puppeteerArticles.map((a) => ({
+              title: a.title,
+              url: a.link,
+              date: '',
+              summary: a.summary || '',
+            })),
+            title,
+          };
+          console.log(`✅ 已用 Puppeteer 替代: ${r.url} (${puppeteerArticles.length} 条)`);
+        } catch (err) {
+          console.warn(`❌ JAMA Puppeteer 替代失败 ${r.url}:`, err instanceof Error ? err.message : err);
+        }
+      }
+    }
+    // 若配置了 RSS 且非 JAMA 域名，可继续用 RSS 替代（当前 JAMA 已走 Puppeteer）
+    if (JAMA_RSS_MAP && Object.keys(JAMA_RSS_MAP).length > 0) {
+      for (let i = 0; i < results.length; i++) {
+        const r = results[i];
+        if (r.status === 'error' && r.url && JAMA_RSS_MAP[r.url]) {
+          const rssUrl = JAMA_RSS_MAP[r.url];
+          try {
+            const title = getMagazineName(r.url, urlToMagazine, domainToMagazine);
+            results[i] = await fetchRssAsRequestResult(r.url, rssUrl, title);
+            console.log(`已用 RSS 替代: ${r.url} -> ${rssUrl}`);
+          } catch (err) {
+            console.warn(`RSS 替代失败 ${r.url}:`, err);
+          }
+        }
+      }
+    }
+    
     // 统计
     const successful = results.filter((result: RequestResult) => result.status === 'success').length;
     const failed = results.filter((result: RequestResult) => result.status === 'error').length;
     const fromCache = results.filter((result: RequestResult) => result.fromCache).length;
     
     console.log(`请求完成：${successful}个成功 (${fromCache}个来自缓存)，${failed}个失败`);
-    
+
+    // 打印失败详情：按域名+状态码分组，便于排查
+    if (failed > 0) {
+      const failedList = results.filter((r: RequestResult) => r.status === 'error');
+      const byKey: Record<string, string[]> = {};
+      failedList.forEach((r: RequestResult) => {
+        try {
+          const host = new URL(r.url).hostname;
+          const code = r.statusCode != null ? String(r.statusCode) : 'timeout/network';
+          const key = `${host} (HTTP ${code})`;
+          if (!byKey[key]) byKey[key] = [];
+          byKey[key].push(r.url);
+        } catch (_) {
+          const key = 'invalid-url';
+          if (!byKey[key]) byKey[key] = [];
+          byKey[key].push(r.url);
+        }
+      });
+      console.log('\n❌ 失败的来源:');
+      Object.entries(byKey)
+        .sort((a, b) => b[1].length - a[1].length)
+        .forEach(([key, urls]) => {
+          console.log(`  ${key}: ${urls.length} 个`);
+          urls.slice(0, 5).forEach((u) => console.log(`    - ${u}`));
+          if (urls.length > 5) console.log(`    ... 共 ${urls.length} 个`);
+        });
+      console.log('');
+    }
+
     // 使用Cheerio提取内容
     console.log('正在提取内容...');
-    // 初始化杂志名称映射（只需初始化一次）
-    const { urlToMagazine, domainToMagazine } = createMagazineUrlMap(NEWS_OFFICE);
+    // 复用前面的杂志名称映射
 
     const processedResults = results.map((result: RequestResult) => {
       if (result.status === 'success' && result.data) {

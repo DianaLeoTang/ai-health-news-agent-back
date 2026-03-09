@@ -203,23 +203,49 @@ router.post("/login/mobile", (req: Request, res: Response) => {
   }
 });
 
+// 生成简单的token（生产环境应使用JWT）
+function generateToken(username: string, authority: string): string {
+  const timestamp = Date.now();
+  const randomStr = Math.random().toString(36).substring(2);
+  return Buffer.from(`${username}:${authority}:${timestamp}:${randomStr}`).toString('base64');
+}
+
 // 登录接口
 router.post("/login/account", (req: Request, res: Response, next: NextFunction) => {
   (async () => {
     try {
       // 获取查询参数中的token（如果存在）
-      const token = req.query.token;
+      const queryToken = req.query.token;
       
       // 从请求体中获取登录信息
       const { password, username, type } = req.body;
       
+      console.log('📝 登录请求:', { username, type });
+      
       // 管理员登录
       if (password === 'ant.design2025' && username === 'admin') {
         setAccess('admin');
+        const token = generateToken(username, 'admin');
+        
+        // 设置cookie（可选，但有助于某些前端框架）
+        res.cookie('token', token, {
+          httpOnly: false, // 设为false让前端可以读取
+          maxAge: 24 * 60 * 60 * 1000, // 24小时
+          sameSite: 'lax'
+        });
+        
+        console.log('✅ 管理员登录成功');
+        
         res.json({
           status: 'ok',
           type,
           currentAuthority: 'admin',
+          token, // 添加token
+          success: true, // 某些前端框架需要这个字段
+          data: {
+            username,
+            authority: 'admin'
+          }
         });
         return;
       }
@@ -227,10 +253,26 @@ router.post("/login/account", (req: Request, res: Response, next: NextFunction) 
       // 普通用户登录
       if (password === '666999' && username === 'user') {
         setAccess('user');
+        const token = generateToken(username, 'user');
+        
+        res.cookie('token', token, {
+          httpOnly: false,
+          maxAge: 24 * 60 * 60 * 1000,
+          sameSite: 'lax'
+        });
+        
+        console.log('✅ 普通用户登录成功');
+        
         res.json({
           status: 'ok',
           type,
           currentAuthority: 'user',
+          token,
+          success: true,
+          data: {
+            username,
+            authority: 'user'
+          }
         });
         return;
       }
@@ -238,25 +280,45 @@ router.post("/login/account", (req: Request, res: Response, next: NextFunction) 
       // 移动端登录
       if (type === 'mobile') {
         setAccess('admin');
+        const token = generateToken('mobile_user', 'admin');
+        
+        res.cookie('token', token, {
+          httpOnly: false,
+          maxAge: 24 * 60 * 60 * 1000,
+          sameSite: 'lax'
+        });
+        
+        console.log('✅ 移动端登录成功');
+        
         res.json({
           status: 'ok',
           type,
           currentAuthority: 'admin',
+          token,
+          success: true,
+          data: {
+            username: 'mobile_user',
+            authority: 'admin'
+          }
         });
         return;
       }
       
       // 登录失败
+      console.log('❌ 登录失败：用户名或密码错误');
       setAccess('guest');
-      res.json({
+      res.status(401).json({
         status: 'error',
         type,
         currentAuthority: 'guest',
+        success: false,
+        message: '用户名或密码错误'
       });
     } catch (error) {
-      console.error('登录处理时出错:', error);
+      console.error('❌ 登录处理时出错:', error);
       res.status(500).json({
         status: 'error',
+        success: false,
         message: '登录处理时发生内部错误'
       });
     }

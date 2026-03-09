@@ -266,6 +266,12 @@ const config: Config = {
     { title: "World Health Organization", url: "https://www.who.int/news-room" },
     { title: "UN News Women", url: "https://news.un.org/en/news/topic/women" }
   ],
+  // JAMA 官网 HTML 请求常返回 403，用 RSS 替代抓取
+  JAMA_RSS_MAP: {
+    "https://jamanetwork.com/": "https://jamanetwork.com/rss/site_3/mostReadArticles.xml",
+    "https://jamanetwork.com/journals/jama-health-forum": "https://jamanetwork.com/rss/site_193/185.xml",
+    "https://jamanetwork.com/journals/jama": "https://jamanetwork.com/rss/site_3/latestIssue_67.xml",
+  },
   AI_SOURCE:[
     'https://www.nature.com/search?journal=nm&q=AI',
     'https://www.kdnuggets.com/',
@@ -334,6 +340,6 @@ export const CONFIGS: CrawlerConfig = {
     },
   },
 };
-export const { NEWS_SOURCES, EMAIL, SERVER, NEWS_SOURCES_FEED, NEWS_OFFICE,AI_SOURCE } =
+export const { NEWS_SOURCES, EMAIL, SERVER, NEWS_SOURCES_FEED, NEWS_OFFICE, AI_SOURCE, JAMA_RSS_MAP } =
   config;
 export default config;

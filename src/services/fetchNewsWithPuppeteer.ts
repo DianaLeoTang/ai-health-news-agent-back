@@ -72,21 +72,25 @@ export async function fetchNewsWithPuppeteer(url: string, timeout = 30000): Prom
       timeout 
     });
     
-    // Use more specific selectors to reduce DOM query scope
-    const articles = await page.evaluate((siteUrl) => {
+    // Use more specific selectors to reduce DOM query scope（JAMA 使用 .card-article）
+    const isJama = url.includes('jamanetwork.com');
+    const articles = await page.evaluate((args: { siteUrl: string; isJama: boolean }) => {
+      const { siteUrl, isJama } = args;
       const news: Array<{
         title: string;
         link: string;
         summary: string;
       }> = [];
       
-      // Get all article elements
-      const articleElements = document.querySelectorAll('article, .article, .news-item, .post, [class*="article"], [class*="news"]');
+      const selector = isJama
+        ? '.card-article'
+        : 'article, .article, .news-item, .post, [class*="article"], [class*="news"]';
+      const articleElements = document.querySelectorAll(selector);
       
       articleElements.forEach((el) => {
-        const titleElement = el.querySelector('h2, h3, h4, .title, .headline') as HTMLElement | null;
-        const linkElement = el.querySelector('a[href], h2 > a, h3 > a, .title > a') as HTMLAnchorElement | null;
-        const summaryElement = el.querySelector('p, .summary, .excerpt, .description') as HTMLElement | null;
+        const titleElement = el.querySelector(isJama ? 'h3, h2, h4' : 'h2, h3, h4, .title, .headline') as HTMLElement | null;
+        const linkElement = el.querySelector('a[href]') as HTMLAnchorElement | null;
+        const summaryElement = el.querySelector(isJama ? 'p, .meta-date, .summary' : 'p, .summary, .excerpt, .description') as HTMLElement | null;
         
         let title = titleElement?.innerText?.trim();
         let link = linkElement?.href;
@@ -107,7 +111,7 @@ export async function fetchNewsWithPuppeteer(url: string, timeout = 30000): Prom
       });
       
       return news;
-    }, url);
+    }, { siteUrl: url, isJama });
 
     return articles;
   } catch (error) {

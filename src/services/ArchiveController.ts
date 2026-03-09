@@ -70,7 +70,7 @@ export class ArchiveController {
    */
   public getArchiveContent = async (req: Request, res: Response): Promise<void> => {
     try {
-      const { filename } = req.params;
+      const filename = typeof req.params.filename === 'string' ? req.params.filename : (req.params.filename as string[])?.[0] ?? '';
       const archiveDir = this.newsArchiver.getArchiveDir();
       const filePath = path.join(archiveDir, filename);
       

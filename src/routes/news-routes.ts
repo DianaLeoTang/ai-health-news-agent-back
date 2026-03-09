@@ -37,6 +37,110 @@ router.all("/news", (req: Request, res: Response, next: NextFunction) => {
 });
 
 
+// WHO专用爬虫接口
+import { fetchAllWHONews, fetchLatestWHONews, fetchWHONewsRange } from '../services/whoNewsCrawler';
+
+/**
+ * 获取WHO所有分页新闻
+ * GET /who-news/all?maxPages=5&startPage=1&delayMs=1000
+ */
+router.get("/who-news/all", (req: Request, res: Response, next: NextFunction) => {
+  (async () => {
+    try {
+      const maxPages = parseInt(req.query.maxPages as string) || undefined;
+      const startPage = parseInt(req.query.startPage as string) || 1;
+      const delayMs = parseInt(req.query.delayMs as string) || 1000;
+
+      console.log(`开始抓取WHO新闻: maxPages=${maxPages}, startPage=${startPage}`);
+      
+      const result = await fetchAllWHONews({
+        maxPages,
+        startPage,
+        delayMs
+      });
+
+      return res.json({
+        ok: true,
+        data: result,
+        status: 200
+      });
+    } catch (error) {
+      console.error('获取WHO新闻失败:', error);
+      return res.status(500).json({ 
+        ok: false,
+        error: '获取WHO新闻数据时发生错误',
+        message: error instanceof Error ? error.message : String(error)
+      });
+    }
+  })();
+});
+
+/**
+ * 获取WHO最新N条新闻（快速模式）
+ * GET /who-news/latest?count=50
+ */
+router.get("/who-news/latest", (req: Request, res: Response, next: NextFunction) => {
+  (async () => {
+    try {
+      const count = parseInt(req.query.count as string) || 50;
+      
+      console.log(`快速获取WHO最新 ${count} 条新闻`);
+      
+      const result = await fetchLatestWHONews(count);
+
+      return res.json({
+        ok: true,
+        data: result,
+        status: 200
+      });
+    } catch (error) {
+      console.error('获取WHO最新新闻失败:', error);
+      return res.status(500).json({ 
+        ok: false,
+        error: '获取WHO最新新闻数据时发生错误',
+        message: error instanceof Error ? error.message : String(error)
+      });
+    }
+  })();
+});
+
+/**
+ * 获取WHO指定页面范围的新闻
+ * GET /who-news/range?start=1&end=5
+ */
+router.get("/who-news/range", (req: Request, res: Response, next: NextFunction) => {
+  (async () => {
+    try {
+      const startPage = parseInt(req.query.start as string) || 1;
+      const endPage = parseInt(req.query.end as string) || 3;
+
+      if (startPage > endPage) {
+        return res.status(400).json({
+          ok: false,
+          error: '起始页不能大于结束页'
+        });
+      }
+
+      console.log(`获取WHO新闻第 ${startPage}-${endPage} 页`);
+      
+      const result = await fetchWHONewsRange(startPage, endPage);
+
+      return res.json({
+        ok: true,
+        data: result,
+        status: 200
+      });
+    } catch (error) {
+      console.error('获取WHO新闻范围失败:', error);
+      return res.status(500).json({ 
+        ok: false,
+        error: '获取WHO新闻范围数据时发生错误',
+        message: error instanceof Error ? error.message : String(error)
+      });
+    }
+  })();
+});
+
 // 这里可以添加更多与新闻相关的接口
 // 例如：获取单条新闻、添加新闻、更新新闻、删除新闻等
 
