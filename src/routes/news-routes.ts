@@ -6,34 +6,55 @@
  * @FilePath: /AI-Health-News-Agent-Back/src/routes/news-routes.ts
  */
 import { Router, Request, Response, NextFunction } from 'express';
-// import { getAllNews } from '../services/fetchNewsWithPuppeteer';
 import { getAllNews } from "../services/getAllNews"
- import {RequestResult} from '../services/types'
+import { RequestResult } from '../services/types'
 const router = Router();
 
 function filterSuccessItems(dataArray: RequestResult[]): RequestResult[] {
-  // 使用filter方法筛选出status为"success"的项目
   return dataArray.filter(item => item.status === "success");
 }
-// 获取所有新闻的接口 - 支持任何 HTTP 方法
-router.all("/news", (req: Request, res: Response, next: NextFunction) => {
-  (async () =>{
+
+// 路由层结果缓存：爬取一次后复用，避免翻页重复抓取
+let newsCache: RequestResult[] | null = null;
+let newsCacheTime = 0;
+const NEWS_CACHE_TTL = 30 * 60 * 1000; // 30 分钟
+
+// 获取所有新闻的接口 - 支持分页 ?page=1&limit=30
+router.all("/news", (req: Request, res: Response, _next: NextFunction) => {
+  (async () => {
     try {
-      console.log(`收到 ${req.method} 请求: ${req.path}`);
-      console.log('请求体:', req.body);  // 查看 POST 请求的数据
-      console.log('查询参数:', req.query);  // 查看 URL 查询参数
-      
-      let newsData = await getAllNews();
-      const successOnlyData = filterSuccessItems(newsData);
-      const resp={ok:true, data: successOnlyData,status:200}
-      console.log(`新闻数据获取成功，返回 ${successOnlyData.length || 0} 条记录`);
-      
-      return res.json(resp);
+      const page  = Math.max(1, parseInt(req.query.page  as string) || 1);
+      const limit = Math.max(1, parseInt(req.query.limit as string) || 30);
+
+      // 缓存过期或不存在时重新爬取
+      if (!newsCache || Date.now() - newsCacheTime > NEWS_CACHE_TTL) {
+        console.log('缓存未命中，开始爬取...');
+        const rawData = await getAllNews();
+        newsCache = filterSuccessItems(rawData);
+        newsCacheTime = Date.now();
+        console.log(`爬取完成，共 ${newsCache.length} 条有效数据`);
+      } else {
+        console.log(`命中缓存，共 ${newsCache.length} 条数据`);
+      }
+
+      const total   = newsCache.length;
+      const start   = (page - 1) * limit;
+      const pageData = newsCache.slice(start, start + limit);
+
+      return res.json({
+        ok: true,
+        data: pageData,
+        status: 200,
+        total,
+        page,
+        limit,
+        hasMore: start + limit < total,
+      });
     } catch (error) {
       console.error('处理新闻请求时出错:', error);
       return res.status(500).json({ error: '获取新闻数据时发生错误' });
     }
-  })()
+  })();
 });
 
 
@@ -44,7 +65,7 @@ import { fetchAllWHONews, fetchLatestWHONews, fetchWHONewsRange } from '../servi
  * 获取WHO所有分页新闻
  * GET /who-news/all?maxPages=5&startPage=1&delayMs=1000
  */
-router.get("/who-news/all", (req: Request, res: Response, next: NextFunction) => {
+router.get("/who-news/all", (req: Request, res: Response, _next: NextFunction) => {
   (async () => {
     try {
       const maxPages = parseInt(req.query.maxPages as string) || undefined;
@@ -79,7 +100,7 @@ router.get("/who-news/all", (req: Request, res: Response, next: NextFunction) =>
  * 获取WHO最新N条新闻（快速模式）
  * GET /who-news/latest?count=50
  */
-router.get("/who-news/latest", (req: Request, res: Response, next: NextFunction) => {
+router.get("/who-news/latest", (req: Request, res: Response, _next: NextFunction) => {
   (async () => {
     try {
       const count = parseInt(req.query.count as string) || 50;
@@ -108,7 +129,7 @@ router.get("/who-news/latest", (req: Request, res: Response, next: NextFunction)
  * 获取WHO指定页面范围的新闻
  * GET /who-news/range?start=1&end=5
  */
-router.get("/who-news/range", (req: Request, res: Response, next: NextFunction) => {
+router.get("/who-news/range", (req: Request, res: Response, _next: NextFunction) => {
   (async () => {
     try {
       const startPage = parseInt(req.query.start as string) || 1;
