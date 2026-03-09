@@ -1,182 +1,632 @@
 [
   {
-    "url": "https://jamanetwork.com/",
-    "status": "error",
-    "title": null,
+    "url": "https://jamanetwork.com/journals/jama",
+    "status": "success",
+    "statusCode": 200,
+    "title": "JAMA (Journal of the American Medical Association)",
     "articles_count": 0,
     "links_count": 0,
-    "from_cache": "file",
-    "timestamp": 1741422077491
+    "from_cache": false,
+    "timestamp": 1773032669996
   },
   {
     "url": "https://jamanetwork.com/journals/jama-health-forum",
-    "status": "error",
-    "title": null,
-    "articles_count": 0,
-    "links_count": 0,
-    "from_cache": "file",
-    "timestamp": 1741422077484
-  },
-  {
-    "url": "https://jamanetwork.com/journals/jama",
-    "status": "error",
-    "title": null,
-    "articles_count": 0,
-    "links_count": 0,
-    "from_cache": "file",
-    "timestamp": 1741422077484
-  },
-  {
-    "url": "https://www.nejm.org/equity",
-    "status": "error",
-    "title": null,
-    "articles_count": 0,
-    "links_count": 0,
-    "from_cache": "file",
-    "timestamp": 1741422078013
-  },
-  {
-    "url": "https://www.nejm.org/browse/specialty/climate-change",
-    "status": "error",
-    "title": null,
-    "articles_count": 0,
-    "links_count": 0,
-    "from_cache": "file",
-    "timestamp": 1741422078013
-  },
-  {
-    "url": "https://www.nejm.org/ai-in-medicine",
-    "status": "error",
-    "title": null,
-    "articles_count": 0,
-    "links_count": 0,
-    "from_cache": "file",
-    "timestamp": 1741422081573
-  },
-  {
-    "url": "https://www.bmj.com/",
     "status": "success",
-    "title": "Site Maintenance Page",
-    "articles_count": 1,
-    "links_count": 0,
-    "from_cache": "file",
-    "timestamp": 1741422082502
-  },
-  {
-    "url": "https://www.bmj.com/news/news",
-    "status": "success",
-    "title": "Site Maintenance Page",
-    "articles_count": 1,
-    "links_count": 0,
-    "from_cache": "file",
-    "timestamp": 1741422082504
-  },
-  {
-    "url": "https://www.annualreviews.org/content/journals/soc",
-    "status": "error",
-    "title": null,
+    "statusCode": 200,
+    "title": "JAMA (Journal of the American Medical Association)",
     "articles_count": 0,
     "links_count": 0,
-    "from_cache": "file",
-    "timestamp": 1741422078725
+    "from_cache": false,
+    "timestamp": 1773032676386
   },
   {
     "url": "https://www.who.int/news-room/headlines",
     "status": "success",
-    "title": "Many pregnancy-related complications going undetected and untreated – WHO",
-    "articles_count": 219,
+    "statusCode": 200,
+    "title": "WHO Headlines",
+    "articles_count": 216,
     "links_count": 10,
-    "from_cache": "file",
-    "timestamp": 1741422081699
+    "from_cache": "memory",
+    "timestamp": 1773031225731
+  },
+  {
+    "url": "https://jamanetwork.com/",
+    "status": "success",
+    "statusCode": 200,
+    "title": "JAMA Network",
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032678187
+  },
+  {
+    "url": "https://www.nejm.org/equity",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032660517
+  },
+  {
+    "url": "https://www.nejm.org/browse/specialty/climate-change",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032660568
   },
   {
     "url": "https://www.annualreviews.org/content/journals/publhealth",
     "status": "error",
+    "statusCode": 403,
     "title": null,
     "articles_count": 0,
     "links_count": 0,
-    "from_cache": "file",
-    "timestamp": 1741422079437
+    "from_cache": false,
+    "timestamp": 1773032661248
   },
   {
-    "url": "https://www.annualreviews.org/content/journals/nutr",
+    "url": "https://www.nejm.org/ai-in-medicine",
     "status": "error",
+    "statusCode": 403,
     "title": null,
     "articles_count": 0,
     "links_count": 0,
-    "from_cache": "file",
-    "timestamp": 1741422080111
+    "from_cache": false,
+    "timestamp": 1773032661251
   },
   {
     "url": "https://www.nature.com/collections/ggahieiica",
     "status": "success",
-    "title": "Women’s health throughout the lifecourse",
-    "articles_count": 100,
+    "statusCode": 200,
+    "title": "Nature Collections",
+    "articles_count": 104,
     "links_count": 0,
-    "from_cache": "file",
-    "timestamp": 1741422083637
-  },
-  {
-    "url": "https://www.cdc.gov/media/site.html",
-    "status": "success",
-    "title": "Site Index | CDC Newsroom",
-    "articles_count": 148,
-    "links_count": 0,
-    "from_cache": "file",
-    "timestamp": 1741422083781
+    "from_cache": "memory",
+    "timestamp": 1773031229172
   },
   {
     "url": "https://www.nature.com/nm/articles?type=research-highlight",
     "status": "success",
-    "title": "Research Highlights\n  | Nature Medicine",
-    "articles_count": 83,
+    "statusCode": 200,
+    "title": "Nature Medicine",
+    "articles_count": 84,
     "links_count": 0,
-    "from_cache": "file",
-    "timestamp": 1741422084762
+    "from_cache": "memory",
+    "timestamp": 1773031229180
   },
   {
-    "url": "https://news.un.org/en/news/topic/health",
+    "url": "https://www.cdc.gov/media/site.html",
     "status": "success",
-    "title": "Health | UN News",
-    "articles_count": 124,
+    "statusCode": 200,
+    "title": "Centers for Disease Control and Prevention",
+    "articles_count": 178,
     "links_count": 0,
-    "from_cache": "file",
-    "timestamp": 1741422083631
+    "from_cache": "memory",
+    "timestamp": 1773031228865
   },
   {
     "url": "https://www.nature.com/subjects/health-sciences/nature",
     "status": "success",
-    "title": "Health sciences | Nature",
-    "articles_count": 130,
+    "statusCode": 200,
+    "title": "Nature Health Sciences",
+    "articles_count": 131,
     "links_count": 0,
-    "from_cache": "file",
-    "timestamp": 1741422086065
+    "from_cache": "memory",
+    "timestamp": 1773031229929
   },
   {
-    "url": "https://www.thelancet.com/journals/lanpub/home",
+    "url": "https://news.un.org/en/news/topic/health",
+    "status": "success",
+    "statusCode": 200,
+    "title": "UN News Health",
+    "articles_count": 128,
+    "links_count": 0,
+    "from_cache": "memory",
+    "timestamp": 1773031228236
+  },
+  {
+    "url": "https://www.bmj.com/news/news",
     "status": "error",
+    "statusCode": 403,
     "title": null,
     "articles_count": 0,
     "links_count": 0,
-    "from_cache": "file",
-    "timestamp": 1741422085848
+    "from_cache": false,
+    "timestamp": 1773032661274
   },
   {
     "url": "https://www.who.int/news-room",
     "status": "success",
-    "title": "Many pregnancy-related complications going undetected and untreated – WHO",
-    "articles_count": 226,
+    "statusCode": 200,
+    "title": "World Health Organization",
+    "articles_count": 218,
     "links_count": 9,
-    "from_cache": "file",
-    "timestamp": 1741422084046
+    "from_cache": "memory",
+    "timestamp": 1773031229479
   },
   {
     "url": "https://news.un.org/en/news/topic/women",
     "status": "success",
-    "title": "Women | UN News",
-    "articles_count": 123,
+    "statusCode": 200,
+    "title": "UN News Women",
+    "articles_count": 125,
+    "links_count": 0,
+    "from_cache": "memory",
+    "timestamp": 1773031229435
+  },
+  {
+    "url": "https://www.bmj.com/",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032661469
+  },
+  {
+    "url": "https://www.annualreviews.org/content/journals/soc",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032661503
+  },
+  {
+    "url": "https://www.annualreviews.org/content/journals/nutr",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032661857
+  },
+  {
+    "url": "https://jogh.org",
+    "status": "success",
+    "statusCode": 200,
+    "title": "Journal of Global Health",
+    "articles_count": 76,
+    "links_count": 0,
+    "from_cache": "memory",
+    "timestamp": 1773031232852
+  },
+  {
+    "url": "https://www.annualreviews.org/journal/publhealth",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032662069
+  },
+  {
+    "url": "https://www.journals.elsevier.com/preventive-medicine",
+    "status": "success",
+    "statusCode": 200,
+    "title": "Preventive Medicine",
+    "articles_count": 44,
+    "links_count": 0,
+    "from_cache": "memory",
+    "timestamp": 1773031235208
+  },
+  {
+    "url": "https://www.thelancet.com/journals/lanpub/home",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032662411
+  },
+  {
+    "url": "https://www.thelancet.com/journals/langlo",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032662412
+  },
+  {
+    "url": "https://ajph.aphapublications.org",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032662658
+  },
+  {
+    "url": "https://www.ajpmonline.org",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032663011
+  },
+  {
+    "url": "https://www.nature.com/nm",
+    "status": "success",
+    "statusCode": 200,
+    "title": "Nature Medicine",
+    "articles_count": 97,
+    "links_count": 0,
+    "from_cache": "memory",
+    "timestamp": 1773031236203
+  },
+  {
+    "url": "https://www.nejm.org",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032663173
+  },
+  {
+    "url": "https://www.bmj.com",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032663407
+  },
+  {
+    "url": "https://journals.plos.org/plosmedicine",
+    "status": "success",
+    "statusCode": 200,
+    "title": "PLOS Medicine",
+    "articles_count": 47,
+    "links_count": 0,
+    "from_cache": "memory",
+    "timestamp": 1773031237514
+  },
+  {
+    "url": "https://www.jci.org",
+    "status": "success",
+    "statusCode": 200,
+    "title": "The Journal of Clinical Investigation (JCI)",
+    "articles_count": 397,
+    "links_count": 0,
+    "from_cache": "memory",
+    "timestamp": 1773031238896
+  },
+  {
+    "url": "https://www.thelancet.com",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032663592
+  },
+  {
+    "url": "https://www.acpjournals.org/journal/aim",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032663794
+  },
+  {
+    "url": "https://bmcpediatr.biomedcentral.com",
+    "status": "success",
+    "statusCode": 200,
+    "title": "BMC Pediatrics",
+    "articles_count": 50,
+    "links_count": 0,
+    "from_cache": "memory",
+    "timestamp": 1773031241426
+  },
+  {
+    "url": "https://www.mdpi.com/journal/nutrients",
+    "status": "success",
+    "statusCode": 200,
+    "title": "Nutrients",
+    "articles_count": 244,
+    "links_count": 0,
+    "from_cache": "memory",
+    "timestamp": 1773031240227
+  },
+  {
+    "url": "https://www.cambridge.org/core/journals/public-health-nutrition",
+    "status": "success",
+    "statusCode": 200,
+    "title": "Public Health Nutrition",
+    "articles_count": 124,
+    "links_count": 0,
+    "from_cache": "memory",
+    "timestamp": 1773031240714
+  },
+  {
+    "url": "https://www.thelancet.com/journals/laninf",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032664149
+  },
+  {
+    "url": "https://www.journals.elsevier.com/toxicology",
+    "status": "success",
+    "statusCode": 200,
+    "title": "Toxicology",
+    "articles_count": 36,
     "links_count": 0,
     "from_cache": "file",
-    "timestamp": 1741422084346
+    "timestamp": 1773032633358
+  },
+  {
+    "url": "https://www.springer.com/journal/403",
+    "status": "success",
+    "statusCode": 200,
+    "title": "Archives of Toxicology",
+    "articles_count": 39,
+    "links_count": 0,
+    "from_cache": "memory",
+    "timestamp": 1773031244588
+  },
+  {
+    "url": "https://www.journals.elsevier.com/toxicology-letters",
+    "status": "success",
+    "statusCode": 200,
+    "title": "Toxicology",
+    "articles_count": 34,
+    "links_count": 0,
+    "from_cache": "file",
+    "timestamp": 1773032633077
+  },
+  {
+    "url": "https://www.journals.elsevier.com/social-science-and-medicine",
+    "status": "success",
+    "statusCode": 200,
+    "title": "Social Science Medicine",
+    "articles_count": 48,
+    "links_count": 0,
+    "from_cache": "file",
+    "timestamp": 1773032633012
+  },
+  {
+    "url": "https://www.cell.com",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032664328
+  },
+  {
+    "url": "https://academic.oup.com/toxsci",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032664477
+  },
+  {
+    "url": "https://www.jpeds.com",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032664785
+  },
+  {
+    "url": "https://www.jahonline.org",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032664799
+  },
+  {
+    "url": "https://tobaccocontrol.bmj.com",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032664850
+  },
+  {
+    "url": "https://jech.bmj.com/content/79/4?current-issue=y",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032665191
+  },
+  {
+    "url": "https://equityhealthj.biomedcentral.com",
+    "status": "success",
+    "statusCode": 200,
+    "title": "International Journal for Equity in Health",
+    "articles_count": 52,
+    "links_count": 0,
+    "from_cache": "memory",
+    "timestamp": 1773031248722
+  },
+  {
+    "url": "https://jech.bmj.com",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032665283
+  },
+  {
+    "url": "https://onlinelibrary.wiley.com/journal/10991166",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032665415
+  },
+  {
+    "url": "https://www.springer.com/journal/10654",
+    "status": "success",
+    "statusCode": 200,
+    "title": "European Journal of Epidemiology",
+    "articles_count": 56,
+    "links_count": 0,
+    "from_cache": "memory",
+    "timestamp": 1773031250656
+  },
+  {
+    "url": "https://academic.oup.com/ije",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032665885
+  },
+  {
+    "url": "https://www.nature.com/ijo",
+    "status": "success",
+    "statusCode": 200,
+    "title": "International Journal of Obesity",
+    "articles_count": 72,
+    "links_count": 0,
+    "from_cache": "memory",
+    "timestamp": 1773031249295
+  },
+  {
+    "url": "https://journals.lww.com/medicalcare/pages/default.aspx",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032665885
+  },
+  {
+    "url": "https://www.annualreviews.org/journal/epidem",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032666019
+  },
+  {
+    "url": "https://ehp.niehs.nih.gov",
+    "status": "error",
+    "statusCode": null,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": "memory",
+    "timestamp": 1773031252764
+  },
+  {
+    "url": "https://www.journals.elsevier.com/environmental-research",
+    "status": "success",
+    "statusCode": 200,
+    "title": "Environmental Research",
+    "articles_count": 41,
+    "links_count": 0,
+    "from_cache": "file",
+    "timestamp": 1773032636866
+  },
+  {
+    "url": "https://onlinelibrary.wiley.com/journal/10970258",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032666159
+  },
+  {
+    "url": "https://www.sjweh.fi",
+    "status": "success",
+    "statusCode": 200,
+    "title": "Scandinavian Journal of Work Environment Health",
+    "articles_count": 187,
+    "links_count": 0,
+    "from_cache": "memory",
+    "timestamp": 1773031253085
+  },
+  {
+    "url": "https://www.healthaffairs.org",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032666583
+  },
+  {
+    "url": "https://oem.bmj.com",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032666705
+  },
+  {
+    "url": "https://www.ahajournals.org/journal/hyp",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032667024
+  },
+  {
+    "url": "https://www.thelancet.com/journals/landia",
+    "status": "error",
+    "statusCode": 403,
+    "title": null,
+    "articles_count": 0,
+    "links_count": 0,
+    "from_cache": false,
+    "timestamp": 1773032667073
   }
 ]
